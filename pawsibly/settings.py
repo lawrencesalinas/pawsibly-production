@@ -15,16 +15,10 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 import sys
 import dj_database_url
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
+
 
 # adding config
-cloudinary.config( 
-  cloud_name = "domrxogjn", 
-  api_key = "577365745852932", 
-  api_secret = "ObtonRIJ6p-giirvdh0U8vTK26I" 
-)
+
 
 # .env config:
 from dotenv import load_dotenv, find_dotenv
@@ -59,11 +53,19 @@ else:
 # Default database as defined above depending on development
 # or production environment
 DATABASES = {
-    'default': DB
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'pawsibly', 
+        'USER': 'lawrencesalinas',
+        'PASSWORD': 'Glare356s17s',
+        'HOST': 'pawsibly-identifier.c0v6jh3jzpwi.us-east-1.rds.amazonaws.com',
+        'PORT': '5434'
+    }
 }
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+import os
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -88,8 +90,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
-    'photos',
-    'cloudinary',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -108,7 +109,9 @@ ROOT_URLCONF = 'pawsibly.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'pawsibly-react-1/build' )
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -185,11 +188,30 @@ USE_TZ = True
 # optional package: http://whitenoise.evans.io/en/stable/django.html
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
+MEDIA_URL = '/images/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'pawsibly-react-1/build/static'),
+    
+   
+
 )
 # Use the custom user model as the auth user for the admin view
 AUTH_USER_MODEL = 'api.user'
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+AWS_QUERYSTRING_AUTH = False
+
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+
+AWS_ACCESS_KEY_ID = 'AKIARE6ORT4VTK4YQ6CC'
+
+AWS_SECRET_ACCESS_KEY = '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'
+
+AWS_STORAGE_BUCKET_NAME = 'pawsibly-bucket'

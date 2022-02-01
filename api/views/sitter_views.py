@@ -2,7 +2,7 @@ from rest_framework.response import Response
 from rest_framework import generics, status
 from django.shortcuts import get_object_or_404
 from ..models.sitter import Sitter
-from ..serializers import SitterSerializer
+from ..serializers import SitterSerializer, SitterPostSerializer
 
 # Create your views here.
 class Sitters(generics.ListCreateAPIView):
@@ -22,10 +22,8 @@ class Sitters(generics.ListCreateAPIView):
         return Response({ 'sitters': data })
 
     def post(self, request):
-        
-        user = request.user
-        sitter_data = Sitter(owner = user)
-        sitter = SitterSerializer(sitter_data, data=request.data)
+        print(request.data)
+        sitter = SitterPostSerializer(data=request.data)
         if sitter.is_valid():
             # Save the created mango & send a response
             sitter.save()

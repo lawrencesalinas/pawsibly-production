@@ -23,10 +23,10 @@ class SitterSerializer(serializers.ModelSerializer):
         model = Sitter
         fields = '__all__'
 
-class SitterReadSerializer(serializers.ModelSerializer):
+class SitterPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Sitter
-        fields = ('id','first_name')
+        fields = ('first_name','last_name','price','description','city','zipcode')
 
 class UserImageSerializer(serializers.ModelSerializer):
     class Meta:
