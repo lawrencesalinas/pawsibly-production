@@ -34,7 +34,7 @@ if os.getenv('ENV') == 'development':
       'NAME': DB_NAME,
   }
   # Set debug to true
-  DEBUG = True
+  DEBUG = False
   # Only allow locally running client at port 3000 for CORS
   CORS_ORIGIN_WHITELIST = ['http://localhost:3000']
 else:
@@ -65,7 +65,7 @@ DATABASES = {
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-import os
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -95,6 +95,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -183,21 +184,46 @@ USE_L10N = True
 USE_TZ = True
 
 
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+
+STATIC_ROOT = os.path.join(BASE_DIR, "live-static", "static-root")
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+#STATIC_ROOT = "/home/cfedeploy/webapps/cfehome_static_root/"
+
+MEDIA_URL = "/media/"
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "live-static-files", "media-root")
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 # optional package: http://whitenoise.evans.io/en/stable/django.html
-STATIC_URL = '/static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
-MEDIA_URL = '/images/'
+# STATICFILES_FINDERS = [
+#     'django.contrib.staticfiles.finders.FileSystemFinder',
+#     'django.contrib.staticfiles.finders.AppDirectoriesFinder'
+# ]
+# STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-    os.path.join(BASE_DIR, 'pawsibly-react-1/build/static'),
-    
-   
+# # render images   
+# MEDIA_URL = '/images/'
 
-)
+# # STATICFILES_DIRS = [
+# #     os.path.join(BASE_DIR, 'static'),
+# #     os.path.join(BASE_DIR, 'pawsibly-react-1/build/static'),
+# # ]
+# #  anytime a user uploads it looks at this folder
+# # user uploaded content
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images') 
+
+# # this is where django looks for static files in django when in  production
+# STATIC_ROOT =  os.path.join(BASE_DIR, 'mediafiles/' )
+
 # Use the custom user model as the auth user for the admin view
 AUTH_USER_MODEL = 'api.user'
 
