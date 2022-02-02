@@ -1,1 +1,1 @@
-web: gunicorn pawsibly.wsgi --log-file - 
+web: gunicorn pawsibly-django.wsgi --log-file - 
