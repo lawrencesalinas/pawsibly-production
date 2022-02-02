@@ -57,7 +57,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'pawsibly', 
         'USER': 'lawrencesalinas',
-        'PASSWORD': 'Glare356s17s',
+        'PASSWORD': os.getenv('DBPASS'),
         'HOST': 'pawsibly-identifier.c0v6jh3jzpwi.us-east-1.rds.amazonaws.com',
         'PORT': '5434'
     }
@@ -222,9 +222,9 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 
-AWS_ACCESS_KEY_ID = 'AKIARE6ORT4V3622JCGK'
+AWS_ACCESS_KEY_ID = os.getenv('AWSID')
 
-AWS_SECRET_ACCESS_KEY = 'Humd4HvvwzphGebH2sBp5MqgBQa0/4qFJlkGc2KB'
+AWS_SECRET_ACCESS_KEY = os.getenv('AWSKEY')
 
 AWS_STORAGE_BUCKET_NAME = 'pawsibly-bucket'
 
