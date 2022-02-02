@@ -184,45 +184,31 @@ USE_L10N = True
 USE_TZ = True
 
 
-STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-)
-
-STATIC_ROOT = os.path.join(BASE_DIR, "live-static", "static-root")
-
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-
-#STATIC_ROOT = "/home/cfedeploy/webapps/cfehome_static_root/"
-
-MEDIA_URL = "/media/"
-
-MEDIA_ROOT = os.path.join(BASE_DIR, "live-static", "media-root")
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 # optional package: http://whitenoise.evans.io/en/stable/django.html
 
-# STATICFILES_FINDERS = [
-#     'django.contrib.staticfiles.finders.FileSystemFinder',
-#     'django.contrib.staticfiles.finders.AppDirectoriesFinder'
-# ]
-# STATIC_URL = '/static/'
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder'
+]
+STATIC_URL = '/static/'
 
-# # render images   
-# MEDIA_URL = '/images/'
+# render images   
+MEDIA_URL = '/images/'
 
-# # STATICFILES_DIRS = [
-# #     os.path.join(BASE_DIR, 'static'),
-# #     os.path.join(BASE_DIR, 'pawsibly-react-1/build/static'),
-# # ]
-# #  anytime a user uploads it looks at this folder
-# # user uploaded content
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images') 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'pawsibly-react-1/build/static'),
+)
+#  anytime a user uploads it looks at this folder
+# user uploaded content
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images') 
 
-# # this is where django looks for static files in django when in  production
-# STATIC_ROOT =  os.path.join(BASE_DIR, 'mediafiles/' )
+# this is where django looks for static files in django when in  production
+STATIC_ROOT =  os.path.join(BASE_DIR, 'staticfiles' )
 
 # Use the custom user model as the auth user for the admin view
 AUTH_USER_MODEL = 'api.user'
@@ -236,8 +222,8 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 
-AWS_ACCESS_KEY_ID = 'AKIARE6ORT4VTK4YQ6CC'
+AWS_ACCESS_KEY_ID = 'AKIARE6ORT4V3622JCGK'
 
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_SECRET_ACCESS_KEY = 'Humd4HvvwzphGebH2sBp5MqgBQa0/4qFJlkGc2KB'
 
 AWS_STORAGE_BUCKET_NAME = 'pawsibly-bucket'
