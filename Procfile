@@ -1,1 +1,1 @@
-web: gunicorn pawsibly-django.wsgi
+web: gunicorn pawsibly.wsgi
