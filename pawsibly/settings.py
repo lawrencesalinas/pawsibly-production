@@ -15,7 +15,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 import sys
 import dj_database_url
-import django_heroku
+
 
 # adding config
 
@@ -233,4 +233,4 @@ AWS_STORAGE_BUCKET_NAME = 'pawsibly-bucket'
 if os.getcwd() == '/app':
     DEBUG = False
 
-django_heroku.settings(locals())
+
