@@ -1,1 +1,1 @@
-web: gunicorn pawsibly.wsgi --log-file- 
+web: gunicorn pawsibly.wsgi --log-file - 
