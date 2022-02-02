@@ -168,7 +168,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Allow all host headers
-ALLOWED_HOSTS = ['https://git.heroku.com/pawsibly-demo.git','localhost','*']
+ALLOWED_HOSTS = ['*']
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
