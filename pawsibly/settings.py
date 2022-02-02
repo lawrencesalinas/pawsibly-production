@@ -25,29 +25,29 @@ from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv())
 
 # Determine if we are on local or production
-if os.getenv('ENV') == 'development':
-  # If we are on development, use the `DB_NAME_DEV` value
-  # from the .env file as the database name
-  DB_NAME = os.getenv('DB_NAME_DEV')
-  DB = {
-      'ENGINE': 'django.db.backends.postgresql',
-      'NAME': DB_NAME,
-  }
-  # Set debug to true
-  DEBUG = False
-  # Only allow locally running client at port 3000 for CORS
-  CORS_ORIGIN_WHITELIST = ['http://localhost:3000']
-else:
-  # If we are on production, use the dj_database_url package
-  # to locate the database based on Heroku setup
-  DB = dj_database_url.config()
-  # Set debug to false
-  DEBUG = False
-  # Only allow the `CLIENT_ORIGIN` for CORS
-  CORS_ORIGIN_WHITELIST = [
-    os.getenv('CLIENT_ORIGIN')
-  ]
-
+# if os.getenv('ENV') == 'development':
+#   # If we are on development, use the `DB_NAME_DEV` value
+#   # from the .env file as the database name
+#   DB_NAME = os.getenv('DB_NAME_DEV')
+#   DB = {
+#       'ENGINE': 'django.db.backends.postgresql',
+#       'NAME': DB_NAME,
+#   }
+#   # Set debug to true
+#   DEBUG = False
+#   # Only allow locally running client at port 3000 for CORS
+#   CORS_ORIGIN_WHITELIST = ['http://localhost:3000']
+# else:
+#   # If we are on production, use the dj_database_url package
+#   # to locate the database based on Heroku setup
+#   DB = dj_database_url.config()
+#   # Set debug to false
+#   DEBUG = False
+#   # Only allow the `CLIENT_ORIGIN` for CORS
+#   CORS_ORIGIN_WHITELIST = [
+#     os.getenv('CLIENT_ORIGIN')
+#   ]
+DEBUG = True
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 # Default database as defined above depending on development
@@ -220,10 +220,15 @@ AWS_QUERYSTRING_AUTH = False
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 
 AWS_ACCESS_KEY_ID = 'AKIARE6ORT4V3622JCGK'
 
 AWS_SECRET_ACCESS_KEY = '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'
 
 AWS_STORAGE_BUCKET_NAME = 'pawsibly-bucket'
+
+
+# get current working directory false if we are in heroku
+if os.getcwd() == '/app':
+    DEBUG = False
