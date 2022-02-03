@@ -2,11 +2,6 @@ from django.contrib.auth import get_user_model
 from django.db import models 
 from .Sitter import Sitter
 
-
-
-
-
-# Create your models here.
 class Booking(models.Model):
   start_date = models.DateTimeField(auto_now=False, auto_now_add=False)
   end_date = models.DateTimeField(auto_now=False, auto_now_add=False)

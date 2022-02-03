@@ -3,8 +3,8 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
 from .models.user import User
 from .models.Pet import Pet
-from .models.Review import Review
 from .models.Booking import Booking
+from .models.Review import Review
 from .models.Sitter import Sitter
 
 class UserAdmin(BaseUserAdmin):
