@@ -4,7 +4,7 @@ from django.db.models.fields import BooleanField
 from rest_framework import serializers
 from rest_framework.authtoken.models import Token
 from rest_framework.serializers import Serializer
-# from .sitter import Sitter
+
 
 
 class UserManager(BaseUserManager):
