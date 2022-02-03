@@ -55,7 +55,7 @@ DEBUG = False
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'pawsibly', 
+        'NAME': 'pawsibly-identifier', 
         'USER': 'lawrencesalinas',
         'PASSWORD': os.getenv('DBPASS'),
         'HOST': 'pawsibly-identifier.c0v6jh3jzpwi.us-east-1.rds.amazonaws.com',
