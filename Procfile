@@ -1,2 +1,2 @@
-web: gunicorn pawsibly.wsgi
+web: gunicorn pawsibly.wsgi --log-file -
 release: python manage.py migrate
