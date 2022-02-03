@@ -2,8 +2,8 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
 from .models.user import User
-from .models.pet import Pet
 from .models.review import Review
+from .models.pet import Pet
 from .models.booking import Booking
 from .models.sitter import Sitter
 
