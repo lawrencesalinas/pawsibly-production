@@ -1,7 +1,6 @@
 from django.db import models
 from django.db.models.fields import related 
 from django.contrib.auth import get_user_model
-from .sitter import Sitter
 
 def upload_path(instance, filename):
     return '/'.join(['pets', str(instance.name), filename])
