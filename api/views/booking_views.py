@@ -4,7 +4,7 @@ from rest_framework.exceptions import PermissionDenied
 from rest_framework import generics, status
 from django.shortcuts import get_object_or_404
 from ..serializers import BookingSerializer
-from ..models.booking import Booking
+from ..models.Booking import Booking
 
 
 

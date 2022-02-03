@@ -2,16 +2,10 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
 from .models.user import User
-
-
-
-
-
-
-from .models.pet import Pet
-from .models.review import Review
-from .models.booking import Booking
-from .models.sitter import Sitter
+from .models.Pet import Pet
+from .models.Review import Review
+from .models.Booking import Booking
+from .models.Sitter import Sitter
 
 class UserAdmin(BaseUserAdmin):
     ordering = ['id']

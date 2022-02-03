@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework import generics, status
 from django.shortcuts import get_object_or_404
-from ..models.sitter import Sitter
+from ..models.Sitter import Sitter
 from ..serializers import SitterSerializer, SitterPostSerializer
 
 # Create your views here.

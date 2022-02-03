@@ -5,7 +5,7 @@ from rest_framework.exceptions import PermissionDenied
 from rest_framework import generics, status
 from django.shortcuts import get_object_or_404
 from django.contrib.auth import get_user, get_user_model
-from ..models.pet import Pet
+from ..models.Pet import Pet
 from ..serializers import PetSerializer
 
 # Create your views here.

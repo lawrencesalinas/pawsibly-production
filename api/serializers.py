@@ -3,10 +3,10 @@ from django.db.models import fields, manager
 from rest_framework import serializers
 from rest_framework.relations import StringRelatedField
 from django.contrib.auth import get_user_model
-from .models.pet import Pet
-from .models.booking import Booking
-from .models.review import Review
-from .models.sitter import Sitter
+from .models.Pet import Pet
+from .models.Booking import Booking
+from .models.Review import Review
+from .models.Sitter import Sitter
 
 
 class PetSerializer(serializers.ModelSerializer):

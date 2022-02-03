@@ -6,8 +6,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.exceptions import PermissionDenied
 from rest_framework import generics, status
 from django.shortcuts import get_object_or_404
-from ..models.sitter import Sitter
-from ..models.review import Review
+from ..models.Sitter import Sitter
+from ..models.Review import Review
 from ..serializers import ReviewSerializer,ReviewReadSerializer
 from rest_framework.decorators import api_view, permission_classes
 
