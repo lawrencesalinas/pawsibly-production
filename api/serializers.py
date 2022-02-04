@@ -44,12 +44,13 @@ class UserSerializer(serializers.ModelSerializer):
     # This model serializer will be used for User creation
     # The login serializer also inherits from this serializer
     # in order to require certain data for login
-    class Meta:       
+    class Meta:
         # get_user_model will get the user model (this is required)
         # https://docs.djangoproject.com/en/3.0/topics/auth/customizing/#referencing-the-user-model
         model = get_user_model()
         fields = ('id', 'email', 'password')
-        extra_kwargs = { 'password': { 'write_only': True, 'min_length': 5 } ,'id':{'read_only:False'} }
+        extra_kwargs = { 'password': { 'write_only': True, 'min_length': 5 } }
+
     # This create method will be used for model creation
     def create(self, validated_data):
         return get_user_model().objects.create_user(**validated_data)
@@ -59,7 +60,6 @@ class UserRegisterSerializer(serializers.Serializer):
     email = serializers.CharField(max_length=300, required=True)
     password = serializers.CharField(required=True)
     password_confirmation = serializers.CharField(required=True, write_only=True)
-    zipcode = serializers.CharField(max_length = 5, required=True)
 
     def validate(self, data):
         # Ensure password & password_confirmation exist

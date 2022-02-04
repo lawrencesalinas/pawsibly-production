@@ -107,6 +107,4 @@ class User(AbstractBaseUser, PermissionsMixin):
         self.token = None
         self.save()
         return self
-
-    def as_dict(self):
-        return f"{self.name}, {self.zipcode}"
+   

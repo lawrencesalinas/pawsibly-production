@@ -70,7 +70,7 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
         
 
 class SignUp(generics.CreateAPIView):
-    # Override the authentication/permis sions classes so this endpoint
+    # Override the authentication/permissions classes so this endpoint
     # is not authenticated & we don't need any permissions to access it.
     authentication_classes = ()
     permission_classes = ()
@@ -80,7 +80,7 @@ class SignUp(generics.CreateAPIView):
 
     def post(self, request):
         # Pass the request data to the serializer to validate it
-        user = UserRegisterSerializer(data=request.data)
+        user = UserRegisterSerializer(data=request.data['credentials'])
         # If that data is in the correct format...
         if user.is_valid():
             # Actually create the user using the UserSerializer (the `create` method defined there)
