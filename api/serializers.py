@@ -11,34 +11,41 @@ from .models.Sitter import Sitter
 
 class PetSerializer(serializers.ModelSerializer):
     pet_owner = serializers.StringRelatedField()
+
     class Meta:
         model = Pet
-        fields  = ('id', 'name', 'pet_owner', 'image')
+        fields = ('id', 'name', 'pet_owner', 'image')
 
     def create(self, validated_data):
         return Pet(**validated_data)
+
 
 class SitterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Sitter
         fields = '__all__'
 
+
 class SitterPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Sitter
-        fields = ('first_name','last_name','price','description','city','zipcode')
+        fields = ('first_name', 'last_name', 'price',
+                  'description', 'city', 'zipcode')
+
 
 class UserImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
-        fields = ('id','image')
+        fields = ('id', 'image')
 
 
 class UserReadSerializer(serializers.ModelSerializer):
     pets_owned = PetSerializer(many=True)
+
     class Meta:
         model = get_user_model()
         fields = '__all__'
+
 
 class UserSerializer(serializers.ModelSerializer):
     # This model serializer will be used for User creation
@@ -49,26 +56,32 @@ class UserSerializer(serializers.ModelSerializer):
         # https://docs.djangoproject.com/en/3.0/topics/auth/customizing/#referencing-the-user-model
         model = get_user_model()
         fields = ('id', 'email', 'password')
-        extra_kwargs = { 'password': { 'write_only': True, 'min_length': 5 } }
+        extra_kwargs = {'password': {'write_only': True, 'min_length': 5}}
 
     # This create method will be used for model creation
     def create(self, validated_data):
         return get_user_model().objects.create_user(**validated_data)
 
+
 class UserRegisterSerializer(serializers.Serializer):
     # Require email, password, and password_confirmation for sign up
     email = serializers.CharField(max_length=300, required=True)
     password = serializers.CharField(required=True)
-    password_confirmation = serializers.CharField(required=True, write_only=True)
+    password_confirmation = serializers.CharField(
+        required=True, write_only=True)
+    first_name = serializers.CharField(max_length=300, required=True)
+    last_name = serializers.CharField(max_length=300, required=True)
 
     def validate(self, data):
         # Ensure password & password_confirmation exist
         if not data['password'] or not data['password_confirmation']:
-            raise serializers.ValidationError('Please include a password and password confirmation.')
+            raise serializers.ValidationError(
+                'Please include a password and password confirmation.')
 
         # Ensure password & password_confirmation match
         if data['password'] != data['password_confirmation']:
-            raise serializers.ValidationError('Please make sure your passwords match.')
+            raise serializers.ValidationError(
+                'Please make sure your passwords match.')
         # if all is well, return the data
         return data
 
@@ -79,20 +92,20 @@ class ChangePasswordSerializer(serializers.Serializer):
     new = serializers.CharField(required=True)
 
 
-
 class BookingSerializer(serializers.ModelSerializer):
-    
+
     # pet_owner = UserReadSerializer()
     # sitter = SitterReadSerializer()
     class Meta:
         model = Booking
-        fields= ('id','start_date', 'end_date','sitter', 'pet_owner')
+        fields = ('id', 'start_date', 'end_date', 'sitter', 'pet_owner')
 
 
 class ReviewSerializer(serializers.ModelSerializer):
     sitter = serializers.StringRelatedField()
     pet_owner = serializers.StringRelatedField()
     pet_owner = UserReadSerializer()
+
     class Meta:
         model = Review
         fields = '__all__'
@@ -101,7 +114,8 @@ class ReviewSerializer(serializers.ModelSerializer):
 class ReviewReadSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
-        fields = '__all__'
+        fields= ('rating','review','sitter', 'pet_owner')
+
 
 
 
