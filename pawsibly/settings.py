@@ -113,7 +113,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'Pawsibly-react-frontend/build' )
+            os.path.join(BASE_DIR, 'build' )
         ],
         'APP_DIRS': True,
         'OPTIONS': {
