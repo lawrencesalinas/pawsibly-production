@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Sitter(models.Model):
   # https://docs.djangoproject.com/en/3.0/ref/models/fields/
     first_name = models.CharField(max_length=255, default='Jane')
