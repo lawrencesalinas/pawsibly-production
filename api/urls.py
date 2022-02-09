@@ -5,6 +5,7 @@ from .views.sitter_views import Sitters, SitterDetail
 from .views.user_views import SignUp, SignIn, SignOut, ChangePassword,  Profile, ProfileImage
 from .views.booking_views import Bookings, BookingsDetail
 from .views.review_views import Reviews,ReviewsDetail
+from .views.message_views import Messages, MessageDetail
 
 
 
@@ -23,8 +24,9 @@ urlpatterns = [
     path('pets/', Pets.as_view(), name='pets'),
     path('pets/<int:pk>', PetDetail.as_view(), name='pet_detail'),
     path('reviews', Reviews.as_view(), name='reviews'),
-    # path('createreviews/<int:pk>',createreviewsReview , name='createreviews'),
     path('reviews/<int:pk>', ReviewsDetail.as_view(), name='reviews_detail'),
+    path('messages', Messages.as_view(), name='message'),
+    path('messages/<int:pk>', MessageDetail.as_view(), name='message_detail'),
     path('sign-up', SignUp.as_view(), name='sign-up'),
     path('sign-in', SignIn.as_view(), name='sign-in'),
     path('sign-out', SignOut.as_view(), name='sign-out'),

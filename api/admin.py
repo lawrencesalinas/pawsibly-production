@@ -6,6 +6,7 @@ from .models.Pet import Pet
 from .models.Booking import Booking
 from .models.Review import Review
 from .models.Sitter import Sitter
+from .models.Message import Message
 
 class UserAdmin(BaseUserAdmin):
     ordering = ['id']
@@ -46,3 +47,4 @@ admin.site.register(Pet)
 admin.site.register(Review)
 admin.site.register(Booking)
 admin.site.register(Sitter)
+admin.site.register(Message)

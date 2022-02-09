@@ -116,7 +116,7 @@ class ReviewPostSerializer(serializers.ModelSerializer):
         model = Review
         fields= ('rating','review','sitter', 'pet_owner')
 
-class MessagesPostSerializer(serializers.ModelSerializer):
+class MessagePostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Message
         fields= ('msg_content','sitter', 'pet_owner')
