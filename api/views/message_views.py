@@ -14,7 +14,7 @@ from rest_framework.decorators import api_view, permission_classes
 # Create your views here.
 
 
-class  Messages(generics.ListCreateAPIView):
+class Messages(generics.ListCreateAPIView):
     permission_classes = ()
     serializer_class =  MessageSerializer
 
@@ -26,7 +26,7 @@ class  Messages(generics.ListCreateAPIView):
         message =  Message.objects.filter(pet_owner=request.user)
         # Run the data through the serializer
         data =  MessageSerializer( message, many=True).data
-        return Response({' message': data})
+        return Response({'message': data})
     
     def post(self, request):
         print(request.data)
