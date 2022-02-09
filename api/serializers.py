@@ -7,7 +7,7 @@ from .models.Pet import Pet
 from .models.Booking import Booking
 from .models.Review import Review
 from .models.Sitter import Sitter
-
+from .models.Message import Message
 
 class PetSerializer(serializers.ModelSerializer):
     pet_owner = serializers.StringRelatedField()
@@ -111,11 +111,21 @@ class ReviewSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class ReviewReadSerializer(serializers.ModelSerializer):
+class ReviewPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
         fields= ('rating','review','sitter', 'pet_owner')
 
+class MessagesPostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Message
+        fields= ('msg_content','sitter', 'pet_owner')
 
+class MessageSerializer(serializers.ModelSerializer):
+    sitter = serializers.StringRelatedField()
+    pet_owner = serializers.StringRelatedField()
+    pet_owner = UserReadSerializer()
 
-
+    class Meta:
+        model = Message
+        fields = '__all__'

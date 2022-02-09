@@ -8,7 +8,7 @@ from rest_framework import generics, status
 from django.shortcuts import get_object_or_404
 from ..models.Sitter import Sitter
 from ..models.Review import Review
-from ..serializers import ReviewSerializer,ReviewReadSerializer
+from ..serializers import ReviewSerializer,ReviewPostSerializer
 from rest_framework.decorators import api_view, permission_classes
 
 # Create your views here.
@@ -36,7 +36,7 @@ class Reviews(generics.ListCreateAPIView):
         # Serialize/create review
     
 
-        review = ReviewReadSerializer(data=request.data)
+        review = ReviewPostSerializer(data=request.data)
         # If the review data is valid according to our serializer...
         if review.is_valid():
             # Save the created review & send a response
