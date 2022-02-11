@@ -1,0 +1,13 @@
+.createbooking {
+    display: flex;
+    justify-content: center;
+    width: 18vw;
+    margin: 0 auto;
+  }
+  
+  
+  
+  .createbooking_button {
+    width: 20vw;
+  }
+  

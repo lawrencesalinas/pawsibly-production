@@ -1,0 +1,40 @@
+.listingdetail {
+  width: 80vw;
+  margin: 0 auto;
+  margin-top: 3%;
+}
+
+.booking {
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12%;
+}
+
+.sitterreviews > li {
+  margin-top: 4%;
+  list-style: none;
+}
+
+.reviewbox {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  margin: 5%;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+@media screen and (min-width: 1280px) {
+  .contact_button{
+    margin-left: 26%;
+  }  
+
+}
+.contact_button{
+  margin-top: 2%;
+  margin-left: 23%;
+
+}

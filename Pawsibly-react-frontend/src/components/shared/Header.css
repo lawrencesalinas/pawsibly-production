@@ -1,0 +1,24 @@
+.links{
+  margin-left:80%;
+}
+
+.title{
+position:absolute;
+margin-left: 1%;
+top: 2%;
+}
+
+.title:hover{
+  color: #ED6E73;
+}
+
+#paws{
+margin-top: 4%;
+font-size: 1.2em;
+color: #ED6E73;
+margin-right: 5%;
+}
+
+#paws:hover{
+  color: white;
+}
