@@ -27,7 +27,7 @@ const HomeScreen = ({sitters}) => {
               </h2>
               <form onSubmit={searchItems}>
 						<div className="input-field">
-							<input id="zipcode" value={search} type="text" onChange={(e)=> setSearch(e.target.value)}  required />
+							<input id="zipcode" placeholder='------------------------------------------FOR EMPLOYERS, PLEASE SEARCH FOR 11201 ZIPCODE OR SEARCH FOR NEW YORK----------------------------------------------------------' value={search} type="text" onChange={(e)=> setSearch(e.target.value)}  required />
 							<button type="submit" class="btn-floating btn-large waves-effect waves-light red accent-2"><i class="material-icons">send</i></button>
 							<label>
 								<Icon>search</Icon>

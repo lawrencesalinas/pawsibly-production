@@ -5,14 +5,14 @@ import apiUrl from '../apiConfig'
 export default function HostAPetForm(props){
 
   console.log('I AM USER',props);
-  const [firstName, setfirstName] = useState('')
+  const [firstName, setfirstName] = useState(props.user.first_name)
   const [lastName, setLastName] = useState('')
   const [zipCode, setZipCode] = useState('')
   const [price, setPrice] = useState(0)
   const [description, setDescription] = useState('')
   const [city, setCity] = useState('')
   const [image, setImage]= useState()
-
+console.log(props.user);
  
   // const sitter = {first_name:firstName, last_name:lastName, zipcode:zipCode, price:price, city:city, description:description}
    
