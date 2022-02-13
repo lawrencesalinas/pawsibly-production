@@ -87,7 +87,7 @@ export default function ProfileScreen(props) {
             </Row>
             <Row className="profilescreen_buttons">
               <Col md={6}>
-                <Link className="link" to={`/messages/${props.user.id}`}>
+                <Link className="link" to={`/messages/`}>
                   <Button variant="warning">Messages</Button>
                 </Link>
               </Col>

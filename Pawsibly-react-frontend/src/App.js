@@ -72,7 +72,7 @@ const App = () => {
         <Route path='/myreviews' element={<UserReviewScreen  user={user} /> } />
         <Route path='/hostapet' element={<HostAPetScreen setTrigger={setTrigger}  user={user} /> } />
         <Route path='/contact/:id' element={<ContactScreen  user={user} /> } />
-        <Route path='/messages/:id' element={<MessagesScreen  user={user} /> } />
+        <Route path='/messages/' element={<MessagesScreen  user={user} /> } />
       </Routes>
       {msgAlerts.map((msgAlert) => (
         <AutoDismissAlert

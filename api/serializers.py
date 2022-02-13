@@ -8,6 +8,7 @@ from .models.Booking import Booking
 from .models.Review import Review
 from .models.Sitter import Sitter
 from .models.Message import Message
+from .models.Thread import Thread
 
 class PetSerializer(serializers.ModelSerializer):
     pet_owner = serializers.StringRelatedField()
@@ -41,7 +42,8 @@ class UserImageSerializer(serializers.ModelSerializer):
 
 class UserReadSerializer(serializers.ModelSerializer):
     pets_owned = PetSerializer(many=True)
-
+    post_owned = SitterSerializer(many=True)
+    
     class Meta:
         model = get_user_model()
         fields = '__all__'
@@ -119,13 +121,25 @@ class ReviewPostSerializer(serializers.ModelSerializer):
 class MessagePostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Message
-        fields= ('msg_content','sitter', 'pet_owner')
+        fields= ('msg_content','sender_user', 'receiver_user')
 
+
+# adding the UserReadSerializer allows to output the user fields 
 class MessageSerializer(serializers.ModelSerializer):
-    sitter = serializers.StringRelatedField()
-    pet_owner = serializers.StringRelatedField()
-    pet_owner = UserReadSerializer()
+    # sitter = SitterSerializer()
+    # sitter = serializers.StringRelatedField()
+    # pet_owner = serializers.StringRelatedField()
+    receiver_user = UserReadSerializer()
+    sender_user = UserReadSerializer()
 
     class Meta:
         model = Message
+        fields = '__all__'
+        
+
+class ThreadSerializer(serializers.ModelSerializer):
+    receiver = UserReadSerializer()
+    user = UserReadSerializer()
+    class Meta:
+        model = Thread
         fields = '__all__'

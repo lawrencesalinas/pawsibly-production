@@ -6,7 +6,7 @@ from .views.user_views import SignUp, SignIn, SignOut, ChangePassword,  Profile,
 from .views.booking_views import Bookings, BookingsDetail
 from .views.review_views import Reviews,ReviewsDetail
 from .views.message_views import Messages, MessageDetail
-
+from .views.thread_views import Threads
 
 
 # from views.booking_views import Review
@@ -26,6 +26,7 @@ urlpatterns = [
     path('reviews', Reviews.as_view(), name='reviews'),
     path('reviews/<int:pk>', ReviewsDetail.as_view(), name='reviews_detail'),
     path('messages', Messages.as_view(), name='message'),
+    path('messages', Threads.as_view(), name='threads'),
     path('messages/<int:pk>', MessageDetail.as_view(), name='message_detail'),
     path('sign-up', SignUp.as_view(), name='sign-up'),
     path('sign-in', SignIn.as_view(), name='sign-in'),

@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 
 
 class Sitter(models.Model):
@@ -13,6 +14,11 @@ class Sitter(models.Model):
     rating = models.DecimalField(max_digits=7, decimal_places=2, default=0)
     description = models.TextField(null=True, blank=True) 
     image = models.ImageField(null=True, blank=True,upload_to='images/')
+    post_owner = models.ForeignKey(
+    get_user_model(),
+    on_delete=models.CASCADE,
+    related_name="post_owned"
+    )
   
    
     def __str__(self):

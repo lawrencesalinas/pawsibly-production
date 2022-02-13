@@ -7,6 +7,7 @@ from .models.Booking import Booking
 from .models.Review import Review
 from .models.Sitter import Sitter
 from .models.Message import Message
+from .models.Thread import Thread
 
 class UserAdmin(BaseUserAdmin):
     ordering = ['id']
@@ -48,3 +49,4 @@ admin.site.register(Review)
 admin.site.register(Booking)
 admin.site.register(Sitter)
 admin.site.register(Message)
+admin.site.register(Thread)

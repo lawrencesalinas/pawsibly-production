@@ -1,6 +1,3 @@
-from importlib.resources import contents
-from math import prod
-from pickletools import read_uint1
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.exceptions import PermissionDenied
@@ -19,11 +16,12 @@ class Messages(generics.ListCreateAPIView):
     serializer_class =  MessageSerializer
 
     def get(self, request):
+        print(request.data)
         """Index request"""
         # Get all the  Messages:
         #  Messages =  Message.objects.all()
         # Filter the  Messages by owner, so you can only see your owned  Messages
-        message =  Message.objects.filter(pet_owner=request.user)
+        message =  Message.objects.filter(receiver_user=request.user)
         # Run the data through the serializer
         data =  MessageSerializer( message, many=True).data
         return Response({'message': data})
