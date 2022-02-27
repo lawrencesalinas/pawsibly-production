@@ -2,13 +2,12 @@ from time import timezone
 from django.contrib.auth import get_user_model
 from django.db import models 
 from .Sitter import Sitter
-from .Thread import Thread 
-
+from .Thread import Thread
 
 class Message(models.Model):
-    sender_user = models.ForeignKey(get_user_model(),on_delete=models.CASCADE, related_name='+')
-    receiver_user = models.ForeignKey(get_user_model(),on_delete=models.CASCADE, related_name='+')
-    thread = models.ForeignKey(Thread,on_delete=models.CASCADE,null=True, blank=True)
+    sender_user = models.ForeignKey(get_user_model(),on_delete=models.CASCADE, related_name='sent_messages')
+    receiver_user = models.ForeignKey(get_user_model(),on_delete=models.CASCADE, related_name='received_messages')
+   
     msg_content = models.CharField(max_length=1000)
     image = models.ImageField('images/',null=True, blank=True)
     # creation_date = models.DateTimeField(auto_now_add=True, blank=True)

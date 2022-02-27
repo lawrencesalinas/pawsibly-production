@@ -1,2 +1,8 @@
-
+#ip2 {
+    border-radius: 25px;
+    border: 2px solid lightgray;
+    padding: 20px; 
+    width: 200px;
+    height: 15px;    
+}
 

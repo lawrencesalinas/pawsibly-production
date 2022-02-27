@@ -23,6 +23,8 @@ import HostAPetScreen from "./screens/HostAPetScreen"
 import { fetchNoAuth } from "./api/fetch";
 import ContactScreen from "./screens/ContactScreen";
 import MessagesScreen from "./screens/MessagesScreen";
+import SearchResult from "./components/SearchResult";
+import SearchPage from "./screens/SearchPage";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -73,6 +75,7 @@ const App = () => {
         <Route path='/hostapet' element={<HostAPetScreen setTrigger={setTrigger}  user={user} /> } />
         <Route path='/contact/:id' element={<ContactScreen  user={user} /> } />
         <Route path='/messages/' element={<MessagesScreen  user={user} /> } />
+        <Route path='/searchpage/:url' element={<SearchPage  sitters={sitters} user={user} /> } />
       </Routes>
       {msgAlerts.map((msgAlert) => (
         <AutoDismissAlert

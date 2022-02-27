@@ -16,14 +16,19 @@ export default function SitterDetail({ user }) {
   const [trigger, setTrigger] = useState(false);
   let { id } = useParams();
 
+  // fetch sitter details using useParams url
   useEffect(() => {
     async function fetchData() {
       const { data } = await axios.get(`${apiUrl}/sitters/${id}`);
+   
       setSingleSitter(data.sitter);
     }
     fetchData();
   }, [id]);
 
+  console.log('sitter',singleSitter);
+
+  // fetch reviews for the specific sitters using useParams
   useEffect(() => {
     async function fetchData() {
       const { data } = await axios
@@ -81,7 +86,7 @@ export default function SitterDetail({ user }) {
               </Row>
               <CreateBooking user={user} />
               {user ? (
-                <Link to={`/contact/${id}`}>
+                <Link to={`/contact/${singleSitter.post_owner}`}>
                   <Button className="contact_button" variant="warning">
                     Contact host
                   </Button>

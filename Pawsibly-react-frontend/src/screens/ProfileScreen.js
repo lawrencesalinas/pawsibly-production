@@ -86,11 +86,11 @@ export default function ProfileScreen(props) {
               <h3 class="flow-text">Hello, {userData.first_name}!</h3>
             </Row>
             <Row className="profilescreen_buttons">
-              <Col md={6}>
+              {/* <Col md={6}>
                 <Link className="link" to={`/messages/`}>
                   <Button variant="warning">Messages</Button>
                 </Link>
-              </Col>
+              </Col> */}
               <Col md={6}>
                 <Link className="link" to={`/myreviews`}>
                   <Button variant="warning">My Reviews</Button>
@@ -111,15 +111,16 @@ export default function ProfileScreen(props) {
             </Row>
             <Row className="profilescreen_buttons">
               <Col md={6}>
-                <Link to={`/change-password/`}>
-                  <Button variant="warning">Change Password</Button>
+              <Link className="link" to={`/mybookings`}>
+                  <Button variant="warning">My Bookings</Button>
                 </Link>
               </Col>
             
               <Col md={6}>
-                <Link className="link" to={`/mybookings`}>
-                  <Button variant="warning">My Bookings</Button>
+              <Link to={`/change-password/`}>
+                  <Button variant="warning">Change Pw</Button>
                 </Link>
+             
               </Col>
               </Row>
             

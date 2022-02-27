@@ -23,8 +23,8 @@ function ContactScreen({ user, setTrigger }) {
   }, [id]);
 
   const messageContent = {
-    pet_owner: user.id,
-    sitter: id,
+    receiver_user: id,
+    sender_user: user.id,
     msg_content: message,
   };
   const sendMessage = () => {

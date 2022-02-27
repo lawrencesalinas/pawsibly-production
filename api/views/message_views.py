@@ -30,10 +30,6 @@ class Messages(generics.ListCreateAPIView):
         print(request.data)
         """Create request"""
         print(request.data)
-        # Add user to request data object
-        # Serialize/create  Message
-    
-
         message =  MessagePostSerializer(data=request.data)
         # If the  Message data is valid according to our serializer...
         if  message.is_valid():
@@ -54,7 +50,7 @@ class  MessageDetail(generics.ListCreateAPIView):
         # Get all the  Messages:
         #  Messages =  Message.objects.all()
         # Filter the  Messages by owner, so you can only see your owned  Messages
-        message =  Message.objects.filter(sitter=pk)
+        message =  Message.objects.filter(sender_user=pk)
         # Run the data through the serializer
         data =  MessageSerializer( message, many=True).data
         return Response({'message': data})

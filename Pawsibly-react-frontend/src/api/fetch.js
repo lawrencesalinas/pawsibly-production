@@ -9,6 +9,7 @@ export const fetchWithAuth = (endpoint, setState, item, user) => {
             Authorization: `Token ${user.token}`,
           },
         });
+        console.log(data);
         setState(data[item])
       } catch (error) {
         console.log(error);

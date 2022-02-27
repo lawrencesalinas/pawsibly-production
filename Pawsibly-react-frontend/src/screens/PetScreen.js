@@ -24,7 +24,7 @@ function PetScreen(props) {
     }
     fetchPets();
   }, [trigger]);
-
+console.log('MYpets', userPets);
   return (
     <div className="pet_screen">
 <UsersPets

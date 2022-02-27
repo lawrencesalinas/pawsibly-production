@@ -4,6 +4,7 @@
 from importlib.resources import contents
 from math import prod
 from pickletools import read_uint1
+from urllib import request
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.exceptions import PermissionDenied
@@ -26,7 +27,18 @@ class Threads(generics.ListCreateAPIView):
         return Response({'message': data})
         
 
-
+    # def post(self,request,pk):
+    #     user = request.user
+    #     receiver = request.data['receiver']
+    #         if Thread.objects.filter(user=user, receiver = receiver).exists(): 
+    #             thread = Thread.objects.filter(user=user, receiver=receiver)[0]
+    #             return thread
+    #         elif Thread.objects.filter(user=receiver, receiver=user).exists():
+    #             thread = Thread.objects.filter(user=receiver, receiver=user)[0]
+    #             return thread
+       
+        
+                
 # class Thread(generics.ListCreateAPIView):
 #     permission_classes = ()
 #     serializer_class =  MessageSerializer

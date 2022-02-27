@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
 import AllSitters from "../components/AllSitters";
-import { Icon, Parallax } from "react-materialize";
+import { Icon, Parallax, } from "react-materialize";
+import {Form, Button} from 'react-bootstrap'
 import './css/HomeScreen.css'
+import {Link} from 'react-router-dom'
 
 const HomeScreen = ({sitters}) => {
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-
+console.log(sitters);
   const searchItems = (e) => {
-    e.preventDefault();
+    e.preventDefault()
+
     let filteredSitters = sitters.filter((sitter) => {
       return (
         sitter.city.toLowerCase().includes(search.toLowerCase()) ||
@@ -17,32 +20,38 @@ const HomeScreen = ({sitters}) => {
     });
     setSearchResults(filteredSitters);
   };
-// console.log('filtered',searchResults);
+console.log('filtered',searchResults);
   return (
     <>
           <div className="section white">
             <div className="row container" class="center-align">
-              <h2 className="header">
-                find sitters near you by city or zip code
-              </h2>
-              <form onSubmit={searchItems}>
+              <h4 className="header" >
+                find local pet sitters near you
+              </h4>
+              {/* <form onSubmit={searchItems}>
+              <input type="text" id="ip2" placeholder="Enter zipcode or city" value={search}  onChange={(e)=> setSearch(e.target.value)}  required />
+              <button  type="submit" class="btn-floating btn-large waves-effect waves-light red accent-2"><i class="material-icons">send</i></button>
+              </form> */}
+                 <input type="text" id="ip2" placeholder="Enter zipcode or city" value={search}  onChange={(e)=> setSearch(e.target.value)}  required />
+          
+           <Link to={`/searchpage/${search}`}>
+           <button class="btn-floating btn-large waves-effect waves-light red accent-2"><i class="material-icons">send</i></button>
+                </Link>
+
+
+
+
+              
+              {/* <form onSubmit={searchItems}>
 						<div className="input-field">
-							<input id="zipcode" placeholder='------------------------------------------FOR EMPLOYERS, PLEASE SEARCH FOR 11201 ZIPCODE OR SEARCH FOR NEW YORK----------------------------------------------------------' value={search} type="text" onChange={(e)=> setSearch(e.target.value)}  required />
+							<input id="zipcode" placeholder="Enter zipcode or city" value={search} type="text" onChange={(e)=> setSearch(e.target.value)}  required />
 							<button type="submit" class="btn-floating btn-large waves-effect waves-light red accent-2"><i class="material-icons">send</i></button>
 							<label>
 								<Icon>search</Icon>
 							</label>
 						</div>
-					</form>
-              {/* <form onSubmit={searchItems}>
-                <div className="input-field">
-                  <input value={search} onChange={(e)=> setSearch(e.target.value)} required />
-                  <button type="submit" class="btn-floating btn-large waves-effect waves-light red accent-2"><i class="material-icons">send</i></button>
-                  <label>
-                    <Icon>search</Icon>
-                  </label>
-                </div>
-              </form> */}
+					</form> */}
+             
               <AllSitters sitters={searchResults} />
             </div>
           </div>
