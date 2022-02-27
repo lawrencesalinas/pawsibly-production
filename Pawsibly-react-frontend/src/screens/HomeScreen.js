@@ -1,26 +1,16 @@
 import React, { useState, useEffect } from "react";
 import AllSitters from "../components/AllSitters";
 import { Icon, Parallax, } from "react-materialize";
-import {Form, Button} from 'react-bootstrap'
+import {Form, Button, Row, Col} from 'react-bootstrap'
 import './css/HomeScreen.css'
 import {Link} from 'react-router-dom'
 
 const HomeScreen = ({sitters}) => {
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-console.log(sitters);
-  const searchItems = (e) => {
-    e.preventDefault()
 
-    let filteredSitters = sitters.filter((sitter) => {
-      return (
-        sitter.city.toLowerCase().includes(search.toLowerCase()) ||
-        sitter.zipcode.toString().includes(search.toString())
-      );
-    });
-    setSearchResults(filteredSitters);
-  };
-console.log('filtered',searchResults);
+  let sliceSitters = sitters.slice(0,3)
+console.log(sitters);
   return (
     <>
           <div className="section white">
@@ -37,22 +27,19 @@ console.log('filtered',searchResults);
            <Link to={`/searchpage/${search}`}>
            <button class="btn-floating btn-large waves-effect waves-light red accent-2"><i class="material-icons">send</i></button>
                 </Link>
-
-
-
-
-              
-              {/* <form onSubmit={searchItems}>
-						<div className="input-field">
-							<input id="zipcode" placeholder="Enter zipcode or city" value={search} type="text" onChange={(e)=> setSearch(e.target.value)}  required />
-							<button type="submit" class="btn-floating btn-large waves-effect waves-light red accent-2"><i class="material-icons">send</i></button>
-							<label>
-								<Icon>search</Icon>
-							</label>
-						</div>
-					</form> */}
-             
-              <AllSitters sitters={searchResults} />
+                <Row>
+          {/* used map to iterate info sitter array imported from sitters */}
+     
+          <h4>Explore </h4>
+                  {sliceSitters.map((sitter) => {
+                    return (
+                      <Col key={sitter.id} sm={12} md={6} lg={4} xl={3}>
+                          {/* pass sitter array to allsiters component */}
+                        <AllSitters sitter = {sitter} />
+                      </Col>
+                    )
+                  })}
+                </Row>
             </div>
           </div>
           <div>

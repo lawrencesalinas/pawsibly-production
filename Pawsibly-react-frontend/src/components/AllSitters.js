@@ -1,60 +1,52 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { Card, Col, Icon, Row } from "react-materialize";
+import {Card, Row, Col} from 'react-bootstrap'
 import Rating from "../components/Rating";
-
-
-function AllSitters({sitters}) {
- console.log('this is sitter', sitters);
-  return(
-       <div>
-        {sitters.map(sitter=> {
-            
-           return (
-            <Row>
-            <Col m={6} s={12}>
-            
-              <div className="center">
-                <Card
-                  actions={[
-                    <a key="1" href='google.com'  className="black-text">
-                      Schedule a booking
-                    </a>,
-                    <a key="2" href="google.com" className="black-text">
-                      Contact this sitter
-                    </a>,
-                  ]}
-                  className="#e57373 red lighten-2"
-                  closeIcon={<Icon>close</Icon>}
-                  revealIcon={<Icon>more_vert</Icon>}
-                  textclassName="white-text"
-                  title={sitter.first_name}
-                >
-                  <ul>
-                    <li key={sitter.id}>
-                      <Link
-                        to={`/sitterlisting/${sitter.id}`}
-                        className="black-text"
-                      >
-                        learn more about this sitter
-                      </Link>
-                    </li>
-                    <li>
-                      <Rating
-                        value={sitter.rating}
-                        text={`${sitter.numReviews} reviews`}
-                        color={"#f8e825"}
-                      />
-                    </li>
-                  </ul>
-                </Card>
-              </div>
-            </Col>
-          </Row>
-           )
-        })}
-       </div>
-  )
+const linkStyle = {
+  textDecoration: 'none',
+  color: 'black'
 }
 
-export default AllSitters;
+
+function AllSitter({sitter}) {
+ console.log('this is s', sitter);
+  return(
+       <div>
+             <Card className="my-3 p-3 rounded">
+                 <Link to={`/sitterlisting/${sitter.id}`}>
+        {/* render product name and image */}
+        <Card.Img  src={sitter.image} />
+      </Link>
+
+    
+      <Card.Body>
+        <Link to={`/sitterlisting/${sitter.id}`} style={linkStyle}>
+          <Card.Title as="div">
+            <strong>{sitter.first_name}</strong>
+          </Card.Title> 
+        </Link>
+
+        <Card.Text as="div">
+          <div className="my-3">
+           
+            {sitter.rating} ({sitter.numReviews} reviews)
+            {/* render product props rating and number of reviews */}
+            {/* props sent to Rating component  */}
+            {/* render Rating component here */}
+            <Rating
+              value={sitter.rating}
+              color={"#f8e825"}
+            />
+          </div>
+        </Card.Text>
+
+        <Card.Text as="h3">${sitter.price}</Card.Text>
+        </Card.Body>
+          </Card>
+          </div>
+           )
+        }
+
+
+
+export default AllSitter;
