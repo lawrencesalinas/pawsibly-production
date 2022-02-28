@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 
 class Sitter(models.Model):
   # https://docs.djangoproject.com/en/3.0/ref/models/fields/
+    title = models.CharField(max_length=255)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     city = models.CharField(max_length=255)

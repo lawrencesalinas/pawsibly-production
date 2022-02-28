@@ -30,7 +30,7 @@ class SitterSerializer(serializers.ModelSerializer):
 class SitterPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Sitter
-        fields = ('first_name', 'last_name', 'price',
+        fields = ('title','first_name', 'last_name', 'price',
                   'description', 'city', 'zipcode', 'image')
 
 
