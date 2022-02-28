@@ -14,7 +14,8 @@ function SearchResult({
   review,
   price,
   total,
-  numReviews
+  numReviews, 
+  zipcode
 }) {
   return (
     <Link className="links" to={`/sitterlisting/${id}`}>
@@ -25,8 +26,8 @@ function SearchResult({
       <div className="searchResult_info">
 
       <div className="searchResult_infoTop">
-        <h2>{location}</h2>
-        <h3>{title}</h3>
+        <h2>{title}</h2>
+        <h3>{location} {zipcode}</h3>
         <p>_____</p>
         <p>{description}</p>
       </div>

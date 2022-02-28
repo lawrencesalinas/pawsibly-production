@@ -34,12 +34,13 @@ function SearchPage({sitters}) {
                 id = {sitter.id}
                 img={sitter.image}
                 location={sitter.city}
-                title="Stay at this spacious Edwardian House"
+                title={sitter.first_name}
                 description={sitter.description}
                 review={sitter.rating}
                 price={sitter.price}
                 total={sitter.price}
                 numReviews={sitter.numReviews}
+                zipcode = {sitter.zipcode}
             />
             
             

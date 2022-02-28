@@ -27,19 +27,24 @@ console.log(sitters);
            <Link to={`/searchpage/${search}`}>
            <button class="btn-floating btn-large waves-effect waves-light red accent-2"><i class="material-icons">send</i></button>
                 </Link>
-                <Row>
+              
+             
           {/* used map to iterate info sitter array imported from sitters */}
      
-          <h4>Explore </h4>
+          <h4 className="explore">Explore </h4>
+          <div className="sitters">
+          <Row>
                   {sliceSitters.map((sitter) => {
                     return (
                       <Col key={sitter.id} sm={12} md={6} lg={4} xl={3}>
                           {/* pass sitter array to allsiters component */}
                         <AllSitters sitter = {sitter} />
                       </Col>
+                     
                     )
                   })}
                 </Row>
+                </div>
             </div>
           </div>
           <div>
