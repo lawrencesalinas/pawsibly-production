@@ -13,6 +13,7 @@ export default function HostAPetForm(props) {
   const [description, setDescription] = useState("");
   const [city, setCity] = useState("");
   const [image, setImage] = useState();
+  const post_owner = props.user.id
   console.log(props.user);
 
   // const sitter = {first_name:firstName, last_name:lastName, zipcode:zipCode, price:price, city:city, description:description}
@@ -22,11 +23,11 @@ export default function HostAPetForm(props) {
     uploadData.append("image", image);
     uploadData.append("title", title);
     uploadData.append("first_name", firstName);
-    uploadData.append("last_name", lastName);
     uploadData.append("zipcode", zipCode);
     uploadData.append("price", price);
     uploadData.append("city", city);
     uploadData.append("description", description);
+    uploadData.append("post_owner", post_owner);
 
     fetch(`${apiUrl}/sitters`, {
       method: "POST",
@@ -74,6 +75,8 @@ export default function HostAPetForm(props) {
           type="text"
           required
           value={title}
+          title = 'title'
+          id = 'title'
           onChange={(e) => setTitle(e.target.value)}
         />
 

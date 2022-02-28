@@ -9,7 +9,7 @@ const HomeScreen = ({sitters}) => {
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
-  let sliceSitters = sitters.slice(0,3)
+  let sliceSitters = sitters.slice(-3)
 console.log(sitters);
   return (
     <>

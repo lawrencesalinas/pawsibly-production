@@ -25,7 +25,7 @@ class Sitters(generics.ListCreateAPIView):
         print(request.data)
         sitter = SitterPostSerializer(data=request.data)
         if sitter.is_valid():
-            # Save the created mango & send a response
+            # Save the created post & send a response
             sitter.save()
             return Response(sitter.data, status=status.HTTP_201_CREATED)
         # If the data is not valid, return a response with the errors

@@ -30,8 +30,8 @@ class SitterSerializer(serializers.ModelSerializer):
 class SitterPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Sitter
-        fields = ('title','first_name', 'last_name', 'price',
-                  'description', 'city', 'zipcode', 'image')
+        fields = ('title','first_name', 'price',
+                  'description', 'city', 'zipcode', 'image','post_owner')
 
 
 class UserImageSerializer(serializers.ModelSerializer):
