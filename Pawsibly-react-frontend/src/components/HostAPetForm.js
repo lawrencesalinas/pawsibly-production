@@ -2,6 +2,7 @@ import { Button, Modal } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import apiUrl from "../apiConfig";
 import FormContainer from "./FormContainer";
+import { useNavigate } from "react-router-dom";
 
 export default function HostAPetForm(props) {
   console.log("I AM USER", props);
@@ -14,6 +15,8 @@ export default function HostAPetForm(props) {
   const [city, setCity] = useState("");
   const [image, setImage] = useState();
   const post_owner = props.user.id
+
+  const navigate = useNavigate()
   console.log(props.user);
 
   // const sitter = {first_name:firstName, last_name:lastName, zipcode:zipCode, price:price, city:city, description:description}
@@ -39,6 +42,7 @@ export default function HostAPetForm(props) {
       .then((res) => {
         console.log("new pet added", res);
         props.setTrigger((x) => !x);
+        navigate('/')
       })
       // useNavigate(-1)
       .catch((error) => {

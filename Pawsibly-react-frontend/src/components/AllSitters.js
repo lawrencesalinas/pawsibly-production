@@ -16,7 +16,7 @@ function AllSitter({sitter}) {
              <Card className="my-3 p-3 rounded">
                  <Link to={`/sitterlisting/${sitter.id}`}>
         {/* render product name and image */}
-        <Card.Img  src={sitter.image} />
+        <Card.Img className='sitterimages' src={sitter.image}/>
       </Link>
 
     

@@ -20,8 +20,8 @@ function SearchPage({sitters}) {
     return (
         <div className='SearchPage'>
            <div className='searchPage_info'>
-           <p>{numSitters} results</p>
            <h1>Sitters nearby</h1>
+           <p>{numSitters} results</p>
            <Button variant="outlined">Host A Pet</Button>
                 {/* <Button variant="outlined">Type of place</Button>
                 <Button variant="outlined">Price</Button>
