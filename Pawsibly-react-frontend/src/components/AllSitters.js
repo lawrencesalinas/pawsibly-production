@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import {Card, Row, Col} from 'react-bootstrap'
 import Rating from "../components/Rating";
+import './css/AllSitters.css'
 const linkStyle = {
   textDecoration: 'none',
   color: 'black'
@@ -11,7 +12,7 @@ const linkStyle = {
 function AllSitter({sitter}) {
  console.log('this is s', sitter);
   return(
-       <div>
+       <div className='allsitter'>
              <Card className="my-3 p-3 rounded">
                  <Link to={`/sitterlisting/${sitter.id}`}>
         {/* render product name and image */}

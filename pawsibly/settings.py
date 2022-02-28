@@ -52,24 +52,24 @@ DEBUG = True
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 # Default database as defined above depending on development
 # or production environment
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'pawsibly', 
-#         'USER': 'lawrencesalinas',
-#         'PASSWORD': os.getenv('DBPASS'),
-#         'HOST': 'pawsibly-identifier.c0v6jh3jzpwi.us-east-1.rds.amazonaws.com',
-#         'PORT': '5434'
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'pawsibly', 
-     
+        'USER': 'lawrencesalinas',
+        'PASSWORD': os.getenv('DBPASS'),
+        'HOST': 'pawsibly-identifier.c0v6jh3jzpwi.us-east-1.rds.amazonaws.com',
+        'PORT': '5434'
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'pawsibly', 
+     
+#     }
+# }
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 

@@ -34,7 +34,7 @@ function SearchPage({sitters}) {
                 id = {sitter.id}
                 img={sitter.image}
                 location={sitter.city}
-                title={sitter.first_name}
+                title={sitter.title}
                 description={sitter.description}
                 review={sitter.rating}
                 price={sitter.price}
