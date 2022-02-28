@@ -60,7 +60,7 @@ const SignUp = (props) => {
                         <Form.Label>First Name</Form.Label>
                         <Form.Control
                             required
-                            type='email'
+                            type='text'
                             name='first_name'
                             value={first_name}
                             placeholder='Enter first name'
@@ -71,7 +71,7 @@ const SignUp = (props) => {
                 <Form.Group controlId='last_name'>
                         <Form.Label>Last Name</Form.Label>
                         <Form.Control
-                            type='email'
+                            type='text'
                             name='last_name'
                             value={last_name}
                             placeholder='Enter last name'
