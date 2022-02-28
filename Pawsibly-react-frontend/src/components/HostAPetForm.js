@@ -67,14 +67,14 @@ export default function HostAPetForm(props) {
     <div>
       <FormContainer>
         <h1>Host a Pet</h1>
+
         <label>Title</label>
         <input
           className="input"
           type="text"
           required
           value={title}
-          id="last_name"
-          onChange={(e) => setLastName(e.target.value)}
+          onChange={(e) => setTitle(e.target.value)}
         />
 
         <label>Name</label>
