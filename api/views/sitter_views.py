@@ -61,10 +61,10 @@ class SitterDetail(generics.RetrieveUpdateDestroyAPIView):
     def partial_update(self, request, pk):
         """Update Request"""
         # Locate Sitter
-        # get_object_or_404 returns a object representation of our Pet
+        # get_object_or_404 returns a object representation of our Sitter
         sitter = get_object_or_404(Sitter, pk=pk)
-        # Check the pets's owner against the user making this request
-        if request.user != sitter.pet_owner:
+        # Check the post's owner against the user making this request
+        if request.user != sitter.post_owner:
             raise PermissionDenied('Unauthorized, you did not hire this sitter')
     
         # Ensure the owner field is set to the current user's ID
