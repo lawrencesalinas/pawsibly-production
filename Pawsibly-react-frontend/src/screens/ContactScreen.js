@@ -21,7 +21,7 @@ function ContactScreen({ user, setTrigger }) {
     }
     fetchData();
   }, [id]);
-
+  console.log("hhh", singleSitter);
   const messageContent = {
     receiver_user: id,
     sender_user: user.id,
@@ -52,7 +52,9 @@ function ContactScreen({ user, setTrigger }) {
       <h3>Contact {singleSitter.first_name} </h3>
       <br></br>
       <h3>Have questions? Message {singleSitter.first_name}</h3>
-      <div className="area">
+      <br></br>
+      {singleSitter.email}
+      {/* <div className="area">
         <textarea
           onChange={(e) => setMessage(e.target.value)}
           className="area"
@@ -60,8 +62,8 @@ function ContactScreen({ user, setTrigger }) {
           rows="10"
           cols="10"
         />
-      </div>
-      <Button onClick={sendMessage} variant="light">
+      </div> */}
+      {/* <Button onClick={sendMessage} variant="light">
         Send message
       </Button>
       <Modal
@@ -80,7 +82,7 @@ function ContactScreen({ user, setTrigger }) {
             close
           </Button>
         </Link>
-      </Modal>
+      </Modal> */}
     </div>
   );
 }

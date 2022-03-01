@@ -52,6 +52,7 @@ export default function CreateBooking({user}) {
       })
       .catch((error) => {
         console.log(error);
+        
       });
       setSmShow(true)
   };

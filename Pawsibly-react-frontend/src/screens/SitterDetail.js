@@ -27,6 +27,7 @@ export default function SitterDetail({ user }) {
   }, [id]);
 
   console.log('sitter',singleSitter);
+  
 
   // fetch reviews for the specific sitters using useParams
   useEffect(() => {
@@ -62,7 +63,7 @@ export default function SitterDetail({ user }) {
           </Col>
         </Row>
         <Row>
-          <Image src={singleSitter.image} />
+          <Image className="sitterimage" src={singleSitter.image} />
         </Row>
         <hr></hr>
         <Row>

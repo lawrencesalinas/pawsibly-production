@@ -18,7 +18,7 @@ function UserReviewScreen({ user }) {
 
   return (
     <div>
-      <h2 class="center">These are the reviews I posted:</h2>
+      <h4 class="center">These are the reviews I posted:</h4>
       <UserReviews reviewList={reviewList} user={user} />
     </div>
   );

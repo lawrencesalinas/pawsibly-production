@@ -47,11 +47,12 @@ function CreateReview({user, setTrigger}) {
     }).then(createdReview => {
         setTrigger(x => !x)
         console.log('new review added', createdReview);
+        handleClose(true)
     })
     .catch(error => {
         console.log(error);
     })
-    handleClose(true)
+    
     }
 
     
@@ -75,6 +76,7 @@ function CreateReview({user, setTrigger}) {
         <label>
         Review
         <textarea
+        required
           onChange={(e) => setReview(e.target.value)}
           className="area"
           value={review}
@@ -85,6 +87,7 @@ function CreateReview({user, setTrigger}) {
         <br />
         <label>Rating(1-5)
           <input
+            required
             type="number"
             value={rating}
             onChange={handleChange}

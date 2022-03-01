@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { CardTitle, Card, Icon, Row } from "react-materialize";
+import Rating from './Rating';
 
 function UserReviews({reviewList}) {
   return (
@@ -17,15 +18,15 @@ function UserReviews({reviewList}) {
                             <a key="1" href="#">Back To Top</a>
                         ]}
                         closeIcon={<Icon>close</Icon>}
-                        header={<CardTitle image="https://images.pexels.com/photos/5731822/pexels-photo-5731822.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" />}
+                        header={<CardTitle/>}
                         revealIcon={<Icon>more_vert</Icon>}
                         title={reviewListing.sitter}
                     >
-                        <p>{reviewListing.id}</p>
                         <p>{reviewListing.rating}</p>
+                        <Rating color={"#f8e825"} value={reviewListing.rating}/>
                         <p>{reviewListing.review}</p>
                         <Link
-                            to={`/sitterListing/${reviewListing.id}`}>Go to Sitter Page</Link>
+                            to={`/sitterListing/${reviewListing.id}`}>Go to {reviewListing.sitter}'s Page</Link>
                     </Card>
                 </div>
             </Row>

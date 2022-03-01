@@ -71,7 +71,7 @@ export default function HostAPetForm(props) {
   return (
     <div>
       <FormContainer>
-        <h1>Host a Pet</h1>
+        <h1>Become a Pet Host</h1>
 
         <label>Title</label>
         <input

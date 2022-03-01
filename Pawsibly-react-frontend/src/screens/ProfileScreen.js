@@ -18,6 +18,7 @@ export default function ProfileScreen(props) {
   const handleShow = () => setShow(true);
 
   useEffect(() => {
+    // using the function fetchWith auth we make an api call to grab the user's data
     try {
       fetchWithAuth("profile", setUserData, "user", props.user);
     } catch (error) {
@@ -90,7 +91,11 @@ export default function ProfileScreen(props) {
                 <Link className="link" to={`/messages/`}>
                   <Button variant="warning">Messages</Button>
                 </Link>
-              </Col> */}
+              </Col> */}  <Col md={6}>
+                <Link className="link" to={`/hostapet`}>
+                  <Button variant="warning">Host a Pet</Button>
+                </Link>
+              </Col>
               <Col md={6}>
                 <Link className="link" to={`/myreviews`}>
                   <Button variant="warning">My Reviews</Button>
@@ -98,9 +103,9 @@ export default function ProfileScreen(props) {
               </Col>
             </Row>
             <Row className="profilescreen_buttons">
-              <Col md={6}>
-                <Link className="link" to={`/hostapet`}>
-                  <Button variant="warning">Host a Pet</Button>
+            <Col md={6}>
+                <Link className="link" to={`/myreviews`}>
+                  <Button variant="warning">My Reviews</Button>
                 </Link>
               </Col>
               <Col md={6}>

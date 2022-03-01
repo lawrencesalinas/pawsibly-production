@@ -3,6 +3,46 @@ import { CardTitle, Card, Icon, Row } from "react-materialize";
 import { Link } from "react-router-dom";
 
 function UserBooking({ userBooking }) {
+
+ const months = {
+    january: "01",
+    febuary:  "02",
+    march:  "03",
+    april:  "04",
+    may:  "05",
+    june:  "06",
+    july:  "07",
+    august: "08",
+    september: "09",
+    october: "10",
+    november: "11",
+    december: "12",
+}
+
+
+
+  let dateSlice = (date) => {
+    let newDateFormat = []
+    const monthSlice = date.slice(5,7)
+    let dates = {}
+    for (const key in months) {
+      if(months[key] == monthSlice){
+         newDateFormat.push(key)
+      }
+    }
+
+  
+  }
+  let string = '2022-01-04'
+  console.log('STRING',dateSlice(string));
+  // let newString = string.slice(5,7)
+
+
+
+
+
+
+  // console.log('SLCEEEEE', sliceUserDates);
   console.log(userBooking);
   return (
     <div>

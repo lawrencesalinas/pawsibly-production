@@ -6,7 +6,20 @@ from django.shortcuts import get_object_or_404
 from ..serializers import BookingSerializer
 from ..models.Booking import Booking
 
-
+monthly_challenges = {
+    "january": "01",
+    "febuary":  "02",
+    "march":  "03",
+    "april":  "04",
+    "may":  "05",
+    "june":  "06",
+    "july":  "07",
+    'august': "08",
+    "september": "09",
+    "october": "10",
+    "november": "11",
+    "december": "12",
+}
 
 # Create your views here.
 class Bookings(generics.ListCreateAPIView):
@@ -27,6 +40,17 @@ class Bookings(generics.ListCreateAPIView):
         """Create request"""
         # Add user to request data object\
         print('I AM DATA!!!!!',request.data)
+        # data = request.data
+        # pet_owner = request.data['pet_owner']
+        # sitter = request.data['sitter']
+        # start_date = data['start_date'][0:10]
+        # end_date = data['end_date'][0:10]
+        # new_data = {'pet_owner':pet_owner , 'start_date': start_date, 'end_date': end_date, 'sitter': sitter}
+        
+        print(start_date)
+        
+        
+        
         booking = BookingSerializer(data=request.data)
         # If the review data is valid according to our serializer...
         if booking.is_valid():

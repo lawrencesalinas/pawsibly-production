@@ -23,7 +23,7 @@ function AllSitter({sitter}) {
       <Card.Body>
         <Link to={`/sitterlisting/${sitter.id}`} style={linkStyle}>
           <Card.Title as="div">
-            <strong>{sitter.first_name}</strong>
+            <h5>{sitter.city}<br></br> {sitter.zipcode}</h5>
           </Card.Title> 
         </Link>
 
@@ -41,7 +41,7 @@ function AllSitter({sitter}) {
           </div>
         </Card.Text>
 
-        <Card.Text as="h3">${sitter.price}</Card.Text>
+        <Card.Text as="h5">${sitter.price}</Card.Text>
         </Card.Body>
           </Card>
           </div>
