@@ -1,5 +1,6 @@
 from rest_framework.response import Response
 from rest_framework import generics, status
+from rest_framework.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 from ..models.Sitter import Sitter
 from ..serializers import SitterSerializer, SitterPostSerializer
@@ -46,32 +47,32 @@ class SitterDetail(generics.RetrieveUpdateDestroyAPIView):
         data = SitterSerializer(sitter).data
         return Response({ 'sitter': data })
 
-#     def delete(self, request, pk):
-#         """Delete request"""
-#         # Locate sitter to delete
-#         sitter = get_object_or_404(Sitter, pk=pk)
-#         # Check the pet's owner against the user making this request
-#         if request.user != sitter.pet_owner:
-#             raise PermissionDenied('Unauthorized, you did not hire this sitter')
-#         # Only delete if the user hired the sitter
-#         sitter.delete()
-#         return Response(status=status.HTTP_204_NO_CONTENT)
+    def delete(self, request, pk):
+        """Delete request"""
+        # Locate sitter to delete
+        sitter = get_object_or_404(Sitter, pk=pk)
+        # Check the pet's owner against the user making this request
+        if request.user != sitter.post_owner:
+            raise PermissionDenied('Unauthorized, you did not hire this sitter')
+        # Only delete if the user hired the sitter
+        sitter.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
-#     def partial_update(self, request, pk):
-#         """Update Request"""
-#         # Locate Sitter
-#         # get_object_or_404 returns a object representation of our Pet
-#         sitter = get_object_or_404(Sitter, pk=pk)
-#         # Check the pets's owner against the user making this request
-#         if request.user != sitter.pet_owner:
-#             raise PermissionDenied('Unauthorized, you did not hire this sitter')
+    def partial_update(self, request, pk):
+        """Update Request"""
+        # Locate Sitter
+        # get_object_or_404 returns a object representation of our Pet
+        sitter = get_object_or_404(Sitter, pk=pk)
+        # Check the pets's owner against the user making this request
+        if request.user != sitter.pet_owner:
+            raise PermissionDenied('Unauthorized, you did not hire this sitter')
     
-#         # Ensure the owner field is set to the current user's ID
-#         # Validate updates with serializer
-#         ms = SitterSerializer(sitter, data=request.data['sitter'], partial=True) 
-#         if ms.is_valid():
-#             # Save & send a 204 no content
-#             ms.save()
-#             return Response(ms.data)
-#         # If the data is not valid, return a response with the errors
-#         return Response(ms.errors, status=status.HTTP_400_BAD_REQUEST)
+        # Ensure the owner field is set to the current user's ID
+        # Validate updates with serializer
+        ms = SitterSerializer(sitter, data=request.data, partial=True) 
+        if ms.is_valid():
+            # Save & send a 204 no content 
+            ms.save()
+            return Response(ms.data)
+        # If the data is not valid, return a response with the errors
+        return Response(ms.errors, status=status.HTTP_400_BAD_REQUEST)
