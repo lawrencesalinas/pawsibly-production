@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect, useState } from "react";
 import { fetchWithAuth } from '../api/fetch';
 import UserBooking from '../components/UserBooking'
+import './css/MyBookingScreen.css'
 
 function MyBookingScreen({user}) {
     const [userBooking, setUserBooking] = useState([])
@@ -18,7 +19,7 @@ function MyBookingScreen({user}) {
 
   return(
 
-   <div>
+   <div className='mybookingscreen'>
 <h2 className='center-align'>All Bookings:</h2>
    <UserBooking userBooking={userBooking}/>
    </div>

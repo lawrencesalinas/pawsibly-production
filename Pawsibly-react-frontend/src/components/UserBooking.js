@@ -5,41 +5,44 @@ import { Link } from "react-router-dom";
 function UserBooking({ userBooking }) {
 
  const months = {
-    january: "01",
-    febuary:  "02",
-    march:  "03",
-    april:  "04",
-    may:  "05",
-    june:  "06",
-    july:  "07",
-    august: "08",
-    september: "09",
-    october: "10",
-    november: "11",
-    december: "12",
+    January: "01",
+    Febuary:  "02",
+    March:  "03",
+    April:  "04",
+    May:  "05",
+    June:  "06",
+    July:  "07",
+    August: "08",
+    September: "09",
+    October: "10",
+    November: "11",
+    December: "12",
 }
 
-
-
-  let dateSlice = (date) => {
+  let formatDate = (date) => {
     let newDateFormat = []
     const monthSlice = date.slice(5,7)
-    let dates = {}
     for (const key in months) {
       if(months[key] == monthSlice){
          newDateFormat.push(key)
       }
     }
-
+    newDateFormat.push(date.slice(0,4))
+    newDateFormat.push(date.slice(8,10))
+return `${newDateFormat[0]} ${newDateFormat[2]} ${newDateFormat[1]}`
   
   }
   let string = '2022-01-04'
-  console.log('STRING',dateSlice(string));
+  console.log('STRING',formatDate(string));
   // let newString = string.slice(5,7)
 
 
 
-
+const sitterImages = (array => {
+  return array.map(data => {
+    console.log(data);
+  })
+})
 
 
   // console.log('SLCEEEEE', sliceUserDates);
@@ -57,21 +60,21 @@ function UserBooking({ userBooking }) {
                                 <a key="1" href="#">Back To Top</a>
                             ]}
                             closeIcon={<Icon>close</Icon>}
-                            header={<CardTitle image="https://images.pexels.com/photos/5731822/pexels-photo-5731822.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"/>}
-                            revealIcon={<Icon>more_vert</Icon>}
-                            title={bookingListings.sitter}
+                            header={<CardTitle image={bookingListings.sitter.image}/>}
+                            title={bookingListings.sitter.first_name}
                         >
                             <div>
-                                Booking #{bookingListings.id}
+                                <h6>Drop-off date:</h6> {formatDate(bookingListings.start_date)}
                             </div>
                             <div>
-                                Start Date: {bookingListings.start_date}
+                                <h6>Pick-up date:</h6> {formatDate(bookingListings.end_date)}
                             </div>
                             <div>
-                                End Date: {bookingListings.end_date}
+                                Confirmation# {bookingListings.id}
                             </div>
+                            <br></br>
                             <Link
-                            to={`/sitterListing/${bookingListings.id}`}>Go to Sitter Page</Link>
+                            to={`/sitterListing/${bookingListings.sitter.id}`}><h6>Go to {bookingListings.sitter.first_name} Page</h6></Link>
                         </Card>
                 </div>
             </Row>
