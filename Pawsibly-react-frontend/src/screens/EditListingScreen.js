@@ -14,25 +14,33 @@ function EditListingScreen({setTrigger, setUserTrigger, user, userData}) {
     const id = userData.post_owned.map(data=> {
         return data.id.toString()
       })
-      const name = userData.post_owned.map(data=> {
-        return data.first_name.toString()
+      const oldFirstName = userData.post_owned.map(data=> {
+        return data.first_name
       })
-      const id = userData.post_owned.map(data=> {
-        return data.id.toString()
+      const oldTitle = userData.post_owned.map(data=> {
+        return data.title
       })
-      const id = userData.post_owned.map(data=> {
-        return data.id.toString()
+      const oldLastName = userData.post_owned.map(data=> {
+        return data.last_name
       })
-      const id = userData.post_owned.map(data=> {
-        return data.id.toString()
+      const oldZipCode = userData.post_owned.map(data=> {
+        return data.zipCode
+      })
+      const oldCity = userData.post_owned.map(data=> {
+        return data.city
+      })
+      const oldPrice = userData.post_owned.map(data=> {
+        return data.price
       })
 
+
+console.log(oldLastName);
 
     
-    const [title, setTitle] = useState("");
-    const [firstName, setfirstName] = useState(user.first_name);
-    const [lastName, setLastName] = useState(name);
-    const [zipCode, setZipCode] = useState("");
+    const [title, setTitle] = useState(oldTitle);
+    const [firstName, setfirstName] = useState(oldFirstName);
+    const [lastName, setLastName] = useState(oldLastName);
+    const [zipCode, setZipCode] = useState(oldZipCode);
     const [price, setPrice] = useState(0);
     const [description, setDescription] = useState("");
     const [city, setCity] = useState("");
