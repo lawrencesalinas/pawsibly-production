@@ -24,13 +24,21 @@ function EditListingScreen({setTrigger, setUserTrigger, user, userData}) {
         return data.last_name
       })
       const oldZipCode = userData.post_owned.map(data=> {
-        return data.zipCode
+        return data.zipcode
       })
       const oldCity = userData.post_owned.map(data=> {
         return data.city
       })
       const oldPrice = userData.post_owned.map(data=> {
         return data.price
+      })
+
+      const oldDescription = userData.post_owned.map(data=> {
+        return data.description
+      })
+
+      const oldImage = userData.post_owned.map(data=> {
+        return data.image
       })
 
 
@@ -41,10 +49,10 @@ console.log(oldLastName);
     const [firstName, setfirstName] = useState(oldFirstName);
     const [lastName, setLastName] = useState(oldLastName);
     const [zipCode, setZipCode] = useState(oldZipCode);
-    const [price, setPrice] = useState(0);
-    const [description, setDescription] = useState("");
-    const [city, setCity] = useState("");
-    const [image, setImage] = useState();
+    const [price, setPrice] = useState(oldPrice);
+    const [description, setDescription] = useState(oldDescription);
+    const [city, setCity] = useState(oldCity);
+    const [image, setImage] = useState(oldImage);
     const post_owner = user.id
   
     const navigate = useNavigate()
@@ -63,7 +71,7 @@ console.log(oldLastName);
       uploadData.append("description", description);
       uploadData.append("post_owner", post_owner);
   
-      fetch(`${apiUrl}/sitters`, {
+      fetch(`${apiUrl}/sitters/${id}`, {
         method: "PATCH",
         headers: {
           Authorization: `Token ${user.token}`,
