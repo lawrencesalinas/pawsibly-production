@@ -141,30 +141,6 @@ console.log(oldLastName);
             id="price"
             onChange={(e) => setPrice(e.target.value)}
           />
-  
-          <label>City</label>
-          <input
-            className="input"
-            type="text"
-            required
-            value={city}
-            name="city"
-            id="city"
-            onChange={(e) => setCity(e.target.value)}
-          />
-          <br />
-
-          <label>City</label>
-          <input
-            className="input"
-            type="text"
-            required
-            value={city}
-            name="city"
-            id="city"
-            onChange={(e) => setCity(e.target.value)}
-          />
-          <br />
 
           <label>City</label>
           <input
