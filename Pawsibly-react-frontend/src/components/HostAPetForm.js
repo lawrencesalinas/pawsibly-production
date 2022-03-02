@@ -5,7 +5,7 @@ import FormContainer from "./FormContainer";
 import { useNavigate } from "react-router-dom";
 
 export default function HostAPetForm(props) {
-  console.log("I AM USER", props);
+
   const [title, setTitle] = useState("");
   const [firstName, setfirstName] = useState(props.user.first_name);
   const [lastName, setLastName] = useState("");
@@ -17,7 +17,7 @@ export default function HostAPetForm(props) {
   const post_owner = props.user.id
 
   const navigate = useNavigate()
-  console.log(props.user);
+
 
   // const sitter = {first_name:firstName, last_name:lastName, zipcode:zipCode, price:price, city:city, description:description}
 
@@ -41,7 +41,10 @@ export default function HostAPetForm(props) {
     })
       .then((res) => {
         console.log("new pet added", res);
+        props.setUserTrigger((x) => !x);
         props.setTrigger((x) => !x);
+
+
         navigate('/')
       })
       // useNavigate(-1)
@@ -50,29 +53,10 @@ export default function HostAPetForm(props) {
       });
   };
 
-  // const createPosting = (e) => {
-  //   const sitter = {first_name:firstName, last_name:lastName, zipcode:zipCode, price:price, city:city, description:description}
 
-  //   fetch(`${apiUrl}/sitters`, {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Authorization': `Token ${props.user.token}`},
-  //     body: JSON.stringify(sitter)
-  //   }).then(response => {
-  //     props.setTrigger((x)=>!x)
-  //    console.log('created post', response);
-  //   }).catch(error =>{
-  //     console.log(error);
-  //   })
-
-  // }
 
   return (
     <div>
-      <FormContainer>
-        <h1>Become a Pet Host</h1>
-
         <label>Title</label>
         <input
           className="input"
@@ -146,7 +130,7 @@ export default function HostAPetForm(props) {
         <Button onClick={createPost} variant="success">
           Post
         </Button>
-      </FormContainer>
+      
     </div>
   );
 }

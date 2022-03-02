@@ -1,43 +1,80 @@
-import React, {useEffect, useState} from 'react';
-import HostAPetForm from '../components/HostAPetForm'
-import apiUrl from '../apiConfig';
-import axios from 'axios';
-import { fetchWithAuth } from '../api/fetch';
+import React, { useEffect, useState } from "react";
+import HostAPetForm from "../components/HostAPetForm";
+import apiUrl from "../apiConfig";
+import axios from "axios";
+import { fetchWithAuth } from "../api/fetch";
+import FormContainer from "../components/FormContainer";
+import AllSitter from "../components/AllSitters";
+import { Button } from 'react-bootstrap'
+import './css/HostAPetScreen.css'
+import {Link} from 'react-router-dom'
 
-function HostAPetScreen({setTrigger, user}) {
-  const [userData, setUserData] =useState([])
+
+function HostAPetScreen({ setTrigger, setUserTrigger, user, userData }) {
+// const [id,setId]= useState()
+  const [showPost, setShowPost]=useState(null)
+  const [newName, setNewName] = useState('')
+  const [arr] = useState([])
   const divStyle = {
-    height: '90vh',
-    margin: '3%'
-    };
-let id = user.id
+    height: "90vh",
+    margin: "3%",
+  };
 
+  const id = userData.post_owned.map(data=> {
+    return data.id.toString()
+  })
+const editPost = () => {
 
-useEffect(() => {
-  // using the function fetchWith auth we make an api call to grab the user's data
-  try {
-    fetchWithAuth("profile", setUserData, "user", user);
-  } catch (error) {
-    console.log(error);
-  }
-}, []);
+}
+const deletePostById = () => {
+    axios({
+      url: `${apiUrl}/sitters/${id}`,
+      method: "DELETE",
+      headers: {
+        Authorization: `Token ${user.token}`,
+      },
+    })
+      .then((foundPet) => {
+        console.log("pet deleted");
+        setTrigger((x) => !x);
+        setUserTrigger(x=>!x)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   
-    console.log('sitter',userData);
-  
+  console.log('user', userData);
 
-
-
-
-  return (<div style={divStyle}>
-    {
-    
-    <HostAPetForm setTrigger={setTrigger} user={user}/>
-    }
+  return (
+    <div style={divStyle}>
+      {userData.post_owned.length > 0?
+        <FormContainer>
+        {userData.post_owned.map((sitter) => {
+          return (
    
-   
+          <div className="postbuttons">
+          <AllSitter sitter={sitter} />
 
-  </div>
-  )
+          <Link to={`/editlisting/`}>
+          <button  id ='edit_button'> <i class="fa fa-pencil-alt" aria-hidden="true"></i> Edit</button>
+         
+                </Link>
+
+          <button onClick={deletePostById} id = 'delete_button' > <i className="fa fa-trash" aria-hidden="true"> Delete</i></button>
+                </div>
+            )
+        })}
+ 
+      </FormContainer>:
+<FormContainer>
+<h1>Become a Pet Host</h1>
+       <HostAPetForm setTrigger={setTrigger} setUserTrigger={setUserTrigger} user={user} />
+       </FormContainer>}
+       
+    </div>
+  );
 }
 
-export default HostAPetScreen;
+export default HostAPetScreen

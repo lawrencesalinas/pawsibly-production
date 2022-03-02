@@ -104,8 +104,8 @@ export default function ProfileScreen(props) {
             </Row>
             <Row className="profilescreen_buttons">
             <Col md={6}>
-                <Link className="link" to={`/myreviews`}>
-                  <Button variant="warning">My Reviews</Button>
+                <Link className="link" to={`/mylisting`}>
+                  <Button variant="warning">My listing</Button>
                 </Link>
               </Col>
               <Col md={6}>
