@@ -86,7 +86,7 @@ console.log(oldLastName);
   
           navigate('/')
         })
-        // useNavigate(-1)
+
         .catch((error) => {
           console.log(error);
         });
@@ -96,7 +96,9 @@ console.log(oldLastName);
   
     return (
       <div>
+          
           <FormContainer className='editcontainer'>
+          <h1>Edit sitter listing</h1>
           <label>Title</label>
           <input
             className="input"
@@ -151,6 +153,31 @@ console.log(oldLastName);
             onChange={(e) => setCity(e.target.value)}
           />
           <br />
+
+          <label>City</label>
+          <input
+            className="input"
+            type="text"
+            required
+            value={city}
+            name="city"
+            id="city"
+            onChange={(e) => setCity(e.target.value)}
+          />
+          <br />
+
+          <label>City</label>
+          <input
+            className="input"
+            type="text"
+            required
+            value={city}
+            name="city"
+            id="city"
+            onChange={(e) => setCity(e.target.value)}
+          />
+          <br />
+          
   
           <label>Description</label>
           <textArea

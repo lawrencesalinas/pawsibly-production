@@ -87,7 +87,7 @@ export default function SitterDetail({ user }) {
               </Row>
               <CreateBooking user={user} />
               {user ? (
-                <Link to={`/contact/${singleSitter.post_owner}`}>
+                <Link to={`/contact/${singleSitter.id}`}>
                   <Button className="contact_button" variant="warning">
                     Contact host
                   </Button>

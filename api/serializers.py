@@ -34,6 +34,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class SitterSerializer(serializers.ModelSerializer):
+    post_owner = UserSerializer()
     class Meta:
         model = Sitter
         fields = '__all__'
