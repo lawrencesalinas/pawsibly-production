@@ -7,7 +7,7 @@ import FormContainer from "../components/FormContainer";
 import AllSitter from "../components/AllSitters";
 import { Button } from 'react-bootstrap'
 import './css/HostAPetScreen.css'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 
 function UserListingScreen({ setTrigger, setUserTrigger, user, userData }) {
@@ -15,13 +15,11 @@ function UserListingScreen({ setTrigger, setUserTrigger, user, userData }) {
     height: "90vh",
     margin: "3%",
   };
-
+const navigate =useNavigate()
   const id = userData.post_owned.map(data=> {
     return data.id.toString()
   })
-const editPost = () => {
 
-}
 const deletePostById = () => {
     axios({
       url: `${apiUrl}/sitters/${id}`,
@@ -30,10 +28,11 @@ const deletePostById = () => {
         Authorization: `Token ${user.token}`,
       },
     })
-      .then((foundPet) => {
-        console.log("pet deleted");
-        setTrigger((x) => !x);
+      .then(() => {
+        console.log("sitter deleted");
+        setTrigger(x => !x)
         setUserTrigger(x=>!x)
+     navigate('hostapet')
       })
       .catch((err) => {
         console.log(err);

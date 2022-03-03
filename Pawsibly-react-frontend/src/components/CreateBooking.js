@@ -49,6 +49,7 @@ export default function CreateBooking({user}) {
     })
       .then((createdBooking) => {
         console.log("new booking added", createdBooking);
+        navigate('/bookings')
       })
       .catch((error) => {
         console.log(error);

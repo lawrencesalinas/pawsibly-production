@@ -116,7 +116,7 @@ console.log(postId);
         <Route path='/contact/:id' element={<ContactScreen  user={user} /> } />
         <Route path='/messages/' element={<MessagesScreen  user={user} /> } />
         <Route path='/searchpage/:url' element={<SearchPage  sitters={sitters} user={user} /> } />
-        <Route path='/mylisting/' element={<UserListingScreen  userData={userData}user={user} /> } />
+        <Route path='/mylisting/' element={<UserListingScreen  setUserTrigger={setUserTrigger}  setTrigger={setTrigger} userData={userData}user={user} /> } />
         <Route path='/editlisting/' element={<EditListingScreen setUserTrigger={setUserTrigger}  setTrigger={setTrigger} userData={userData}user={user} /> } />
       </Routes>
       {msgAlerts.map((msgAlert) => (
