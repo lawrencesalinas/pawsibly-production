@@ -11,10 +11,6 @@ import {Link} from 'react-router-dom'
 
 
 function HostAPetScreen({ setTrigger, setUserTrigger, user, userData }) {
-// const [id,setId]= useState()
-  const [showPost, setShowPost]=useState(null)
-  const [newName, setNewName] = useState('')
-  const [arr] = useState([])
   const divStyle = {
     height: "90vh",
     margin: "3%",

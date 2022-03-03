@@ -1,26 +1,28 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { Row, Col, Image, Card, Button, Modal } from "react-bootstrap";
-import Footer from "../components/Footer";
+import React, { useEffect, useState } from "react";
+import HostAPetForm from "../components/HostAPetForm";
 import apiUrl from "../apiConfig";
 import axios from "axios";
-import "./css/ProfileScreen.css";
 import { fetchWithAuth } from "../api/fetch";
-import AllSitter from "../components/AllSitters";
 import FormContainer from "../components/FormContainer";
+import AllSitter from "../components/AllSitters";
+import { Button } from 'react-bootstrap'
+import './css/HostAPetScreen.css'
+import {Link} from 'react-router-dom'
 
-function UserListingScreen({ user, userData }) {
-  // const [userData, setUserData] = useState([]);
 
-  const [trigger, setTrigger] = useState(false);
-  const [showPost, setShowPost] = useState(null);
-  const [newName, setNewName] = useState("");
+function UserListingScreen({ setTrigger, setUserTrigger, user, userData }) {
   const divStyle = {
     height: "90vh",
     margin: "3%",
   };
 
-  const deletePostById = (id) => {
+  const id = userData.post_owned.map(data=> {
+    return data.id.toString()
+  })
+const editPost = () => {
+
+}
+const deletePostById = () => {
     axios({
       url: `${apiUrl}/sitters/${id}`,
       method: "DELETE",
@@ -31,37 +33,40 @@ function UserListingScreen({ user, userData }) {
       .then((foundPet) => {
         console.log("pet deleted");
         setTrigger((x) => !x);
+        setUserTrigger(x=>!x)
       })
       .catch((err) => {
         console.log(err);
       });
   };
-  const editPost = () => {
-    console.log("edit");
-  };
+
+  
+  console.log('user', userData);
 
   return (
-    <FormContainer>
-      {userData.post_owned.map((sitter) => {
-        return (
+    <div style={divStyle}>
+
+        <FormContainer>
+        {userData.post_owned.map((sitter) => {
+          return (
+   
           <div className="postbuttons">
-            <AllSitter sitter={sitter} />
-            <button onSubmit={editPost} id="edit_button">
-              {" "}
-              <i class="fa fa-pencil-alt" aria-hidden="true"></i> Edit
-            </button>
-            <button onClick={deletePostById} id="delete_button">
-              {" "}
-              <i className="fa fa-trash" aria-hidden="true">
-                {" "}
-                Delete
-              </i>
-            </button>
-          </div>
-        );
-      })}
-    </FormContainer>
+          <AllSitter sitter={sitter} />
+
+          <Link to={`/editlisting/`}>
+          <button  id ='edit_button'> <i class="fa fa-pencil-alt" aria-hidden="true"></i> Edit</button>
+         
+                </Link>
+
+          <button onClick={deletePostById} id = 'delete_button' > <i className="fa fa-trash" aria-hidden="true"> Delete</i></button>
+                </div>
+            )
+        })}
+ 
+      </FormContainer>
+       
+    </div>
   );
 }
 
-export default UserListingScreen;
+export default UserListingScreen
