@@ -33,7 +33,7 @@ console.log(sitters);
      
           <h4 className="explore">Explore </h4>
           <div className="sitters">
-          <Row>
+          <Row style={{justifyContent:'center'}}>
                   {sliceSitters.map((sitter) => {
                     return (
                       <Col key={sitter.id} sm={12} md={6} lg={4} xl={3}>
