@@ -15,10 +15,13 @@ console.log(sitters);
     <>
           <div className="section white">
             <div className="row container" class="center-align">
-
               <h4 className="header" >
-                Find local pet sitters near youdf;kdsdsfldslfk'
+                Find local pet sitters near you
               </h4>
+              {/* <form onSubmit={searchItems}>
+              <input type="text" id="ip2" placeholder="Enter zipcode or city" value={search}  onChange={(e)=> setSearch(e.target.value)}  required />
+              <button  type="submit" class="btn-floating btn-large waves-effect waves-light red accent-2"><i class="material-icons">send</i></button>
+              </form> */}
                  <input type="text" id="ip2" placeholder="Enter zipcode or city" value={search}  onChange={(e)=> setSearch(e.target.value)}  required />
           
            <Link to={`/searchpage/${search}`}>
