@@ -1,7 +1,7 @@
 let apiUrl
 const apiUrls = {
     // YOU MUST CHANGE PRODUCTION URL WHEN DEPLOYING
-	production:"https://pawsibly-demo.herokuapp.com",
+	production:"https://pawsibly.herokuapp.com",
 	development: "http://127.0.0.1:8000",
 }
 
