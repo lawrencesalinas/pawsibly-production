@@ -239,7 +239,7 @@ AWS_STORAGE_BUCKET_NAME = 'pawsibly-bucket'
 
 
 # get current working directory false if we are in heroku
-# if os.getcwd() == '/app':
-#     DEBUG = False
+if os.getcwd() == '/app':
+    DEBUG = False
 
 
