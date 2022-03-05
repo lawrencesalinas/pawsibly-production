@@ -2,6 +2,7 @@ import React from 'react'
 
 {sitters.map((sitter) => {
     return (
+      <div>
       <Card className="my-3 p-3 rounded">
         <Link to={`/sitter/${sitter.id}`}>
           {/* render sitter name and image */}
@@ -32,5 +33,6 @@ import React from 'react'
           <Card.Text as="h3">${sitter.price}</Card.Text>
         </Card.Body>
       </Card>
+      </div>
     );
   })}
