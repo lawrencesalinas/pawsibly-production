@@ -1,13 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import AllSitters from "../components/AllSitters";
 import { Icon, Parallax, } from "react-materialize";
 import {Form, Button, Row, Col} from 'react-bootstrap'
 import './css/HomeScreen.css'
 import {Link} from 'react-router-dom'
+import SitterContext from "../context/sitter/SitterContext";
+import { getSitters } from "../context/sitter/SitterAction";
 
-const HomeScreen = ({sitters}) => {
+const HomeScreen = () => {
+  const {sitters, loading,  dispatch} = useContext(SitterContext)
+
+  useEffect(() => {
+          dispatch({type: 'SET_LOADING'})
+    const getAllSitters = async() => {
+      const sittersData = await getSitters()
+      dispatch({type: 'GET_SITTERS', payload: sittersData})
+    }
+    getAllSitters()
+  },[])
+
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+
+if(loading){
+  return <h3>Loading</h3>
+}
+
 
   let sliceSitters = sitters.slice(-3)
 console.log(sitters);

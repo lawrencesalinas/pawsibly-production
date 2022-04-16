@@ -12,6 +12,13 @@ const sitterReducer = (state, action ) => {
                 sitter:action.payload,
                 loading: false
             }
+        case 'SET_LOADING':
+                return {
+                    ...state,
+                    loading: true
+                }
             
     }
 }
+
+export default sitterReducer

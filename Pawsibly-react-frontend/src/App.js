@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 import axios from "axios";
 import apiUrl from "./apiConfig";
+import { SitterProvider } from "./context/sitter/SitterContext";
 
 // import AuthenticatedRoute from './components/shared/AuthenticatedRoute'
 import AutoDismissAlert from "./components/shared/AutoDismissAlert/AutoDismissAlert";
@@ -65,15 +66,6 @@ const App = () => {
     }
     
   }, [trigger]);
-
-  // useEffect(() => {
-  //   // using the function fetchWith auth we make an api call to grab the user's data
-  //   try {
-  //     fetchWithAuth("profile", setUserData, "user", user);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }, [user, userTrigger]);
   useEffect(() => {
   async function fetchData() {
     try {
@@ -97,7 +89,7 @@ return data[0].id
 // const id = postId?postId.id.toString():  postId
 console.log(postId);
   return (
-    <Fragment>
+    <SitterProvider>
       <Header user={user} />
       <Routes>
         <Route path="/" element={<HomeScreen msgAlert={msgAlert} sitters={sitters} user={user} />}/>
@@ -130,7 +122,7 @@ console.log(postId);
         />
       ))}
       <Footer/>
-    </Fragment>
+    </SitterProvider>
   )
 }
 
