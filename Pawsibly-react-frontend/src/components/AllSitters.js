@@ -8,40 +8,39 @@ const linkStyle = {
   color: 'black'
 }
 
-
-function AllSitter({sitter}) {
- console.log('this is s', sitter);
+function AllSitter({sitter: {id, image, city, rating, zipcode, numReviews, price}}) {
+//  console.log('this is s', sitter);
   return(
        <div className='allsitter'>
              <Card className="my-3 p-3 rounded">
-                 <Link to={`/sitterlisting/${sitter.id}`}>
+                 <Link to={`/sitterlisting/${id}`}>
         {/* render product name and image */}
-        <Card.Img className='sitterimages' src={sitter.image}/>
+        <Card.Img className='sitterimages' src={image}/>
       </Link>
 
     
       <Card.Body>
-        <Link to={`/sitterlisting/${sitter.id}`} style={linkStyle}>
+        <Link to={`/sitterlisting/${id}`} style={linkStyle}>
           <Card.Title as="div">
-            <h5>{sitter.city}<br></br> {sitter.zipcode}</h5>
+            <h5>{city}<br></br> {zipcode}</h5>
           </Card.Title> 
         </Link>
 
         <Card.Text as="div">
           <div className="my-3">
            
-            {sitter.rating} ({sitter.numReviews} reviews)
+            {rating} ({numReviews} reviews)
             {/* render product props rating and number of reviews */}
             {/* props sent to Rating component  */}
             {/* render Rating component here */}
             <Rating
-              value={sitter.rating}
+              value={rating}
               color={"#f8e825"}
             />
           </div>
         </Card.Text>
 
-        <Card.Text as="h5">${sitter.price}</Card.Text>
+        <Card.Text as="h5">${price}</Card.Text>
         </Card.Body>
           </Card>
           </div>

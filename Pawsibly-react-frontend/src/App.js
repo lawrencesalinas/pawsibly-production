@@ -18,12 +18,11 @@ import ChangePassword from "./components/auth/ChangePassword";
 import PetDetailScreen from "./screens/PetDetailScreen";
 import SitterDetail from "./screens/SitterDetail";
 import PetScreen from "./screens/PetScreen";
-import Footer from "./components/Footer";
+import Footer from "./components/shared/Footer";
 import CreateReview from "./components/CreateReview";
 import MyBookingScreen from "./screens/MyBookingScreen";
 import UserReviewScreen from "./screens/UserReviewScreen";
 import HostAPetScreen from "./screens/HostAPetScreen"
-import { fetchNoAuth } from "./api/fetch";
 import ContactScreen from "./screens/ContactScreen";
 import MessagesScreen from "./screens/MessagesScreen";
 import SearchResult from "./components/SearchResult";
@@ -57,15 +56,6 @@ const App = () => {
       return [{ heading, message, variant, id }];
     });
   };
-
-  useEffect(() => {
-    try {
-      fetchNoAuth("sitters", setSitters, "sitters");
-    } catch (error) {
-      console.log(error);
-    }
-    
-  }, [trigger]);
   useEffect(() => {
   async function fetchData() {
     try {
@@ -86,30 +76,34 @@ return data[0].id
   }
   fetchData();
 }, [user, userTrigger]);
-// const id = postId?postId.id.toString():  postId
-console.log(postId);
+
+
   return (
     <SitterProvider>
       <Header user={user} />
       <Routes>
-        <Route path="/" element={<HomeScreen msgAlert={msgAlert} sitters={sitters} user={user} />}/>
-        <Route path="/profile" element={<ProfileScreen user={user} />} />
+        <Route path="/" element={<HomeScreen msgAlert={msgAlert}  user={user} />}/>
         <Route path="/sign-up" element={<SignUp msgAlert={msgAlert} setUser={setUser} />}/>
         <Route path="/sign-in" element={<SignIn msgAlert={msgAlert} userTrigger={userTrigger} setUser={setUser} />}/>
-        <Route path="/pets" element={<PetScreen user={user} />}/>
-        <Route path="/pets/:id" element={<PetDetailScreen  user={user} />}/>
-        <Route path="/sign-out" element={<RequireAuth user={user}><SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} /></RequireAuth>}/>
-        <Route path="/change-password" element={<RequireAuth user={user}><ChangePassword msgAlert={msgAlert} user={user} /></RequireAuth>}/>
+        <Route path='/searchpage/:url' element={<SearchPage  user={user} /> } />
         <Route path="/sitterlisting/:id" element={<SitterDetail user={user}/>}    />
         <Route path="/sitterlisting/:id" element={<CreateReview user={user}/>}    />
-        <Route path='/mybookings' element={<MyBookingScreen user={user} />} />
-        <Route path='/myreviews' element={<UserReviewScreen  user={user} /> } />
-        <Route path='/hostapet' element={<HostAPetScreen userData={userData} id={postId} setUserTrigger={setUserTrigger}  setTrigger={setTrigger} user={user} /> } />
-        <Route path='/contact/:id' element={<ContactScreen  user={user} /> } />
+
+        {/* user routes */}
+        <Route path="/profile" element={<RequireAuth user={user}><ProfileScreen user={user} /></RequireAuth>}/>
+        <Route path="/pets" element={<RequireAuth user={user}><PetScreen user={user} /></RequireAuth>}/>
+        <Route path="/pets/:id" element={<RequireAuth user={user}><PetDetailScreen  user={user} /></RequireAuth>}/>
+        <Route path="/sign-out" element={<RequireAuth user={user}><SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} /></RequireAuth>}/>
+        <Route path="/change-password" element={<RequireAuth user={user}><ChangePassword msgAlert={msgAlert} user={user} /></RequireAuth>}/>
+        <Route path='/mybookings' element={<RequireAuth user={user}><MyBookingScreen user={user} /></RequireAuth>}/>
+        <Route path='/myreviews' element={<RequireAuth user={user}><UserReviewScreen  user={user} /></RequireAuth>}/>
+
+        <Route path='/hostapet' element={<RequireAuth user={user}><HostAPetScreen userData={userData} id={postId} setUserTrigger={setUserTrigger}  setTrigger={setTrigger} user={user} /></RequireAuth>}/>
+        <Route path='/mylisting/'element={<RequireAuth user={user}><UserListingScreen  setUserTrigger={setUserTrigger}  setTrigger={setTrigger} userData={userData}user={user} /></RequireAuth>}/>
+        <Route path='/contact/:id' element={<RequireAuth user={user}><ContactScreen  user={user} /></RequireAuth>}/>
+        <Route path='/editlisting/' element={<RequireAuth user={user}><EditListingScreen setUserTrigger={setUserTrigger}  setTrigger={setTrigger} userData={userData}user={user} /></RequireAuth>}/>
+
         <Route path='/messages/' element={<MessagesScreen  user={user} /> } />
-        <Route path='/searchpage/:url' element={<SearchPage  sitters={sitters} user={user} /> } />
-        <Route path='/mylisting/' element={<UserListingScreen  setUserTrigger={setUserTrigger}  setTrigger={setTrigger} userData={userData}user={user} /> } />
-        <Route path='/editlisting/' element={<EditListingScreen setUserTrigger={setUserTrigger}  setTrigger={setTrigger} userData={userData}user={user} /> } />
       </Routes>
       {msgAlerts.map((msgAlert) => (
         <AutoDismissAlert

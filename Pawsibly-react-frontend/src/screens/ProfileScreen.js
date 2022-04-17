@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Row, Col, Image, Card, Button, Modal } from "react-bootstrap";
-import Footer from "../components/Footer";
 import apiUrl from "../apiConfig";
-import axios from "axios";
 import "./css/ProfileScreen.css";
 import { fetchWithAuth } from "../api/fetch";
 

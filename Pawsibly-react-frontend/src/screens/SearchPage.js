@@ -1,12 +1,27 @@
-import React from 'react'
+import {useEffect, useContext} from 'react'
+import SitterContext from "../context/sitter/SitterContext";
+import { getSitters } from "../context/sitter/SitterAction";
 import './css/SearchPage.css'
 import { Button } from '@mui/material'
 import SearchResult from '../components/SearchResult'
 import {useParams} from 'react-router-dom'
 
-function SearchPage({sitters}) {
-    console.log(sitters);
-    let {url} = useParams()
+function SearchPage() {
+  const { sitters, loading, dispatch } = useContext(SitterContext)
+  let {url} = useParams()
+
+  useEffect(() => {
+    dispatch({ type: 'SET_LOADING' })
+    const getAllSitters = async () => {
+      const sittersData = await getSitters()
+      dispatch({ type: 'GET_SITTERS', payload: sittersData })
+    }
+    getAllSitters()
+  }, [dispatch, url])
+
+
+ 
+
    
     let filteredSitters = sitters.filter((sitter) => {
         return (

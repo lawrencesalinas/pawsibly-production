@@ -3,7 +3,7 @@ import context from 'react-bootstrap/esm/AccordionContext'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
-import './Header.css'
+import './css/Header.css'
 const linkStyle = {
     color: 'white',
     textDecoration: 'none'
@@ -12,11 +12,6 @@ const linkStyle = {
 
 const authenticatedOptions = (
 	<>
-		{/* <Nav.Link>
-			<Link to='change-password' style={linkStyle}>
-				Change Password
-			</Link>
-		</Nav.Link> */}
 		<Nav.Link>
 		    <Link to='profile' style={linkStyle}>Profile</Link>
         </Nav.Link>
