@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import HostAPetForm from "../components/HostAPetForm";
 import apiUrl from "../apiConfig";
 import axios from "axios";
@@ -8,13 +8,27 @@ import AllSitter from "../components/AllSitters";
 import { Button } from 'react-bootstrap'
 import './css/HostAPetScreen.css'
 import {Link} from 'react-router-dom'
+import UserContext from "../context/user/UserContext";
+import { getUsers } from "../context/user/UserAction";
 
 
-function HostAPetScreen({ setTrigger, setUserTrigger, user, userData }) {
+function HostAPetScreen({ setTrigger, setUserTrigger, user, userData  }) {
   const divStyle = {
     height: "90vh",
     margin: "3%",
   };
+
+  // const {userData, dispatch} = useContext(UserContext)
+  // useEffect(()=> {
+  //   dispatch({type: 'SET_LOADING'})
+  //   const getUserData = async() => {
+  //     const userData = await getUsers(user)
+  //     dispatch({type: 'GET_USER', payload:userData})
+  //   }
+  //   getUserData()
+  // },[dispatch])
+
+
 
   const id = userData.post_owned.map(data=> {
     return data.id.toString()

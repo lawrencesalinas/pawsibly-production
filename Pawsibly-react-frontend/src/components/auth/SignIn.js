@@ -11,27 +11,14 @@ const divStyle = {
   };
 
 const SignIn = (props) => {
-	// constructor(props) {
-	// 	super(props)
-
-	// 	this.state = {
-	// 		email: '',
-	// 		password: '',
-	// 	}
-	// }
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
     const navigate = useNavigate()
 
-	// handleChange = (event) =>
-	// 	this.setState({
-	// 		[event.target.name]: event.target.value,
-	// 	})
-
 	const onSignIn = (event) => {
 		event.preventDefault()
-        console.log('the props', props)
+        // console.log('the props', props)
 		const { msgAlert, setUser } = props
 
         const credentials = {email, password}

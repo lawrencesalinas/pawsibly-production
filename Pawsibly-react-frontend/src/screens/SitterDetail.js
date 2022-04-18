@@ -1,93 +1,81 @@
-import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Row, Image, Col, Card, Button } from "react-bootstrap";
 import Rating from "../components/Rating";
-import apiUrl from "../apiConfig";
 import ReviewList from "../components/ReviewList";
 import CreateBooking from "../components/CreateBooking";
 import "./css/SitterDetail.css";
 import CreateReview from "../components/CreateReview";
-import { fetchNoAuth } from "../api/fetch";
+import SitterContext from "../context/sitter/SitterContext";
+import { getSitterAndReviews } from "../context/sitter/SitterAction";
+import Spinner from "../components/shared/Spinner";
+
 export default function SitterDetail({ user }) {
-  const [singleSitter, setSingleSitter] = useState([]);
-  const [sitterReviews, setSitterReviews] = useState([]);
   const [trigger, setTrigger] = useState(false);
   let { id } = useParams();
 
-  // fetch sitter details using useParams url
-  useEffect(() => {
-    async function fetchData() {
-      const { data } = await axios.get(`${apiUrl}/sitters/${id}`);
-   
-      setSingleSitter(data.sitter);
-    }
-    fetchData();
-  }, [id]);
-
-  console.log('sitter',singleSitter);
+  const { sitter, dispatch, loading, sitterReviews } = useContext(SitterContext);
   
-
-  // fetch reviews for the specific sitters using useParams
   useEffect(() => {
-    async function fetchData() {
-      const { data } = await axios
-        .get(`${apiUrl}/reviews/${id}`)
-        .catch((error) => {
-          console.log(error);
-        });
-      setSitterReviews(data.reviews);
-    }
-    fetchData();
-  }, [id, trigger]);
-  console.log(sitterReviews);
+    dispatch({ type: "SET_LOADING" });
+    const getSitterData = async () => {
+      const sitter = await getSitterAndReviews(id);
+      dispatch({ type: "GET_SITTER", payload: sitter });
+    };
+    getSitterData();
+  }, [dispatch, id, trigger]);
+
+  if (loading) {
+    return <Spinner />;
+  }
+
   return (
     <div className="listingdetail">
       <Row>
         <h1>
-          {singleSitter.first_name} {singleSitter.last_name}{" "}
+          {sitter.first_name} {sitter.last_name}{" "}
         </h1>
         <Row>
           <Col md={2}>
             <Rating
-              value={singleSitter.rating}
-              text={`${singleSitter.numReviews} reviews`}
+              value={sitter.rating}
+              text={`${sitter.numReviews} reviews`}
               color={"#f8e825"}
             />
           </Col>
           <Col md={6}>
             <h5>
-              {singleSitter.city}, {singleSitter.zipcode}
+              {sitter.city}, {sitter.zipcode}
             </h5>
           </Col>
         </Row>
         <Row>
-          <Image className="sitterimage" src={singleSitter.image} />
+          <Image className="sitterimage" src={sitter.image} />
         </Row>
         <hr></hr>
         <Row>
           <Col md={8} lg={8} className="mt-5">
             <h2>About</h2>
-            <p> {singleSitter.description}</p>
+            <p> {sitter.description}</p>
           </Col>
           <Col md={4} lg={4}>
             <div className="booking">
               <Row>
                 <Col md={5}>
-                  <h5>${singleSitter.price} / night</h5>
+                  <h5>${sitter.price} / night</h5>
                 </Col>
                 <Col>
                   <Rating
-                    value={singleSitter.rating}
-                    text={`${singleSitter.numReviews} reviews`}
+                    value={sitter.rating}
+                    text={`${sitter.numReviews} reviews`}
                     color={"#f8e825"}
                   />
                 </Col>
               </Row>
               <CreateBooking user={user} />
               {user ? (
-                <Link to={`/contact/${singleSitter.id}`}>
+                <Link to={`/contact/${sitter.id}`}>
                   <Button className="contact_button" variant="warning">
                     Contact host
                   </Button>
@@ -111,7 +99,7 @@ export default function SitterDetail({ user }) {
               {sitterReviews.map((review) => {
                 return (
                   <li className="list" key={review.id}>
-                    {/* pass singleSitters array to singleSitter component */}
+                    {/* pass sitters array to sitter component */}
                     <ReviewList review={review} />
                   </li>
                 );

@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 import axios from "axios";
@@ -56,6 +56,11 @@ const App = () => {
       return [{ heading, message, variant, id }];
     });
   };
+
+
+
+
+
   useEffect(() => {
   async function fetchData() {
     try {
@@ -76,6 +81,7 @@ return data[0].id
   }
   fetchData();
 }, [user, userTrigger]);
+  
 
 
   return (

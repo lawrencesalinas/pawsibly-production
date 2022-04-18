@@ -9,7 +9,8 @@ const sitterReducer = (state, action ) => {
         case 'GET_SITTER':
             return{
                 ...state,
-                sitter:action.payload,
+                sitter:action.payload.sitter,
+                sitterReviews: action.payload.sitterReviews,
                 loading: false
             }
         case 'SET_LOADING':
@@ -17,6 +18,9 @@ const sitterReducer = (state, action ) => {
                     ...state,
                     loading: true
                 }
+        default:
+            return state
+        
             
     }
 }

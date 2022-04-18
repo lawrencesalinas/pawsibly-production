@@ -1,5 +1,5 @@
 .listingdetail {
-  width: 80vw;
+  width: 40vw;
   margin: 0 auto;
   margin-top: 3%;
 }
@@ -40,5 +40,6 @@
 }
 
 .sitterimage{
-
+  margin-left: 2%;
+height: 300px;
 }

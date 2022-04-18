@@ -21,10 +21,10 @@ const HomeScreen = () => {
   }, [])
 
   const [search, setSearch] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
+  // const [searchResults, setSearchResults] = useState([]);
   const sliceSitters = sitters.slice(-3)
 
-  if (!loading) {
+  if (loading) {
     return <Spinner/>
   }
 

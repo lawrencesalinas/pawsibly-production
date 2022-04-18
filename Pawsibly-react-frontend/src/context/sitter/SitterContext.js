@@ -7,6 +7,7 @@ export const SitterProvider = ({children}) => {
     const initialSate = {
         sitters: [],
         sitter: {},
+        sitterReviews:[],
         loading: false,
     };
 

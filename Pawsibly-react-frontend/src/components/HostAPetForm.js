@@ -17,10 +17,7 @@ export default function HostAPetForm(props) {
   const post_owner = props.user.id
 
   const navigate = useNavigate()
-
-
-  // const sitter = {first_name:firstName, last_name:lastName, zipcode:zipCode, price:price, city:city, description:description}
-
+  
   const createPost = (e) => {
     const uploadData = new FormData();
     uploadData.append("image", image);
