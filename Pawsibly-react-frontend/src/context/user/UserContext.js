@@ -1,6 +1,7 @@
 import { createContext, useReducer } from "react";
 import userReducer from './UserReducer'
 
+
 const UserContext = createContext()
 
 export const UserProvider = ({children}) => {
@@ -8,10 +9,11 @@ export const UserProvider = ({children}) => {
         userData: {},
         loading:false
     }
-    const [state, dispatch] = useReducer(userReducer, initialState)
+    const [state, dispatch] = useReducer(userReducer , initialState)
 
     return(
-        <UserContext.Provider value={{
+        <UserContext.Provider 
+        value={{
             dispatch,
             ...state
         }}

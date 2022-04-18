@@ -21,15 +21,15 @@ function UserReviewScreen({ user }) {
 
   return (
     <div>
-      <h4 class="center">These are the reviews I posted:</h4>
+      <h4 className="center">These are the reviews I posted:</h4>
       <div>
         {reviewList.map((reviewListing) => {
           console.log("rev", reviewListing);
           return (
-            <div class="container small">
-              <div class="row center-cols justify-center">
-                <Row class="small center-align">
-                  <div class="col s6 offset-s3">
+            <div className="container small">
+              <div className="row center-cols justify-center">
+                <Row className="small center-align">
+                  <div className="col s6 offset-s3">
                     <Card
                       className="card"
                       actions={[

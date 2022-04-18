@@ -20,8 +20,6 @@ const sitterReducer = (state, action ) => {
                 }
         default:
             return state
-        
-            
     }
 }
 

@@ -1,28 +1,39 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Row, Col, Image, Card, Button, Modal } from "react-bootstrap";
 import apiUrl from "../apiConfig";
 import "./css/ProfileScreen.css";
 import { fetchWithAuth } from "../api/fetch";
+import UserContext from "../context/user/UserContext";
+import { getUser } from "../context/user/UserAction";
+import Spinner from "../components/shared/Spinner";
 
-export default function ProfileScreen(props) {
+export default function ProfileScreen({user}) {
   // user data and user pet is called here
   const [image, setImage] = useState();
-  const [userData, setUserData] = useState([]);
+  // const [userData, setUserData] = useState([]);  
   const [trigger, setTrigger] = useState(false);
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+
+  // api request to get userData using context
+  const{ userData, dispatch, loading } = useContext(UserContext)
   useEffect(() => {
-    // using the function fetchWith auth we make an api call to grab the user's data
-    try {
-      fetchWithAuth("profile", setUserData, "user", props.user);
-    } catch (error) {
-      console.log(error);
-    }
-  }, [trigger]);
+    dispatch({ type: "SET_LOADING" })
+    const getUserData = async () => {
+      const userData = await getUser(user)
+      dispatch({ type: "GET_USER", payload: userData });
+    };
+    getUserData()
+  }, [dispatch, user, trigger])
+
+
+  if(loading){
+    return <Spinner/>
+  }
 
   const uploadPhoto = (e) => {
     const uploadData = new FormData();
@@ -32,7 +43,7 @@ export default function ProfileScreen(props) {
     fetch(`${apiUrl}/profileImage`, {
       method: "POST",
       headers: {
-        Authorization: `Token ${props.user.token}`,
+        Authorization: `Token ${user.token}`,
       },
       body: uploadData,
     })
@@ -46,7 +57,8 @@ export default function ProfileScreen(props) {
       });
     setShow(false);
   };
-  console.log(userData);
+
+
   return (
     <div className="profile">
       <Row>
@@ -82,7 +94,7 @@ export default function ProfileScreen(props) {
         <Col md={5}>
           <div className="profilescreen_info">
             <Row>
-              <h3 class="flow-text">Hello, {userData.first_name}!</h3>
+              <h3 className="flow-text">Hello, {userData.first_name}!</h3>
             </Row>
             <Row className="profilescreen_buttons">
               {/* <Col md={6}>
@@ -131,7 +143,7 @@ export default function ProfileScreen(props) {
         </Col>
 
         <Col clasName="ml-6" md={4}>
-          <i class="fas fa-paw paw fa-10x"></i>
+          <i className="fas fa-paw paw fa-10x"></i>
         </Col>
       </Row>
     </div>

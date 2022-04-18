@@ -60,7 +60,7 @@ export default function CreateBooking({user}) {
   }
   return (
     <Container>
-    <div class="createbooking col text-center">
+    <div className="createbooking col text-center">
       <Row>
     <Col>
       <DateRange

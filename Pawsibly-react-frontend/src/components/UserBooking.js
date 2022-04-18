@@ -51,10 +51,10 @@ const sitterImages = (array => {
     <div>
       {userBooking.map((bookingListings) => {
         console.log("all listing b", bookingListings);
-        return   <div class= "container small">
-        <div class="row center-cols justify-center"> 
-            <Row class="small center-align"> 
-                <div class="col s6 offset-s3">
+        return   <div className= "container small">
+        <div className="row center-cols justify-center"> 
+            <Row clasName="small center-align"> 
+                <div className="col s6 offset-s3">
                         <Card className='card' 
                             actions={[
                                 <a key="1" href="#">Back To Top</a>

@@ -60,7 +60,7 @@ function CreateReview({user, setTrigger}) {
   return (
 <>
    <button variant='warning'   className="btn-floating btn-large waves-effect waves-light yellow" onClick={handleShow}>
-   <i class="material-icons">comment</i>
+   <i className="material-icons">comment</i>
       </button>
       <Modal
         show={show}

@@ -1,15 +1,29 @@
 import axios from "axios";
 import apiUrl from "../../apiConfig";
 
-
-const userConfig = axios.create({
-  baseURL: apiUrl,
-});
-
-export const getUsers = async (user) => {
-  const response = await userConfig.get(`/profile`, {
-    headers: { Authorization: `token ${user.token}` },
-  });
-  console.log(response);
-  return response.data.user;
+export const getUser = async (user) => {
+  try {
+    const  response  = await axios.get(`${apiUrl}/profile`, {
+      headers: {
+        Authorization: `Token ${user.token}`,
+      },
+    });
+    return response.data.user;
+  } catch (error) {
+    console.log(error);
+  }
 };
+
+// async function fetchData() {
+//   try {
+//     const { data } = await axios.get(`${apiUrl}/${endpoint}`, {
+//       headers: {
+//         Authorization: `Token ${user.token}`,
+//       },
+//     });
+//     console.log("apicall", data);
+//     setState(data[item]);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }

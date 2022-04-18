@@ -55,11 +55,11 @@ function UsersPets(props) {
                 </Link>
                 <br></br>
                 <button
-                  class="btn-floating btn-small waves-effect waves-light red accent-2"
+                  className="btn-floating btn-small waves-effect waves-light red accent-2"
                   style={{ margin: "10px" }}
                   onClick={() => deletePetById(pet.id)}
                 >
-                  <i class="material-icons">delete</i>
+                  <i className="material-icons">delete</i>
                 </button>
               </div>
             ))}

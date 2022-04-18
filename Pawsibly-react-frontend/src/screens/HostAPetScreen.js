@@ -68,7 +68,7 @@ const deletePostById = () => {
           <AllSitter sitter={sitter} />
 
           <Link to={`/editlisting/`}>
-          <button  id ='edit_button'> <i class="fa fa-pencil-alt" aria-hidden="true"></i> Edit</button>
+          <button  id ='edit_button'> <i className="fa fa-pencil-alt" aria-hidden="true"></i> Edit</button>
          
                 </Link>
 

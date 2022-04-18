@@ -30,6 +30,7 @@ import SearchPage from "./screens/SearchPage";
 import UserListingScreen from "./screens/UserListingScreen";
 import { fetchWithAuth } from "./api/fetch";
 import EditListingScreen from "./screens/EditListingScreen";
+import { UserProvider } from "./context/user/UserContext";
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -85,6 +86,7 @@ return data[0].id
 
 
   return (
+    <UserProvider>
     <SitterProvider>
       <Header user={user} />
       <Routes>
@@ -123,6 +125,7 @@ return data[0].id
       ))}
       <Footer/>
     </SitterProvider>
+    </UserProvider>
   )
 }
 
