@@ -1,91 +1,39 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { Container, TextInput } from "react-materialize";
-import axios from "axios";
-import { Modal, Button } from "react-bootstrap";
-import { useParams, useNavigate, Link } from "react-router-dom";
-import apiUrl from "../apiConfig";
+import { useEffect, useContext } from "react";
+import { useParams} from "react-router-dom";
 import "./css/ContactScreen.css";
-
-function ContactScreen({ user, setTrigger }) {
-  console.log("sss", user);
-  const [message, setMessage] = useState("");
-  const [singleSitter, setSingleSitter] = useState([]);
-  const [smShow, setSmShow] = useState(false);
+import { getSitterAndReviews } from "../context/sitter/SitterAction";
+import SitterContext from "../context/sitter/SitterContext";
+import Spinner from "../components/shared/Spinner";
+function ContactScreen() {
   const { id } = useParams();
 
+  const { sitter, dispatch, loading  } = useContext(SitterContext);
+  
   useEffect(() => {
-    async function fetchData() {
-      const { data } = await axios.get(`${apiUrl}/sitters/${id}`);
-      setSingleSitter(data.sitter);
-    }
-    fetchData();
-  }, [id]);
-  console.log("hhh", singleSitter);
+    dispatch({ type: "SET_LOADING" });
+    const getSitterData = async () => {
+      const sitter = await getSitterAndReviews(id);
+      dispatch({ type: "GET_SITTER", payload: sitter });
+    };
+    getSitterData();
+  }, [dispatch, id]);
 
+  const email = sitter.post_owner.email;
 
-  const messageContent = {
-    receiver_user: id,
-    sender_user: user.id,
-    msg_content: message,
-  };
-  const sendMessage = () => {
-    console.log("post", message);
-    fetch(`${apiUrl}/messages`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Token ${user.token}`,
-      },
-      body: JSON.stringify(messageContent),
-    })
-      .then((messages) => {
-        console.log("new message", messages);
-        setTrigger((x) => !x);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    setSmShow(true);
-  };
+  if(loading){
+    return <Spinner/>
+  }
 
   return (
     <div className="contactscreen">
       <h3>Contact</h3>
       <br></br>
-      <h3>Have questions? Email {singleSitter.first_name}</h3>
+      <h3>Have questions? Email {sitter.first_name}</h3>
       <br></br>
       <h6>Email: </h6>
-     <h5> {singleSitter.post_owner.email}</h5>
-      {/* <div className="area">
-        <textarea
-          onChange={(e) => setMessage(e.target.value)}
-          className="area"
-          value={message}
-          rows="10"
-          cols="10"
-        />
-      </div> */}
-      {/* <Button onClick={sendMessage} variant="light">
-        Send message
-      </Button>
-      <Modal
-        size="sm"
-        show={smShow}
-        onHide={() => setSmShow(false)}
-        aria-labelledby="example-modal-sizes-title-sm"
-      >
-        <Modal.Header>
-          <Modal.Title id="example-modal-sizes-title-sm">
-            Message sent
-          </Modal.Title>
-        </Modal.Header>
-        <Link to={`/sitterlisting/${id}`}>
-          <Button className="contact_button" variant="danger">
-            close
-          </Button>
-        </Link>
-      </Modal> */}
+     <h5> {email}</h5>
+
     </div>
   );
 }

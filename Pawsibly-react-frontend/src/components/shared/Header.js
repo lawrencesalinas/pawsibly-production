@@ -64,6 +64,10 @@ const Header = ({ user }) => (
 		</Navbar.Collapse>
 	</Navbar>
 
+
+  
+
 )
 
 export default Header
+

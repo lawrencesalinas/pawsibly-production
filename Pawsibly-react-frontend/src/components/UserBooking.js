@@ -38,11 +38,11 @@ return `${newDateFormat[0]} ${newDateFormat[2]} ${newDateFormat[1]}`
       {userBooking.map((bookingListings) => {
         return   <div className= "container small">
         <div className="row center-cols justify-center"> 
-            <Row clasName="small center-align"> 
+            <Row className="small center-align"> 
                 <div className="col s6 offset-s3">
                         <Card className='card' 
                             actions={[
-                                <a key="1" href="#">Back To Top</a>
+                                <a key="1" href="/#">Back To Top</a>
                             ]}
                             closeIcon={<Icon>close</Icon>}
                             header={<CardTitle image={bookingListings.sitter.image}/>}

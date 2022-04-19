@@ -3,7 +3,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.exceptions import PermissionDenied
 from rest_framework import generics, status
 from django.shortcuts import get_object_or_404
-from ..serializers import BookingSerializer
+from ..serializers import BookingSerializer, BookingPostSerializer
+
 from ..models.Booking import Booking
 
 monthly_challenges = {
@@ -47,11 +48,8 @@ class Bookings(generics.ListCreateAPIView):
         # end_date = data['end_date'][0:10]
         # new_data = {'pet_owner':pet_owner , 'start_date': start_date, 'end_date': end_date, 'sitter': sitter}
         
-        print(start_date)
-        
-        
-        
-        booking = BookingSerializer(data=request.data)
+        # print(start_date)
+        booking = BookingPostSerializer(data=request.data)
         # If the review data is valid according to our serializer...
         if booking.is_valid():
             # Save the created booking & send a response

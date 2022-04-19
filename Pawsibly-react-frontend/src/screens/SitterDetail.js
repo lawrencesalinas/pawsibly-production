@@ -55,7 +55,7 @@ export default function SitterDetail({ user }) {
         </Row>
         <hr></hr>
         <Row>
-          <Col md={8} lg={8} className="mt-5">
+          <Col xs={12} sm={12} md={8} lg={8} className="mt-5">
             <h2>About</h2>
             <p> {sitter.description}</p>
           </Col>

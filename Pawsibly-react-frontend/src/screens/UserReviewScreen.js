@@ -27,7 +27,7 @@ function UserReviewScreen({ user }) {
                     <Card
                       className="card"
                       actions={[
-                        <a key="1" href="#">
+                        <a key="1" href="/#">
                           Back To Top
                         </a>,
                       ]}

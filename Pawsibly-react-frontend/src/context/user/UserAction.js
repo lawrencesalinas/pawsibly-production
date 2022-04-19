@@ -10,7 +10,7 @@ export const fetchWithAuth = (endpoint, setState, item, user) => {
           Authorization: `Token ${user.token}`,
         },
       });
-      console.log("apicall", data);
+    //   console.log("apicall", data);
       setState(data[item]);
     } catch (error) {
       console.log(error);
@@ -24,7 +24,7 @@ export const fetchNoAuth = (endpoint, setState, item) => {
   async function fetchData() {
     try {
       const { data } = await axios.get(`${apiUrl}/${endpoint}`);
-      console.log(data);
+    //   console.log(data);
       setState(data[item]);
     } catch (error) {
       console.log(error);

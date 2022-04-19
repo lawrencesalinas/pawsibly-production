@@ -18,10 +18,10 @@ export default function PetDetailScreen(props) {
         },
       })
         .then((foundPet) => {
-          console.log("pet", foundPet);
+          // console.log("pet", foundPet);
           setNewPetName(foundPet?.data?.pet?.name);
           setPetId(foundPet?.data?.pet?.id);
-          console.log("all", foundPet);
+          // console.log("all", foundPet);
         })
         .catch((err) => {
           console.log(err);
@@ -45,7 +45,7 @@ export default function PetDetailScreen(props) {
       body: JSON.stringify(newData),
     })
       .then((foundPet) => {
-        console.log("pet edited", foundPet);
+        // console.log("pet edited", foundPet);
 
         props.setTrigger((x) => !x);
       })

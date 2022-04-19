@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
+import { Container } from 'react-bootstrap'
 import { v4 as uuid } from "uuid";
 import { SitterProvider } from "./context/sitter/SitterContext";
 import { UserProvider } from "./context/user/UserContext";
@@ -46,15 +47,19 @@ const App = () => {
 
 
   return (
+    
     <UserProvider>
     <SitterProvider>
       <Header user={user} />
+      <main className="py-1">
+      <Container>
       <Routes>
         <Route path="/" element={<HomeScreen msgAlert={msgAlert}  user={user} />}/>
         <Route path="/sign-up" element={<SignUp msgAlert={msgAlert} setUser={setUser} />}/>
         <Route path="/sign-in" element={<SignIn msgAlert={msgAlert} setUser={setUser} />}/>
         <Route path='/searchpage/:url' element={<SearchPage  user={user} /> } />
         <Route path="/sitterlisting/:id" element={<SitterDetail user={user}/>}    />
+        <Route path='/contact/:id' element={<ContactScreen  user={user} />}/>
 
         {/* user routes */}
         <Route path="/profile" element={<RequireAuth user={user}><ProfileScreen user={user} /></RequireAuth>}/>
@@ -66,9 +71,12 @@ const App = () => {
         <Route path='/myreviews' element={<RequireAuth user={user}><UserReviewScreen  user={user} /></RequireAuth>}/>
         <Route path='/hostapet' element={<RequireAuth user={user}><HostAPetScreen  user={user} /></RequireAuth>}/>
         <Route path='/editlisting/' element={<RequireAuth user={user}><EditListingScreen user={user} /></RequireAuth>}/>
-        <Route path='/contact/:id' element={<RequireAuth user={user}><ContactScreen  user={user} /></RequireAuth>}/>
+
 
       </Routes>
+
+      </Container>
+      </main>
       {msgAlerts.map((msgAlert) => (
         <AutoDismissAlert
           key={msgAlert.id}

@@ -128,6 +128,11 @@ class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
         fields = '__all__'
+        
+class BookingPostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Booking
+        fields = ('start_date', 'end_date', 'sitter', 'pet_owner')
 
 
 class ReviewPostSerializer(serializers.ModelSerializer):

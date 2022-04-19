@@ -52,21 +52,6 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
         # Run the data through the serializer so it's formatted
         data = UserReadSerializer(user).data
         return Response({ 'user': data })
-
-
-    # def post(self, request):
-    #     """Create request"""
-    #     # Add user to request data object
-    #     request.data['pet']['owner'] = request.user.id
-    #     # Serialize/create pet
-    #     pet = PetSerializer(data=request.data['pet'])
-    #     # If the pet data is valid according to our serializer...
-    #     if pet.is_valid():
-    #         # Save the created pet & send a response
-    #         pet.save()
-    #         return Response({ 'pet': pet.data }, status=status.HTTP_201_CREATED)
-    #     # If the data is not valid, return a response with the errors
-    #     return Response(pet.errors, status=status.HTTP_400_BAD_REQUEST)
         
 
 class SignUp(generics.CreateAPIView):

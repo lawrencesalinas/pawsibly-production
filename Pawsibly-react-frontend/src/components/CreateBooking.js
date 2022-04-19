@@ -49,7 +49,6 @@ export default function CreateBooking({user}) {
       body: JSON.stringify(booking),
     })
       .then((createdBooking) => {
-        console.log("new booking added", createdBooking);
         // navigate('/mybookings')
       })
       .catch((error) => {
@@ -61,9 +60,9 @@ export default function CreateBooking({user}) {
   }
   return (
     <Container>
-    <div className="createbooking col text-center">
+    <div className="createbooking">
       <Row>
-    <Col>
+    <Col sm={12}>
       <DateRange
         className="datepicker"
         ranges={[selectionRange]}

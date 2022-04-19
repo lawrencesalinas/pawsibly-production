@@ -3,6 +3,10 @@
     max-width: 100vw;
 }
 
+.searchbar{
+    text-align: center;
+}
+
 #ip2 {
     border-radius: 25px;
     border: 2px solid lightgray;
@@ -11,10 +15,6 @@
     height: 15px;    
 }
 
-
-/* .sitters{
-   
-} */
 
 .explore{
     margin-top: 2%;

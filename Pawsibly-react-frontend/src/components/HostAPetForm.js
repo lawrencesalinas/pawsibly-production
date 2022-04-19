@@ -103,7 +103,7 @@ export default function HostAPetForm({user,setTrigger}) {
         <br />
 
         <label>Description</label>
-        <textArea
+        <textarea
           className="input"
           type="text"
           required

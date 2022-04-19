@@ -124,7 +124,7 @@ export default function ProfileScreen({ user }) {
           </div>
         </Col>
 
-        <Col clasName="ml-6" md={4}>
+        <Col className="ml-6" md={4}>
           <i className="fas fa-paw paw fa-10x"></i>
         </Col>
       </Row>

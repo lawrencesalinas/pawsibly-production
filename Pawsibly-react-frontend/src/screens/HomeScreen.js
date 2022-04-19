@@ -31,12 +31,12 @@ const HomeScreen = () => {
   return (
     <>
       <div className="section white">
-        <div className="row container" class="center-align">
+        <div className='searchbar'>
           <h4 className="header" >
             Find local pet sitters near you
           </h4>
 
-          <input type="text" id="ip2" placeholder="Search sitter by zipcode or city" value={search} onChange={(e) => setSearch(e.target.value)} required />
+          <input type="text" id="ip2" placeholder="Search by zipcode or city" value={search} onChange={(e) => setSearch(e.target.value)} required />
 
           <Link to={`/searchpage/${search}`}>
             <button className="btn-floating btn-large waves-effect waves-light red accent-2"><i className="material-icons">send</i></button>
@@ -67,32 +67,29 @@ const HomeScreen = () => {
           }}
         />
         <div className="section white">
-          <div className="row container" class="center-align">
+          <div className="searchbar" >
             <h2 className="header">
               Search for a nearby sitter
             </h2>
             <p className="grey-text text-darken-3 lighten-3">
               With Pawsibly, your pet stays in a sitter's home, whether you're traveling for a few days or just out for the day. Here's how it works.
             </p>
-            <div class="row" style={{ marginTop: '50px' }}>
-              <div class="col s4">
+            <div className="row" style={{ marginTop: '50px' }}>
+              <div className="col s4">
                 {/* Promo Content 1 goes here */}
-                <i class="large material-icons">search</i>
+                <i className="large material-icons">search</i>
                 <h3>1. Find a sitter near you</h3>
               </div>
-              <div class="col s4">
+              <div className="col s4">
                 {/* Promo Content 2 goes here */}
-                <i class="large material-icons">schedule</i>
+                <i className="large material-icons">schedule</i>
                 <h3>2. Schedule a booking</h3>
               </div>
-              <div class="col s4">
+              <div className="col s4">
                 {/* Promo Content 3 goes here  */}
-                <i class="large material-icons">comment</i>
+                <i className="large material-icons">comment</i>
                 <h3>3. Leave a review</h3>
-
-
               </div>
-
             </div>
           </div>
         </div>

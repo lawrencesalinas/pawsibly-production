@@ -17,6 +17,7 @@
 }
 
 .reviewbox {
+  text-align: center;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
@@ -25,19 +26,27 @@
   align-items: center;
 }
 
+.contact_button{
+  margin-top: 2%;
+  margin-left: 28%;
+
+}
 
 
 @media screen and (min-width: 1280px) {
   .contact_button{
-    margin-left: 26%;
+    margin-left: 37%;
+    width: 150px;
   }  
+}
+
+@media screen and (max-width: 480px) {
+    .contact_button{
+      margin-left:8%;
+    }  
 
 }
-.contact_button{
-  margin-top: 2%;
-  margin-left: 23%;
 
-}
 
 .sitterimage{
   margin-left: 2%;
