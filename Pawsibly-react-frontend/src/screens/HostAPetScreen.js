@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import HostAPetForm from "../components/HostAPetForm";
 import apiUrl from "../apiConfig";
 import axios from "axios";
-import FormContainer from "../components/FormContainer";
+import FormContainer from "../components/shared/FormContainer";
 import AllSitter from "../components/AllSitters";
 import "./css/HostAPetScreen.css";
 import { Link } from "react-router-dom";
@@ -35,10 +35,8 @@ function HostAPetScreen({  user }) {
         Authorization: `Token ${user.token}`,
       },
     })
-      .then((foundPet) => {
-        console.log("pet deleted");
+      .then((foundData) => {
         setTrigger((x) => !x);
-
       })
       .catch((err) => {
         console.log(err);

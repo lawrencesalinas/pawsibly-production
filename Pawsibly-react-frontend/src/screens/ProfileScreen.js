@@ -57,7 +57,7 @@ export default function ProfileScreen({ user }) {
   return (
     <div className="profile">
       <Row>
-        <Col md={3}>
+        <Col md={3} sm={12} xs={12}>
           <Card>
             <Image src={userData.image} fluid />
             <Button variant="success" onClick={handleShow}>
@@ -108,17 +108,16 @@ export default function ProfileScreen({ user }) {
                   <Button variant="warning">My Pets</Button>
                 </Link>
               </Col>
+              <Col md={6}>
+                <Link to={`/change-password/`}>
+                  <Button variant="warning">Change Pw</Button>
+                </Link>
+              </Col>
             </Row>
             <Row className="profilescreen_buttons">
               <Col md={6}>
                 <Link className="link" to={`/mybookings`}>
                   <Button variant="warning">My Bookings</Button>
-                </Link>
-              </Col>
-
-              <Col md={6}>
-                <Link to={`/change-password/`}>
-                  <Button variant="warning">Change Pw</Button>
                 </Link>
               </Col>
             </Row>

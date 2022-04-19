@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import AllSitters from "../components/AllSitters";
-import { Icon, Parallax, } from "react-materialize";
-import { Form, Button, Row, Col } from 'react-bootstrap'
+import {  Parallax, } from "react-materialize";
+import { Row, Col } from 'react-bootstrap'
 import './css/HomeScreen.css'
 import { Link } from 'react-router-dom'
 import SitterContext from "../context/sitter/SitterContext";
@@ -19,7 +19,7 @@ const HomeScreen = () => {
       dispatch({ type: 'GET_SITTERS', payload: sittersData })
     }
     getAllSitters()
-  }, [])
+  }, [dispatch])
 
   // const [searchResults, setSearchResults] = useState([]);
   const sliceSitters = sitters.slice(-3)

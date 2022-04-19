@@ -1,6 +1,6 @@
 import React, { useEffect, useState,useContext } from "react";
 import apiUrl from "../apiConfig";
-import FormContainer from "../components/FormContainer";
+import FormContainer from "../components/shared/FormContainer";
 import { Button } from 'react-bootstrap'
 import './css/HostAPetScreen.css'
 import {useNavigate} from 'react-router-dom'
@@ -32,9 +32,6 @@ function EditListingScreen({user}) {
       })
       const oldTitle = userData.post_owned.map(data=> {
         return data.title
-      })
-      const oldLastName = userData.post_owned.map(data=> {
-        return data.last_name
       })
       const oldZipCode = userData.post_owned.map(data=> {
         return data.zipcode

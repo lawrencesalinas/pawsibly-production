@@ -35,7 +35,7 @@ function CreateReview({ user, setTrigger }) {
       review: review,
       rating: rating,
     };
-    console.log(sitterReview);
+    // console.log(sitterReview);
     fetch(`${apiUrl}/reviews`, {
       method: "POST",
       headers: {
@@ -46,7 +46,7 @@ function CreateReview({ user, setTrigger }) {
     })
       .then((createdReview) => {
         setTrigger((x) => !x);
-        console.log("new review added", createdReview);
+        // console.log("new review added", createdReview);
         handleClose(true);
       })
       .catch((error) => {

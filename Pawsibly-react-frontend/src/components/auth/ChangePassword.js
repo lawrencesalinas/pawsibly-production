@@ -17,7 +17,7 @@ const ChangePassword = (props) => {
 		event.preventDefault()
 
 		const { msgAlert, user } = props
-        console.log('the user', user)
+        // console.log('the user', user)
         
 
         const passwords = {oldPassword, newPassword}

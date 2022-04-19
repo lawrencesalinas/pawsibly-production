@@ -6,7 +6,7 @@ import { Image } from 'react-bootstrap'
 import apiUrl from "../apiConfig";
 
 function UsersPets(props) {
-    console.log("hello", props);
+    // console.log("hello", props);
   props.myPets.map((pet) => {
     return (
       <Link key={pet.id} to={`/pets/${pet.id}`}>
@@ -24,7 +24,7 @@ function UsersPets(props) {
       },
     })
       .then((foundPet) => {
-        console.log("pet deleted");
+        // console.log("pet deleted");
         props.setTrigger((x) => !x);
       })
       .catch((err) => {

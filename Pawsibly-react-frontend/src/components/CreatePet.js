@@ -26,7 +26,7 @@ export default function PetForm(props) {
       body: uploadData,
     })
       .then((res) => {
-        console.log("new pet added", res);
+        // console.log("new pet added", res);
         props.setTrigger((x) => !x);
       })
       // useNavigate(-1)

@@ -1,7 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { Container, TextInput } from "react-materialize";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Modal, Button } from "react-bootstrap";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import apiUrl from "../apiConfig";
 import "./css/ContactScreen.css";
 
@@ -19,6 +21,7 @@ function ContactScreen({ user, setTrigger }) {
     }
     fetchData();
   }, [id]);
+  console.log("hhh", singleSitter);
 
 
   const messageContent = {

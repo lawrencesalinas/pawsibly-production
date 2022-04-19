@@ -2,6 +2,7 @@ import React from "react";
 import { CardTitle, Card, Icon, Row } from "react-materialize";
 import { Link } from "react-router-dom";
 
+
 function UserBooking({ userBooking }) {
 
  const months = {
@@ -35,7 +36,6 @@ return `${newDateFormat[0]} ${newDateFormat[2]} ${newDateFormat[1]}`
   return (
     <div>
       {userBooking.map((bookingListings) => {
-        console.log("all listing b", bookingListings);
         return   <div className= "container small">
         <div className="row center-cols justify-center"> 
             <Row clasName="small center-align"> 

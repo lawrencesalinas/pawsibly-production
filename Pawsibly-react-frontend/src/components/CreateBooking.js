@@ -5,6 +5,7 @@ import "react-date-range/dist/theme/default.css";
 import { DateRange } from "react-date-range";
 import { Row, Col, Button, Container, Modal} from 'react-bootstrap'
 import "./css/CreateBooking.css";
+import apiUrl from "../apiConfig";
 
 export default function CreateBooking({user}) {
   // console.log("this is props for sitter booking", props);
@@ -22,8 +23,8 @@ export default function CreateBooking({user}) {
   const handleDate = (ranges) => {
     setStartDate(ranges.selection.startDate);
     setEndDate(ranges.selection.endDate);
-    console.log(startDate);
-    console.log('end',endDate);
+    // console.log(startDate);
+    // console.log('end',endDate);
   }
   
 
@@ -36,10 +37,10 @@ export default function CreateBooking({user}) {
       pet_owner: user.id,
       start_date: startDate,
       end_date: endDate,
-      sitter: `${id}`
+      sitter: id
     };
-
-    fetch(`http://localhost:8000/bookings`, {
+    console.log(booking);
+    fetch(`${apiUrl}/bookings`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -49,7 +50,7 @@ export default function CreateBooking({user}) {
     })
       .then((createdBooking) => {
         console.log("new booking added", createdBooking);
-        navigate('/bookings')
+        // navigate('/mybookings')
       })
       .catch((error) => {
         console.log(error);

@@ -18,7 +18,7 @@ function UserReviewScreen({ user }) {
       <h4 className="center">These are the reviews I posted:</h4>
       <div>
         {reviewList.map((reviewListing) => {
-          console.log("rev", reviewListing);
+      
           return (
             <div className="container small">
               <div className="row center-cols justify-center">

@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
 import './css/Header.css'
 const linkStyle = {
     color: 'white',
-    textDecoration: 'none'
+    textDecoration: 'none',
+	marginLeft:'10px'
 }
 
 
@@ -48,7 +48,7 @@ const Header = ({ user }) => (
 	<Navbar className="header" bg='warning' variant='dark' expand='md' >
 		<Navbar.Brand>
 	
-            <Link to='/' style={linkStyle} style={{'marginLeft':'10px', 'textDecoration':'none'}}>
+            <Link to='/' style={linkStyle} >
                 <h1 className="title"><i id="paws" class ="fas fa-paw fa-sm"></i>Pawsibly</h1>
             </Link>
         </Navbar.Brand>

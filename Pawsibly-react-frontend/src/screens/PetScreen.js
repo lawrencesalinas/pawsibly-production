@@ -22,7 +22,7 @@ function PetScreen(props) {
     fetchPets();
           // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [trigger]);
-console.log('MYpets', userPets);
+
   return (
     <div className="pet_screen">
 <UsersPets
