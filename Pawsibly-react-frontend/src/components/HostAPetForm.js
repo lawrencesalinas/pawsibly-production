@@ -1,20 +1,18 @@
-import { Button, Modal } from "react-bootstrap";
-import { useState, useEffect } from "react";
+import { Button} from "react-bootstrap";
+import {useState} from "react";
 import apiUrl from "../apiConfig";
-import FormContainer from "./FormContainer";
 import { useNavigate } from "react-router-dom";
 
-export default function HostAPetForm(props) {
+export default function HostAPetForm({user,setTrigger}) {
 
   const [title, setTitle] = useState("");
-  const [firstName, setfirstName] = useState(props.user.first_name);
-  const [lastName, setLastName] = useState("");
+  const [firstName, setfirstName] = useState(user.first_name);
   const [zipCode, setZipCode] = useState("");
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
   const [city, setCity] = useState("");
   const [image, setImage] = useState();
-  const post_owner = props.user.id
+  const post_owner = user.id
 
   const navigate = useNavigate()
   
@@ -32,19 +30,14 @@ export default function HostAPetForm(props) {
     fetch(`${apiUrl}/sitters`, {
       method: "POST",
       headers: {
-        Authorization: `Token ${props.user.token}`,
+        Authorization: `Token ${user.token}`,
       },
       body: uploadData,
     })
       .then((res) => {
-        console.log("new pet added", res);
-        props.setUserTrigger((x) => !x);
-        props.setTrigger((x) => !x);
-
-
+        setTrigger((x) => !x);
         navigate('/')
       })
-      // useNavigate(-1)
       .catch((error) => {
         console.log(error);
       });

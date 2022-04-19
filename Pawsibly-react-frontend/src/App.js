@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { v4 as uuid } from "uuid";
-import axios from "axios";
-import apiUrl from "./apiConfig";
 import { SitterProvider } from "./context/sitter/SitterContext";
-
-// import AuthenticatedRoute from './components/shared/AuthenticatedRoute'
+import { UserProvider } from "./context/user/UserContext";
 import AutoDismissAlert from "./components/shared/AutoDismissAlert/AutoDismissAlert";
 import Header from "./components/shared/Header";
 import RequireAuth from "./components/shared/RequireAuth";
@@ -19,30 +16,19 @@ import PetDetailScreen from "./screens/PetDetailScreen";
 import SitterDetail from "./screens/SitterDetail";
 import PetScreen from "./screens/PetScreen";
 import Footer from "./components/shared/Footer";
-import CreateReview from "./components/CreateReview";
 import MyBookingScreen from "./screens/MyBookingScreen";
 import UserReviewScreen from "./screens/UserReviewScreen";
 import HostAPetScreen from "./screens/HostAPetScreen"
 import ContactScreen from "./screens/ContactScreen";
-import MessagesScreen from "./screens/MessagesScreen";
-import SearchResult from "./components/SearchResult";
 import SearchPage from "./screens/SearchPage";
-import UserListingScreen from "./screens/UserListingScreen";
-import { fetchWithAuth } from "./api/fetch";
 import EditListingScreen from "./screens/EditListingScreen";
-import { UserProvider } from "./context/user/UserContext";
+
 
 const App = () => {
   const [user, setUser] = useState(null)
   const [msgAlerts, setMsgAlerts] = useState([]);
-  const [sitters, setSitters] = useState([]);
-  const [trigger, setTrigger] = useState(false)
-  const [userData, setUserData] =useState ([])
-  const [userTrigger, setUserTrigger] = useState(false)
-  const [postId, setPostId]= useState('')
 
   const clearUser = () => {
-    console.log("clear user ran");
     setUser(null);
   };
   const deleteAlert = (id) => {
@@ -59,32 +45,6 @@ const App = () => {
   };
 
 
-
-
-
-  useEffect(() => {
-  async function fetchData() {
-    try {
-      const { data } = await axios.get(`${apiUrl}/profile`, {
-        headers: {
-          Authorization: `Token ${user.token}`,
-        },
-      });
-      console.log('apicall',data);
-      setUserData(data.user)
-      console.log(userData);
-      setPostId(userData.post_owned?userData.post_owned.map(data=>{
-return data[0].id
-      }):postId)
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  fetchData();
-}, [user, userTrigger]);
-  
-
-
   return (
     <UserProvider>
     <SitterProvider>
@@ -92,10 +52,9 @@ return data[0].id
       <Routes>
         <Route path="/" element={<HomeScreen msgAlert={msgAlert}  user={user} />}/>
         <Route path="/sign-up" element={<SignUp msgAlert={msgAlert} setUser={setUser} />}/>
-        <Route path="/sign-in" element={<SignIn msgAlert={msgAlert} userTrigger={userTrigger} setUser={setUser} />}/>
+        <Route path="/sign-in" element={<SignIn msgAlert={msgAlert} setUser={setUser} />}/>
         <Route path='/searchpage/:url' element={<SearchPage  user={user} /> } />
         <Route path="/sitterlisting/:id" element={<SitterDetail user={user}/>}    />
-        <Route path="/sitterlisting/:id" element={<CreateReview user={user}/>}    />
 
         {/* user routes */}
         <Route path="/profile" element={<RequireAuth user={user}><ProfileScreen user={user} /></RequireAuth>}/>
@@ -105,13 +64,10 @@ return data[0].id
         <Route path="/change-password" element={<RequireAuth user={user}><ChangePassword msgAlert={msgAlert} user={user} /></RequireAuth>}/>
         <Route path='/mybookings' element={<RequireAuth user={user}><MyBookingScreen user={user} /></RequireAuth>}/>
         <Route path='/myreviews' element={<RequireAuth user={user}><UserReviewScreen  user={user} /></RequireAuth>}/>
-
-        <Route path='/hostapet' element={<RequireAuth user={user}><HostAPetScreen userData={userData} id={postId} setUserTrigger={setUserTrigger}  setTrigger={setTrigger} user={user} /></RequireAuth>}/>
-        <Route path='/mylisting/'element={<RequireAuth user={user}><UserListingScreen  setUserTrigger={setUserTrigger}  setTrigger={setTrigger} userData={userData}user={user} /></RequireAuth>}/>
+        <Route path='/hostapet' element={<RequireAuth user={user}><HostAPetScreen  user={user} /></RequireAuth>}/>
+        <Route path='/editlisting/' element={<RequireAuth user={user}><EditListingScreen user={user} /></RequireAuth>}/>
         <Route path='/contact/:id' element={<RequireAuth user={user}><ContactScreen  user={user} /></RequireAuth>}/>
-        <Route path='/editlisting/' element={<RequireAuth user={user}><EditListingScreen setUserTrigger={setUserTrigger}  setTrigger={setTrigger} userData={userData}user={user} /></RequireAuth>}/>
 
-        <Route path='/messages/' element={<MessagesScreen  user={user} /> } />
       </Routes>
       {msgAlerts.map((msgAlert) => (
         <AutoDismissAlert

@@ -4,9 +4,6 @@ import apiUrl from "../apiConfig";
 import UsersPets from "../components/UsersPets";
 import CreatePet from '../components/CreatePet'
 import './css/PetScreen.css'
-import { fetchWithAuth } from "../api/fetch";
-
-
 
 function PetScreen(props) {
   const [userPets, setUserPets] = useState([]);
@@ -23,6 +20,7 @@ function PetScreen(props) {
       setUserPets(data.user.pets_owned);
     }
     fetchPets();
+          // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [trigger]);
 console.log('MYpets', userPets);
   return (

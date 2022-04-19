@@ -23,30 +23,15 @@ function UserBooking({ userBooking }) {
     let newDateFormat = []
     const monthSlice = date.slice(5,7)
     for (const key in months) {
-      if(months[key] == monthSlice){
+      if(months[key] === monthSlice){
          newDateFormat.push(key)
       }
     }
     newDateFormat.push(date.slice(0,4))
     newDateFormat.push(date.slice(8,10))
 return `${newDateFormat[0]} ${newDateFormat[2]} ${newDateFormat[1]}`
-  
+
   }
-  let string = '2022-01-04'
-  console.log('STRING',formatDate(string));
-  // let newString = string.slice(5,7)
-
-
-
-const sitterImages = (array => {
-  return array.map(data => {
-    console.log(data);
-  })
-})
-
-
-  // console.log('SLCEEEEE', sliceUserDates);
-  console.log(userBooking);
   return (
     <div>
       {userBooking.map((bookingListings) => {

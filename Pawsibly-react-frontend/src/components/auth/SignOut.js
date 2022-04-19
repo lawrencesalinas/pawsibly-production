@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 
 import {Button, ButtonGroup} from 'react-bootstrap'
 
-import { signOut } from '../../api/auth'
+import { signOut } from '../../context/user/UserAction';
 import messages from '../shared/AutoDismissAlert/messages'
 const divStyle = {
     height: '75vh'

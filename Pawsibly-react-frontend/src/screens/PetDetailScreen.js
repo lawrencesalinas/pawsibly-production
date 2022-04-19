@@ -4,8 +4,6 @@ import axios from "axios";
 import apiUrl from "../apiConfig";
 export default function PetDetailScreen(props) {
   //   console.log("user", props.user);
-
-  const [pet, setPet] = useState([]);
   const [newPetName, setNewPetName] = useState("");
   const [petId, setPetId] = useState();
   const { id } = useParams();
@@ -21,7 +19,6 @@ export default function PetDetailScreen(props) {
       })
         .then((foundPet) => {
           console.log("pet", foundPet);
-          setPet(foundPet);
           setNewPetName(foundPet?.data?.pet?.name);
           setPetId(foundPet?.data?.pet?.id);
           console.log("all", foundPet);
@@ -47,15 +44,6 @@ export default function PetDetailScreen(props) {
       },
       body: JSON.stringify(newData),
     })
-      //   .then(() => {
-      //     console.log("new pet added");
-
-      //     props.setTrigger((x) => !x);
-      //     // useNavigate(-1)
-      //   })
-      //   .catch((error) => {
-      //     console.log(error);
-      //   })
       .then((foundPet) => {
         console.log("pet edited", foundPet);
 
@@ -65,8 +53,6 @@ export default function PetDetailScreen(props) {
         console.log(err);
       });
   };
-
-  //<pre>{JSON.stringify(pet, null,2)}</pre>
   return (
     <div>
       <h2>Edit Pet details</h2>

@@ -10,6 +10,7 @@ import Spinner from "../components/shared/Spinner";
 
 const HomeScreen = () => {
   const { sitters, loading, dispatch } = useContext(SitterContext)
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     dispatch({ type: 'SET_LOADING' })
@@ -20,7 +21,6 @@ const HomeScreen = () => {
     getAllSitters()
   }, [])
 
-  const [search, setSearch] = useState("");
   // const [searchResults, setSearchResults] = useState([]);
   const sliceSitters = sitters.slice(-3)
 
@@ -39,7 +39,7 @@ const HomeScreen = () => {
           <input type="text" id="ip2" placeholder="Search sitter by zipcode or city" value={search} onChange={(e) => setSearch(e.target.value)} required />
 
           <Link to={`/searchpage/${search}`}>
-            <button class="btn-floating btn-large waves-effect waves-light red accent-2"><i class="material-icons">send</i></button>
+            <button className="btn-floating btn-large waves-effect waves-light red accent-2"><i className="material-icons">send</i></button>
           </Link>
 
           {/* used map to iterate info sitter array imported from sitters */}
@@ -103,11 +103,7 @@ const HomeScreen = () => {
           }}
         />
       </div>
-
-
     </>
-
-
   )
 }
 

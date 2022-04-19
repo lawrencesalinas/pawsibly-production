@@ -1,16 +1,29 @@
-import React, { useEffect, useState } from "react";
-import HostAPetForm from "../components/HostAPetForm";
+import React, { useEffect, useState,useContext } from "react";
 import apiUrl from "../apiConfig";
-import axios from "axios";
-import { fetchWithAuth } from "../api/fetch";
 import FormContainer from "../components/FormContainer";
-import AllSitter from "../components/AllSitters";
 import { Button } from 'react-bootstrap'
 import './css/HostAPetScreen.css'
-import {Link, useNavigate} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
+import { getUser } from "../context/user/UserAction";
+import UserContext from "../context/user/UserContext";
+import Spinner from "../components/shared/Spinner";
 
-function EditListingScreen({setTrigger, setUserTrigger, user, userData}) {
 
+function EditListingScreen({user}) {
+
+  const { userData, dispatch, loading } = useContext(UserContext);
+  const [trigger, setTrigger] = useState(false);
+  useEffect(() => {
+    dispatch({ type: "SET_LOADING" });
+    const getUserData = async () => {
+      const userData = await getUser(user);
+      dispatch({ type: "GET_USER", payload: userData });
+    };
+    getUserData();
+  }, [dispatch, user, trigger]);
+
+
+    // auto fill input with old data
     const id = userData.post_owned.map(data=> {
         return data.id.toString()
       })
@@ -41,13 +54,8 @@ function EditListingScreen({setTrigger, setUserTrigger, user, userData}) {
         return data.image
       })
 
-
-console.log(oldLastName);
-
-    
     const [title, setTitle] = useState(oldTitle);
     const [firstName, setfirstName] = useState(oldFirstName);
-    const [lastName, setLastName] = useState(oldLastName);
     const [zipCode, setZipCode] = useState(oldZipCode);
     const [price, setPrice] = useState(oldPrice);
     const [description, setDescription] = useState(oldDescription);
@@ -56,10 +64,7 @@ console.log(oldLastName);
     const post_owner = user.id
   
     const navigate = useNavigate()
-  
-  
-    // const sitter = {first_name:firstName, last_name:lastName, zipcode:zipCode, price:price, city:city, description:description}
-  
+    
     const editPost = (e) => {
       const uploadData = new FormData();
       uploadData.append("image", image);
@@ -78,12 +83,8 @@ console.log(oldLastName);
         },
         body: uploadData,
       })
-        .then((res) => {
-          console.log("new pet added", res);
-          setUserTrigger((x) => !x);
+        .then((res) => {  
           setTrigger((x) => !x);
-  
-  
           navigate('/')
         })
 
@@ -91,8 +92,10 @@ console.log(oldLastName);
           console.log(error);
         });
     };
-  
-  
+
+    if(loading){
+      return <Spinner/>
+    }
   
     return (
       <div>

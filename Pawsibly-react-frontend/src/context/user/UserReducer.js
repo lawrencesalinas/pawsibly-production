@@ -6,6 +6,12 @@ const userReducer = (state, action) => {
         userData: action.payload,
         loading: false
       };
+    case "GET_REVIEW":
+        return{
+            ...state,
+            reviewList: action.payload,
+            loading: false
+        }
     case "SET_LOADING":
       return {
         ...state,

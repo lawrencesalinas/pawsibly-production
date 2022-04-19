@@ -1,9 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { fetchWithAuth } from "../api/fetch";
-import { useParams } from "react-router-dom";
-import apiUrl from "../apiConfig";
-
+import { fetchWithAuth } from "../context/user/UserAction";
 import { Link } from "react-router-dom";
 import { CardTitle, Card, Icon, Row } from "react-materialize";
 import Rating from "../components/Rating";
@@ -12,12 +9,9 @@ function UserReviewScreen({ user }) {
   const [reviewList, setReviewList] = useState([]);
 
   useEffect(() => {
-    try {
-      fetchWithAuth("reviews", setReviewList, "reviews", user);
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
+    fetchWithAuth("reviews", setReviewList, "reviews", user);
+          // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
   return (
     <div>

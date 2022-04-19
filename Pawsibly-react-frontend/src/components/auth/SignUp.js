@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-
-import { signUp, signIn } from '../../api/auth'
+import { signUp, signIn } from '../../context/user/UserAction'
 import messages from '../shared/AutoDismissAlert/messages'
-
 import { Form, Button } from 'react-bootstrap'
 
 const divStyle = {

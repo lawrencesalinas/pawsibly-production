@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { changePassword } from '../../api/auth'
+import { changePassword } from '../../context/user/UserAction'
 import messages from '../shared/AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
