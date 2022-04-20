@@ -49,15 +49,12 @@ const Header = ({ user }) => (
 		<Navbar.Brand>
 	
             <Link to='/' style={linkStyle} >
-                <h1 className="title"><i id="paws" class ="fas fa-paw fa-sm"></i>Pawsibly</h1>
+                <h1 className="title"><i id="paws" className ="fas fa-paw fa-sm"></i>Pawsibly</h1>
             </Link>
         </Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
 		<Navbar.Collapse id='basic-navbar-nav'>
 			<Nav className='links'>
-				{/* {user && (
-					<span className='navbar-text mr-2'>Welcome, {user.first_name}</span>
-				)} */}
 				{alwaysOptions}
 				{user ? authenticatedOptions : unauthenticatedOptions}
 			</Nav>
