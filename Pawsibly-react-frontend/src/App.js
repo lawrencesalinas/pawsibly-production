@@ -23,6 +23,7 @@ import HostAPetScreen from "./screens/HostAPetScreen"
 import ContactScreen from "./screens/ContactScreen";
 import SearchPage from "./screens/SearchPage";
 import EditListingScreen from "./screens/EditListingScreen";
+import Nav from "./components/shared/Nav";
 
 
 const App = () => {
@@ -47,11 +48,11 @@ const App = () => {
 
 
   return (
-    
+    <>
     <UserProvider>
     <SitterProvider>
       <Header user={user} />
-      <main className="py-1">
+
       <Container>
       <Routes>
         <Route path="/" element={<HomeScreen msgAlert={msgAlert}  user={user} />}/>
@@ -76,7 +77,7 @@ const App = () => {
       </Routes>
 
       </Container>
-      </main>
+  
       {msgAlerts.map((msgAlert) => (
         <AutoDismissAlert
           key={msgAlert.id}
@@ -90,6 +91,7 @@ const App = () => {
       <Footer/>
     </SitterProvider>
     </UserProvider>
+    </>
   )
 }
 

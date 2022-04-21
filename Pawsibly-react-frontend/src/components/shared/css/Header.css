@@ -1,4 +1,6 @@
-
+.nav-wrapper{
+  background-color: #FFC107;
+}
 .links{
   margin-left:auto;
 }
@@ -23,3 +25,6 @@ margin-right: 5%;
 #paws:hover{
   color: white;
 }
+
+
+
