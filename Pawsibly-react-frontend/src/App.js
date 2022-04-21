@@ -23,7 +23,7 @@ import HostAPetScreen from "./screens/HostAPetScreen"
 import ContactScreen from "./screens/ContactScreen";
 import SearchPage from "./screens/SearchPage";
 import EditListingScreen from "./screens/EditListingScreen";
-import Nav from "./components/shared/Nav";
+
 
 
 const App = () => {
