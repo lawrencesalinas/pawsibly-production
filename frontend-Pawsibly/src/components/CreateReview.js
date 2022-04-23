@@ -37,22 +37,22 @@ function CreateReview({ user, setTrigger }) {
 
 
     // console.log(sitterReview);
-    // fetch(`${apiUrl}/reviews`, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Authorization: `Token ${user.token}`,
-    //   },
-    //   body: JSON.stringify(sitterReview),
-    // })
-    //   .then((createdReview) => {
-    //     setTrigger((x) => !x);
-    //     // console.log("new review added", createdReview);
-    //     handleClose(true);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+    fetch(`${apiUrl}/reviews`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Token ${user.token}`,
+      },
+      body: JSON.stringify(sitterReview),
+    })
+      .then((createdReview) => {
+        setTrigger((x) => !x);
+        // console.log("new review added", createdReview);
+        handleClose(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (

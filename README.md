@@ -68,9 +68,10 @@ ___
 ## Installation
 ---
 1. Fork and clone this [repository](https://github.com/lawrencesalinas/pawsibly-production) then run the following command in your terminal
-    * ```pip install``` on the root folder to install Django dependencies
+    * ```pip install``` on the root folder to install Django dependencies.
+    * run ```pipenv shell```  after installation to activate the project envorinment.
     * ```python manage.py runserver``` to start the server...
 2. Once the server is up and running, fork and clone this repository and run the following commands
     * cd into frontend-Pawsibly and run 
-    * ```npm install``` to install dependencies
-    *  ```npm start``` to launch the app in your browser
+    * ```npm install``` to install dependencies.
+    *  ```npm start``` to launch the app in your browser.
