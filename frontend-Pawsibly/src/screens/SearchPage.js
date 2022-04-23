@@ -1,6 +1,6 @@
 import { useEffect, useContext } from "react";
 import SitterContext from "../context/sitter/SitterContext";
-import { getSitters } from "../context/sitter/SitterAction";
+import { getSitters } from "../actions/SitterAction";
 import "./css/SearchPage.css";
 import { Button } from "@mui/material";
 import SearchResult from "../components/SearchResult";

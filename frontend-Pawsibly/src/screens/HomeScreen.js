@@ -5,7 +5,7 @@ import { Row, Col } from 'react-bootstrap'
 import './css/HomeScreen.css'
 import { Link } from 'react-router-dom'
 import SitterContext from "../context/sitter/SitterContext";
-import { getSitters } from "../context/sitter/SitterAction";
+import { getSitters } from "../actions/SitterAction";
 import Spinner from "../components/shared/Spinner";
 
 const HomeScreen = () => {

@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useContext } from "react";
 import { useParams} from "react-router-dom";
 import "./css/ContactScreen.css";
-import { getSitterAndReviews } from "../context/sitter/SitterAction";
+import { getSitterAndReviews } from "../actions/SitterAction";
 import SitterContext from "../context/sitter/SitterContext";
 import Spinner from "../components/shared/Spinner";
 function ContactScreen() {

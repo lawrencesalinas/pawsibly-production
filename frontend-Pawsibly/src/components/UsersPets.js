@@ -5,9 +5,9 @@ import './css/UserPets.css'
 import { Image } from 'react-bootstrap'
 import apiUrl from "../apiConfig";
 
-function UsersPets(props) {
-    // console.log("hello", props);
-  props.myPets.map((pet) => {
+function UsersPets({user, myPets, setTrigger}) {
+    // console.log("hello", ;
+  myPets.map((pet) => {
     return (
       <Link key={pet.id} to={`/pets/${pet.id}`}>
         {pet.name}
@@ -20,12 +20,12 @@ function UsersPets(props) {
       url: `${apiUrl}/pets/${id}`,
       method: "DELETE",
       headers: {
-        Authorization: `Token ${props.user.token}`,
+        Authorization: `Token ${user.token}`,
       },
     })
       .then((foundPet) => {
         // console.log("pet deleted");
-        props.setTrigger((x) => !x);
+        setTrigger((x) => !x);
       })
       .catch((err) => {
         console.log(err);
@@ -37,8 +37,8 @@ function UsersPets(props) {
     <div className="profilepets">
       <h1>My Pets</h1>
       <div className="profilepets_pet">
-        {props.myPets &&
-          props.myPets
+        {myPets &&
+          myPets
             .filter((x) => x.name !== null && x.name !== "")
             .map((pet) => (
               

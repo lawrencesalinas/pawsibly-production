@@ -8,7 +8,7 @@ import CreateBooking from "../components/CreateBooking";
 import "./css/SitterDetail.css";
 import CreateReview from "../components/CreateReview";
 import SitterContext from "../context/sitter/SitterContext";
-import { getSitterAndReviews } from "../context/sitter/SitterAction";
+import { getSitterAndReviews } from "../actions/SitterAction";
 import Spinner from "../components/shared/Spinner";
 
 export default function SitterDetail({ user }) {

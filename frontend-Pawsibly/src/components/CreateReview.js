@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
-import apiUrl from "../apiConfig";
 import "./css/CreateReview.css";
 
 function CreateReview({ user, setTrigger }) {
@@ -35,23 +34,25 @@ function CreateReview({ user, setTrigger }) {
       review: review,
       rating: rating,
     };
+
+
     // console.log(sitterReview);
-    fetch(`${apiUrl}/reviews`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Token ${user.token}`,
-      },
-      body: JSON.stringify(sitterReview),
-    })
-      .then((createdReview) => {
-        setTrigger((x) => !x);
-        // console.log("new review added", createdReview);
-        handleClose(true);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    // fetch(`${apiUrl}/reviews`, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Authorization: `Token ${user.token}`,
+    //   },
+    //   body: JSON.stringify(sitterReview),
+    // })
+    //   .then((createdReview) => {
+    //     setTrigger((x) => !x);
+    //     // console.log("new review added", createdReview);
+    //     handleClose(true);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   };
 
   return (

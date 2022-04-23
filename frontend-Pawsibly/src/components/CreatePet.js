@@ -3,7 +3,7 @@ import {  Button, Modal } from "react-bootstrap";
 import apiUrl from "../apiConfig";
 import './css/CreatePet.css'
 
-export default function PetForm(props) {
+export default function PetForm({user, setTrigger}) {
   // console.log('I AM USER',props);
   const [name, setName] = useState("");
   const [image, setImage] = useState();
@@ -16,18 +16,18 @@ export default function PetForm(props) {
     const uploadData = new FormData();
     uploadData.append("image", image);
     uploadData.append("name", name);
-    uploadData.append("pet_owner", props.user.id);
+    uploadData.append("pet_owner", user.id);
 
     fetch(`${apiUrl}/pets`, {
       method: "POST",
       headers: {
-        Authorization: `Token ${props.user.token}`,
+        Authorization: `Token ${user.token}`,
       },
       body: uploadData,
     })
       .then((res) => {
         // console.log("new pet added", res);
-        props.setTrigger((x) => !x);
+        setTrigger((x) => !x);
       })
       // useNavigate(-1)
       .catch((error) => {

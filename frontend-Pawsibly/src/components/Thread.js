@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import apiUrl from "../apiConfig";
 
-function Thread({ user, messagesData }) {
+function Thread({ user }) {
   const [messages, setMessages] = useState([]);
   const [writeMessages, setWriteMessages] = useState("");
   const [trigger, setTrigger] = useState(false);
