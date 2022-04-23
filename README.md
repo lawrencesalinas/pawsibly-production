@@ -1,15 +1,12 @@
 # Pawsibly
 ### https://pawsibly.herokuapp.com/
 
-## Pawsibly-frontend github
-### https://github.com/lawrencesalinas/pawsibly-production/tree/main/Pawsibly-react-frontend
-
 Finding someone to look after your pet can be challenging. Search for a local pet sitter with this app. <br>
 ___
 ![Screenshot](static/images/pawsibly_screenshot.png)
 ___
 ## Technical Requirements
-* Use Django, Flask, or Express
+* Use Django
 * Create an application using at least 2 related models
 * Include all major CRUD functions for at least one of your models
     * At least one PUT
@@ -70,8 +67,10 @@ ___
 
 ## Installation
 ---
-1. Fork and clone this [repository](https://github.com/kellylarrea/pawsibly-django) then run the following command in your terminal
+1. Fork and clone this [repository](https://github.com/lawrencesalinas/pawsibly-production) then run the following command in your terminal
+    * ```pip intall``` on the root folder to install Django dependencies
     * ```python manage.py runserver``` to start the server...
 2. Once the server is up and running, fork and clone this repository and run the following commands
+    * cd into frontend-Pawsibly and run 
     * ```npm install``` to install dependencies
     *  ```npm start``` to launch the app in your browser
