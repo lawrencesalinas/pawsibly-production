@@ -3,6 +3,9 @@ import { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
 import "./css/CreateReview.css";
+import Rating from "./Rating";
+import apiUrl from "../apiConfig";
+
 
 function CreateReview({ user, setTrigger }) {
   const [review, setReview] = useState("");
@@ -89,12 +92,13 @@ function CreateReview({ user, setTrigger }) {
         <br />
         <label>
           Rating(1-5)
-          <input
+          {/* <input
             required
             type="number"
             value={rating}
             onChange={handleChange}
-          />
+          /> */}
+          <Rating/>
         </label>
         <br />
         <Button onClick={() => createReview()}>Submit</Button>
