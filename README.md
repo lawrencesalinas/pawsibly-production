@@ -5,7 +5,7 @@ ___
 <p align="center">
   <img width="700" height="450" src="./build/static/images/gif.gif">
 </p>
-___
+
 
 ## Technologies
 ---
