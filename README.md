@@ -20,7 +20,7 @@ ___
 ## User flows
 ---
 As a user, I want to...<br>
-* find pet sitters by zipcode or city
+* find pet sitters by seatching zipcode or city
 * view a detailed page of a pet sitter's information(name, location, photos, contact information, rating and reviews)
 * log-in/sign up to create a listing to be a pet sitter
 * create a profile and upload my photo.
@@ -28,6 +28,7 @@ As a user, I want to...<br>
 * leave a review 
 * rate the service
 * have the option to be a sitter
+* use the app on my mobile device.
 
 
 ## Wireframes
