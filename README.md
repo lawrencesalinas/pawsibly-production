@@ -1,6 +1,7 @@
 # Pawsibly
 
-Finding someone to look after your pet can be challenging. Search for a local pet sitter with this app. <br>
+Finding someone to look after your pet can be challenging. Search for a local pet sitter with this app. 
+Pawsibly is a CRUD RESTful API application that utilizes the Django and React frameworks. Django handles the server, React to create the frontend of the application and  PostgresQL database hosted using AWS to save data.<br>
 ___
 <p align="center">
   <img width="700" height="450" src="./build/static/images/gif.gif">
@@ -9,10 +10,24 @@ ___
 
 ## Technologies
 ---
-* React
-* Django
+* React/Javascript
+* Django/Python
 * PostgresQL
 * Materialize
+* Bootstrap calendar
+* AWS
+
+## User flows
+---
+As a user, I want to...<br>
+* find pet sitters by zipcode or city
+* view a detailed page of a pet sitter's information(name, location, photos, contact information, rating and reviews)
+* log-in/sign up to create a listing to be a pet sitter
+* create a profile and upload my photo.
+* schedule a booking using a calendar interface
+* leave a review 
+* rate the service
+* have the option to be a sitter
 
 
 ## Wireframes
@@ -27,18 +42,6 @@ ___
 ---
 ![Trello](static/images/pawsibly_trello.png)
 
-
-## User flows
----
-As a user, I want to...<br>
-* find pet sitters by zipcode or city
-* view a detailed page of a pet sitter's information(name, location, photos, contact information, rating and reviews)
-* log-in/sign up to create a listing to be a pet sitter
-* create a profile and upload my photo.
-* schedule a booking using a calendar interface
-* leave a review 
-* rate the service
-* have the option to be a sitter
 
 ## Routes
 ___
