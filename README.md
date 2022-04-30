@@ -1,22 +1,11 @@
 # Pawsibly
-### https://pawsibly.herokuapp.com/
 
 Finding someone to look after your pet can be challenging. Search for a local pet sitter with this app. <br>
 ___
-![Screenshot](static/images/pawsibly_screenshot.png)
+<p align="center">
+  <img width="700" height="450" src="./build/static/images/gif.gif">
+</p>
 ___
-## Technical Requirements
-* Use Django
-* Create an application using at least 2 related models
-* Include all major CRUD functions for at least one of your models
-    * At least one PUT
-    * At least one DELETE
-    * At least one POST
-    * At least 2 GETs
-* Add authentication and authorization to restrict access to the appropriate users
-* Manage team contributions and collaboration using a standard Git flow on GitHub
-* Layout and style your front-end with clean and well-formatted CSS, with or without a framework
-* Deploy your application online so it's publicly accessible.
 
 ## Technologies
 ---
@@ -24,6 +13,7 @@ ___
 * Django
 * PostgresQL
 * Materialize
+
 
 ## Wireframes
 ---
@@ -38,13 +28,15 @@ ___
 ![Trello](static/images/pawsibly_trello.png)
 
 
-## User Stories
+## User flows
 ---
 As a user, I want to...<br>
-* be able to create an account
-* list my pets
-* schedule a booking
-* leave a review
+* find pet sitters by zipcode or city
+* view a detailed page of a pet sitter's information(name, location, photos, contact information, rating and reviews)
+* log-in/sign up to create a listing to be a pet sitter
+* create a profile and upload my photo.
+* schedule a booking using a calendar interface
+* leave a review 
 * rate the service
 * have the option to be a sitter
 
@@ -53,25 +45,47 @@ ___
 
 | Method | Path | Purpose |
 | ------ | -------------- | -------------------------------- |
-| GET | `/profile` | display profile page |
+| GET | `/` |Home page |
+| GET | `/searchpage/:url` | display results for seearched listings  |
 | GET | `/sitterlisting/id` | display sitter information |
-| POST | `/booking` | set up a booking |
-| PUT | `/pets/id` | edit a pet |
-| DELETE | `/profile` | delete a pet |
-| POST | `/booking/id/review` | create a review |
+| GET | `/profile` | display profile page |
+| GET | `/contact/:id` | display sitter contact page |
+| GET | `/mybookings` | user booking's page |
+| GET | `/myreviews` | user review's page |
+| GET | `/pets` | user pet's page |
+| POST | `/sign-in` | sign-in a user|
+| POST | `/sign-up` | sign-up a user to create an account|
+| POST | `/hostapet` |create a listing|
+| PUT | `/pets/id` | edit  pet information |
+| PUT | `/editlisting` | edit a listing|
+| PUT | `/change-password` | change a user's password|
+| DELETE | `/sign-out` | change a user's password|
+| DELETE | `/pets/id` | delete a user's pet|
+| DELETE | `/hostapet` | delete a user's listing|
+
 
 ## Entity Relationship Diagram
 ___
 
 ![ERD](static/images/pawsibly_erd.png)
 
-## Installation
+## Usage
 ---
 1. Fork and clone this [repository](https://github.com/lawrencesalinas/pawsibly-production) then run the following command in your terminal
     * ```pip install``` on the root folder to install Django dependencies.
     * run ```pipenv shell```  after installation to activate the project envorinment.
     * ```python manage.py runserver``` to start the server...
-2. Once the server is up and running, fork and clone this repository and run the following commands
+2. Once the server is up and running,  run the following commands
     * cd into frontend-Pawsibly and run 
     * ```npm install``` to install dependencies.
     *  ```npm start``` to launch the app in your browser.
+  
+
+## Cloud Deployment
+The app is deployed on Heroku and can be accessed [here](https://pawsibly.herokuapp.com/)
+
+## Contributors
+
+- [Lawrence Salinas](https://github.com/lawrencesalinas)
+- [Kely Larea](https://github.com/kellylarrea)
+- [Galyver Asi](https://github.com/galyverasi)

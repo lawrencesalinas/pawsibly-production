@@ -30,6 +30,11 @@ function CreateReview({ user, setTrigger }) {
       return setRating(e.target.value);
     }
   };
+
+  const handleRating = (e) => {
+    
+  }
+
   const createReview = () => {
     const sitterReview = {
       pet_owner: user.id,
@@ -86,7 +91,7 @@ function CreateReview({ user, setTrigger }) {
             className="area"
             value={review}
             rows="8"
-            cols="10"
+            cols="8"
           />
         </label>
         <br />
@@ -98,7 +103,9 @@ function CreateReview({ user, setTrigger }) {
             value={rating}
             onChange={handleChange}
           /> */}
-          <Rating/>
+          <Rating
+          value={handleRating}
+          />
         </label>
         <br />
         <Button onClick={() => createReview()}>Submit</Button>
