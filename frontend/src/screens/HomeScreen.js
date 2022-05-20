@@ -3,7 +3,7 @@ import AllSitters from "../components/AllSitters";
 import { Parallax } from "react-materialize";
 import { Row, Col } from "react-bootstrap";
 import "./css/HomeScreen.css";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import SitterContext from "../context/sitter/SitterContext";
 import { getSitters } from "../context/sitter/SitterAction";
 import Spinner from "../components/shared/Spinner";
@@ -21,8 +21,15 @@ const HomeScreen = () => {
     getAllSitters();
   }, [dispatch]);
 
+  const navigate = useNavigate();
+
   // const [searchResults, setSearchResults] = useState([]);
   const sliceSitters = sitters.slice(-3);
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    navigate(`/searchpage/${search}`);
+  };
 
   if (loading) {
     return <Spinner />;
@@ -33,21 +40,23 @@ const HomeScreen = () => {
       <div className="section white">
         <div className="searchbar" data-aos="fade-up" data-aos-delay="600">
           <h4 className="header">Find local pet sitters near you</h4>
+          <form onSubmit={onSubmit}>
+            <input
+              type="text"
+              id="ip2"
+              placeholder="Search by zipcode or city"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              required
+            />
 
-          <input
-            type="text"
-            id="ip2"
-            placeholder="Search by zipcode or city"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            required
-          />
-
-          <Link to={`/searchpage/${search}`}>
-            <button className="btn-floating btn-large waves-effect waves-light red accent-2">
+            <button
+              type="submit"
+              className="btn-floating btn-large waves-effect waves-light red accent-2"
+            >
               <i className="material-icons">send</i>
             </button>
-          </Link>
+          </form>
 
           {/* used map to iterate info sitter array imported from sitters */}
           <h4 className="explore">Explore </h4>

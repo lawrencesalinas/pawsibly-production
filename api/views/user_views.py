@@ -1,5 +1,6 @@
 
 
+from urllib import request
 from rest_framework import permissions
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
@@ -55,6 +56,7 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
         
 
 class SignUp(generics.CreateAPIView):
+   
     # Override the authentication/permissions classes so this endpoint
     # is not authenticated & we don't need any permissions to access it.
     authentication_classes = ()
