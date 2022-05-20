@@ -1,0 +1,52 @@
+.nav-wrapper{
+  background-color: #FFC107;
+  
+}
+
+
+nav a{
+  text-decoration: none;
+  color: white;
+}
+
+nav a:hover{
+  
+  color: white;
+}
+.links{
+  margin-left:auto;
+}
+
+.title{
+  display: flex;
+font-size: 1.3em;
+margin-left: 5%;
+
+}
+
+.pawsibly{
+  color: #ED6E73;
+  margin-top: 2%;
+  font-size: 1.1em;
+  font-family: 'Lilita One', cursive;
+}
+.pawsibly:hover{
+  color: white;
+}
+
+.title:hover{
+  color: #ED6E73;
+}
+
+#paws{
+font-size: 1.2em;
+color: #ED6E73;
+margin-right: 5%;
+}
+
+#paws:hover{
+  color: white;
+}
+
+
+

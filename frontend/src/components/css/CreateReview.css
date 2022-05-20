@@ -1,0 +1,16 @@
+.modal-content {
+    background-color: transparent !important;
+    border: 0px !important;
+  }
+
+  .modal-backdrop.in {
+    opacity: 0.9;
+}
+
+.area{
+  width:50vw;
+  height: 30vh;
+  margin-bottom: 2%;
+  }
+  
+  

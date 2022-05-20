@@ -1,0 +1,29 @@
+.profilepets{
+    margin-top: 4%;
+    text-align: center;
+}
+.profilepets_pet{
+    
+ text-align: center;
+display: flex;
+justify-content: space-evenly;
+flex-wrap: wrap;
+}
+
+.profilepets > h1{
+    margin-bottom: 4%;
+}
+
+.pet{
+width: 30%;
+}
+
+.image{
+    min-width: 350px;
+    min-height: 300px;
+ 
+    max-width: 450px;
+    max-height: 300px;
+ 
+}
+

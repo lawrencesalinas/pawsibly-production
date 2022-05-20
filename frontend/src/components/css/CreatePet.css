@@ -1,0 +1,52 @@
+.bone{
+    margin: 20px;
+    position: relative;
+    width: 150px;
+    height: 60px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+  }
+  .c1, .c2, .c3, .c4{
+    background:yellow;
+    height: 30px;
+    width: 30px;
+    border: 1px solid lightgray;
+    border-radius: 50%;
+    position:absolute;
+  }
+  .c1{
+    left: 0;
+    top: 0;
+  }
+  .c2{
+    right: 0;
+    top: 0;
+  }
+  .c3{
+    left: 0;
+    bottom: 0;
+  }
+  .c4{
+    bottom: 0;
+    right: 0;
+  }
+  .b1 {
+    background:yellow;
+    height: 30px;
+    width: 120px;
+    position:absolute;  
+    left: 15px;
+    top: 15px;
+  }
+  .b2 {
+    position: absolute;
+    left: 15px;
+    top: 0;
+    width: 90px;
+    height: 30px;
+    line-height: 30px;
+    border-top: 2px solid lightgray;
+    border-bottom: 2px solid lightgray;
+    text-align: center;
+  }

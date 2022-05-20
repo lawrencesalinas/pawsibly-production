@@ -1,0 +1,75 @@
+/* .allsitter :hover {
+  opacity: 0.8;
+} */
+
+/* .sitterimages {
+  min-height: 200px;
+  max-height: 200px;
+  max-width: 230px;
+  min-width: 230px;
+} */
+@import url("https://fonts.googleapis.com/css2?family=Chewy&family=Lilita+One&family=MedievalSharp&family=Montserrat&display=swap");
+
+.allsitter {
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 10px 10px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin-top: 15px;
+}
+
+.linkstyle {
+  text-decoration: none;
+  color: black;
+  outline: none;
+}
+.linkstyle:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.sitterListingImg {
+  margin-top: 20px;
+  max-width: 300px;
+  border-radius: 10px;
+}
+
+.sitterListingImg:hover {
+  opacity: 0.8;
+}
+
+.sitteriteminfo {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.location p {
+  margin: 0;
+}
+
+.ratinginfo {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+.ratinginfo p {
+  margin: 0;
+}
+
+/* Media Query: Table or Smaller */
+@media screen and (max-width: 1000px) {
+  .sitterListingImg {
+    margin-top: 20px;
+    max-width: 95%;
+    border-radius: 10px;
+  }
+}

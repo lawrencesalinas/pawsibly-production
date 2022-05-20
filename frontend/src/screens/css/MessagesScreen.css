@@ -1,0 +1,35 @@
+.messages_screen{
+   
+    width: 90vw;
+    margin-top:3%;
+    height: 100vh;
+}
+
+.messages_container{
+    border: black solid 2px;
+    height: 70vh;
+
+
+}
+.row1{
+    border: black 1px solid;
+}
+
+.col1{
+    border-right: black 2px solid;
+    padding: .8%;
+}
+
+.col1 > h4{
+    margin-left: 8%;
+}
+
+.row2{
+    height: 52vh;
+
+}
+
+.col3{
+    border: black 2px solid;
+    padding: .8%;
+}
