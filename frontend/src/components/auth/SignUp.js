@@ -53,7 +53,7 @@ const SignUp = (props) => {
   };
 
   return (
-    <div className="row" style={divStyle}>
+    <div className="row" style={divStyle} data-aos="zoom-in">
       <div className="col-sm-10 col-md-8 mx-auto mt-5">
         <h3>Sign Up</h3>
         <Form onSubmit={onSignUp}>

@@ -6,7 +6,7 @@ import Rating from "./Rating";
 // import reviewIcon from "@mui/icons-material/review";
 
 function SearchResult({
-    id,
+  id,
   img,
   location,
   title,
@@ -14,37 +14,36 @@ function SearchResult({
   review,
   price,
   total,
-  numReviews, 
-  zipcode
+  numReviews,
+  zipcode,
 }) {
   return (
     <Link className="links" to={`/sitterlisting/${id}`}>
-    <div className="searchResult">
-      
-      <img src={img} alt="" />
-      {/* <FavoriteBorderIcon className="searchResult_heart" /> */}
-      <div className="searchResult_info">
+      <div className="searchResult">
+        <img src={img} alt="" className="sitter-list-image" />
+        {/* <FavoriteBorderIcon className="searchResult_heart" /> */}
+        <div className="searchResult_info">
+          <div className="searchResult_infoTop">
+            <h2>{title}</h2>
+            <h3>
+              {location} {zipcode}
+            </h3>
+            <p className="line">_____</p>
+          </div>
 
-      <div className="searchResult_infoTop">
-        <h2>{title}</h2>
-        <h3>{location} {zipcode}</h3>
-        <p>_____</p>
-        <p>{description}</p>
-      </div>
+          <div className="searchResult_infoBottom">
+            <div className="searchResult_reviews">
+              <Rating value={review} color={"#f8e825"} />
+              {review} from ({numReviews} reviews)
+            </div>
 
-      <div className="searchResult_infoBottom">
-        <div className="searchResult_reviews">
-        <Rating value={review} color={"#f8e825"}/> 
-        {review} from ({numReviews} reviews)     
+            <div className="searchResults_price">
+              <h2>${price} / night</h2>
+              <p>${total} total</p>
+            </div>
+          </div>
         </div>
-
-        <div className="searchResults_price">
-          <h2>${price} / night</h2>
-          <p>${total} total</p>
-        </div>
       </div>
-    </div>
-    </div>
     </Link>
   );
 }
