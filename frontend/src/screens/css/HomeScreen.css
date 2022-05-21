@@ -1,5 +1,7 @@
 .HomeScreen {
-  width: 100%;
+  margin: 0;
+  padding: 0;
+  width: 95%;
   box-sizing: border-box;
 }
 
@@ -107,10 +109,13 @@
   }
   .team-container {
     display: flex;
+    width: 50px;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     text-align: center;
     margin: 50px 0 50px 0;
+    margin: 0 auto;
   }
 
   .team-item {

@@ -36,7 +36,7 @@ const HomeScreen = () => {
   }
 
   return (
-    <>
+    <div className="Homescreen">
       <div className="section white">
         <div className="searchbar" data-aos="fade-up" data-aos-delay="600">
           <h4 className="header">Find local pet sitters near you</h4>
@@ -222,7 +222,7 @@ const HomeScreen = () => {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 
