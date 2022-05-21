@@ -49,7 +49,7 @@ export default function SitterDetail({ user }) {
               {sitter.city} {sitter.zipcode}
             </h5>
           </div>
-          <img src={sitter.image} alt="sitter image" className="sitter-image" />
+          <img src={sitter.image} alt="sitter pic" className="sitter-image" />
         </div>
 
         {/* Book */}

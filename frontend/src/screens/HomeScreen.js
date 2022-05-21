@@ -139,7 +139,6 @@ const HomeScreen = () => {
           }}
         />
       </div>
-
       {/* About Section */}
       <div className="about-section">
         <div className="about-heading">
@@ -154,7 +153,6 @@ const HomeScreen = () => {
           </p>
         </div>
       </div>
-
       {/* Team Section */}
       <section>
         <div className="team-container">
