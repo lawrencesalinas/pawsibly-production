@@ -1,0 +1,84 @@
+.ticket {
+  margin-top: 30px;
+  min-height: 78vh;
+}
+
+.ticket-headings {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  background: #f4f4f4;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-align: center;
+  /* margin: 0 30px 20px 30px; */
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.ticket-headings {
+  font-weight: 700;
+}
+
+.booking-list {
+  display: flex;
+  flex-direction: column;
+}
+.review-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.book-item {
+  margin: 0 auto;
+  width: 90%;
+  background: #f4f4f4;
+  padding: 10px 15px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.review-item {
+  margin: 0 auto;
+  width: 90%;
+  background: #f4f4f4;
+  padding: 10px 15px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.data {
+  width: 150px;
+}
+
+.star {
+  width: 150px;
+}
+
+.drop {
+  position: relative;
+  width: 150px;
+  right: 30px;
+}
+
+.ratingnum {
+  position: relative;
+  left: 10px;
+}
+
+@media screen and (max-width: 1000px) {
+  .ratingnum {
+    width: 130px;
+    position: relative;
+
+    height: 20px;
+  }
+  .commentreview {
+    width: 120px;
+  }
+}

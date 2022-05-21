@@ -1,72 +1,55 @@
 import React from "react";
-import { CardTitle, Card, Icon, Row } from "react-materialize";
-import { Link } from "react-router-dom";
-
+import "./css/UserBooking.css";
 
 function UserBooking({ userBooking }) {
-
- const months = {
+  const months = {
     January: "01",
-    Febuary:  "02",
-    March:  "03",
-    April:  "04",
-    May:  "05",
-    June:  "06",
-    July:  "07",
+    Febuary: "02",
+    March: "03",
+    April: "04",
+    May: "05",
+    June: "06",
+    July: "07",
     August: "08",
     September: "09",
     October: "10",
     November: "11",
     December: "12",
-}
+  };
 
   let formatDate = (date) => {
-    let newDateFormat = []
-    const monthSlice = date.slice(5,7)
+    let newDateFormat = [];
+    const monthSlice = date.slice(5, 7);
     for (const key in months) {
-      if(months[key] === monthSlice){
-         newDateFormat.push(key)
+      if (months[key] === monthSlice) {
+        newDateFormat.push(key);
       }
     }
-    newDateFormat.push(date.slice(0,4))
-    newDateFormat.push(date.slice(8,10))
-return `${newDateFormat[0]} ${newDateFormat[2]} ${newDateFormat[1]}`
-
-  }
+    newDateFormat.push(date.slice(0, 4));
+    newDateFormat.push(date.slice(8, 10));
+    return `${newDateFormat[0]} ${newDateFormat[2]} ${newDateFormat[1]}`;
+  };
   return (
-    <div>
-      {userBooking.map((bookingListings) => {
-        return   <div className= "container small">
-        <div className="row center-cols justify-center"> 
-            <Row className="small center-align"> 
-                <div className="col s6 offset-s3">
-                        <Card className='card' 
-                            actions={[
-                                <a key="1" href="/#">Back To Top</a>
-                            ]}
-                            closeIcon={<Icon>close</Icon>}
-                            header={<CardTitle image={bookingListings.sitter.image}/>}
-                            title={bookingListings.sitter.first_name}
-                        >
-                            <div>
-                                <h6>Drop-off date:</h6> {formatDate(bookingListings.start_date)}
-                            </div>
-                            <div>
-                                <h6>Pick-up date:</h6> {formatDate(bookingListings.end_date)}
-                            </div>
-                            <div>
-                                Confirmation# {bookingListings.id}
-                            </div>
-                            <br></br>
-                            <Link
-                            to={`/sitterListing/${bookingListings.sitter.id}`}><h6>Go to {bookingListings.sitter.first_name} Page</h6></Link>
-                        </Card>
-                </div>
-            </Row>
-            
+    <div className="ticket" data-aos="zoom-in">
+      <h2 className="center-align">Bookings</h2>
+      <div className="ticket-headings">
+        <div>Name</div>
+        <div>Drop-off date</div>
+        <div>Pick-up date</div>
+        <div>Confirmation no.</div>
       </div>
-    </div>
-      })}
+      <div className="booking-list">
+        {userBooking.map((bookingList) => {
+          return (
+            <div className="book-item">
+              <div className="data">{bookingList.sitter.first_name}</div>
+              <div className="drop">{formatDate(bookingList.start_date)}</div>
+              <div className="data">{formatDate(bookingList.end_date)}</div>
+              <div className="data">{bookingList.id}</div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

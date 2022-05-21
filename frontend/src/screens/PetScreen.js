@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import apiUrl from "../apiConfig";
 import UsersPets from "../components/UsersPets";
-import CreatePet from '../components/CreatePet'
-import './css/PetScreen.css'
+import CreatePet from "../components/CreatePet";
+import "./css/PetScreen.css";
 
 function PetScreen(props) {
   const [userPets, setUserPets] = useState([]);
@@ -20,26 +20,18 @@ function PetScreen(props) {
       setUserPets(data.user.pets_owned);
     }
     fetchPets();
-          // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [trigger]);
 
   return (
     <div className="pet_screen">
-<UsersPets
-myPets={userPets}
-user={props.user}
-setTrigger={setTrigger}
-/>
+      <UsersPets myPets={userPets} user={props.user} setTrigger={setTrigger} />
 
-<div className="createpets">
- <CreatePet user={props.user} setTrigger={setTrigger} /> 
- </div> 
-
+      <div className="createpets">
+        <CreatePet user={props.user} setTrigger={setTrigger} />
+      </div>
     </div>
   );
 }
 
 export default PetScreen;
-
-
-

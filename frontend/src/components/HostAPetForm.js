@@ -1,6 +1,5 @@
 import { Button } from "react-bootstrap";
 import { useContext, useState } from "react";
-import apiUrl from "../apiConfig";
 import { useNavigate } from "react-router-dom";
 import { createSitter } from "../context/sitter/SitterAction";
 import SitterContext from "../context/sitter/SitterContext";

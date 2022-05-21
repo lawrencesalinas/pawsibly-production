@@ -2,10 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Rating from "./Rating";
 import "./css/AllSitters.css";
-const linkStyle = {
-  textDecoration: "none",
-  color: "black",
-};
 
 function AllSitter({
   sitter: { id, image, city, rating, zipcode, numReviews, price },

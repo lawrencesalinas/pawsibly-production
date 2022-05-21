@@ -1,12 +1,12 @@
 import axios from "axios";
 import React from "react";
 import { Link } from "react-router-dom";
-import './css/UserPets.css'
-import { Image } from 'react-bootstrap'
+import "./css/UserPets.css";
+import { Image } from "react-bootstrap";
 import apiUrl from "../apiConfig";
 
-function UsersPets({user, myPets, setTrigger}) {
-    // console.log("hello", ;
+function UsersPets({ user, myPets, setTrigger }) {
+  // console.log("hello", ;
   myPets.map((pet) => {
     return (
       <Link key={pet.id} to={`/pets/${pet.id}`}>
@@ -32,25 +32,21 @@ function UsersPets({user, myPets, setTrigger}) {
       });
   };
 
-
   return (
-    <div className="profilepets">
+    <div className="profilepets" data-aos="flip-right">
       <h1>My Pets</h1>
       <div className="profilepets_pet">
         {myPets &&
           myPets
             .filter((x) => x.name !== null && x.name !== "")
             .map((pet) => (
-              
-    
-              <div className='pet'>
- 
+              <div className="pet">
                 <Link
                   style={{ textDecoration: "none", color: "black" }}
                   key={pet.id}
                   to={`/pets/${pet.id}`}
                 >
-                    <Image  src={pet.image}  className = 'rounded-circle image'  />
+                  <Image src={pet.image} className="rounded-circle image" />
                   <h4 className="pet_name">{pet.name}</h4>
                 </Link>
                 <br></br>

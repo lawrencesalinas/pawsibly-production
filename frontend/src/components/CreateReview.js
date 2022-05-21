@@ -6,7 +6,6 @@ import "./css/CreateReview.css";
 import Rating from "./Rating";
 import apiUrl from "../apiConfig";
 
-
 function CreateReview({ user, setTrigger }) {
   const [review, setReview] = useState("");
   const [rating, setRating] = useState(0);
@@ -31,9 +30,7 @@ function CreateReview({ user, setTrigger }) {
     }
   };
 
-  const handleRating = (e) => {
-    
-  }
+  const handleRating = (e) => {};
 
   const createReview = () => {
     const sitterReview = {
@@ -42,7 +39,6 @@ function CreateReview({ user, setTrigger }) {
       review: review,
       rating: rating,
     };
-
 
     // console.log(sitterReview);
     fetch(`${apiUrl}/reviews`, {
@@ -97,15 +93,13 @@ function CreateReview({ user, setTrigger }) {
         <br />
         <label>
           Rating(1-5)
-          {/* <input
+          <input
             required
             type="number"
             value={rating}
             onChange={handleChange}
-          /> */}
-          <Rating
-          value={handleRating}
           />
+          <Rating value={handleRating} />
         </label>
         <br />
         <Button onClick={() => createReview()}>Submit</Button>

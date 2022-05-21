@@ -76,7 +76,9 @@ const HomeScreen = () => {
       </div>
       <div className="cat" data-aos="zoom-in-right" data-aos-delay="600">
         <Parallax
-          image={<img alt="cat" src="/static/images/cat.png" />}
+          image={
+            <img alt="cat" src="/static/images/cat.png" className="animal" />
+          }
           options={{
             responsiveThreshold: 0,
           }}

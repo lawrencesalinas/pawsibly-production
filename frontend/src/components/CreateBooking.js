@@ -28,9 +28,10 @@ export default function CreateBooking({ user }) {
   };
 
   const createBooking = (e) => {
-    if (user == null) {
+    if (user === null) {
       navigate("/sign-in");
     } else {
+      console.log(user, id);
       e.preventDefault();
       const booking = {
         pet_owner: user.id,
