@@ -12,6 +12,7 @@
 
 .allsitter {
   height: 100%;
+  width: 100%;
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
@@ -38,7 +39,7 @@
 
 .sitterListingImg {
   margin-top: 20px;
-  max-width: 300px;
+  width: 96%;
   border-radius: 10px;
   height: 16rem;
   max-height: 16rem;
