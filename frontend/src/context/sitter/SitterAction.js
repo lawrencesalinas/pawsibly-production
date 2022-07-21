@@ -40,7 +40,7 @@ export const createSitter = async (user, uploadData) => {
   try {
     const config = {
       headers: {
-        Authorization: `Bearer ${user.token}`,
+        Authorization: `Token ${user.token}`,
       },
     };
 
