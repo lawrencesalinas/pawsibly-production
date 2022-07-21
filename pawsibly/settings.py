@@ -47,7 +47,7 @@ load_dotenv(find_dotenv())
 #   CORS_ORIGIN_WHITELIST = [
 #     os.getenv('CLIENT_ORIGIN')
 #   ]
-DEBUG = False
+DEBUG = True
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 # Default database as defined above depending on development
@@ -70,7 +70,7 @@ DATABASES = {
         'HOST': 'ec2-52-204-157-26.compute-1.amazonaws.com',
         'PORT':5432,
         'USER':'vngzjbpdorblvy',
-        'PASSWORD':'dd772e45dff8ac05e8c0635091f1c5f148a60e40b8faf00096af92ff0da73754'
+        'PASSWORD': os.getenv('DBPASS'),
         
     }
 }
@@ -243,7 +243,7 @@ AWS_STORAGE_BUCKET_NAME = 'pawsibly-bucket'
 
 
 # get current working directory false if we are in heroku
-if os.getcwd() == '/app':
-    DEBUG = False
+# if os.getcwd() == '/app':
+#     DEBUG = False
 
 

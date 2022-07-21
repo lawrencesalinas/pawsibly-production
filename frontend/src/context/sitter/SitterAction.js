@@ -25,6 +25,8 @@ export const createSitter = async (user, uploadData) => {
       url: `${apiUrl}/sitters`,
       data: uploadData,
     });
+
+    console.log(response);
     return response.data;
   } catch (error) {
     console.log(error);
