@@ -18,14 +18,33 @@ export const getSitterAndReviews = async (id) => {
   };
 };
 
+// export const createSitter = async (user, uploadData) => {
+//   try {
+//     const response = await axios({
+//       headers: {
+//         Authorization: `Token ${user.token}`,
+//       },
+//       method: "post",
+//       url: `${apiUrl}/sitters`,
+//       data: uploadData,
+//     });
+
+//     console.log(response);
+//     return response.data;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
 export const createSitter = async (user, uploadData) => {
   try {
-    const response = await axios({
-      method: "post",
-      url: `${apiUrl}/sitters`,
-      data: uploadData,
-    });
+    const config = {
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    };
 
+    const response = await axios.post(`${apiUrl}/sitters`, uploadData, config);
     console.log(response);
     return response.data;
   } catch (error) {
