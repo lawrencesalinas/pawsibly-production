@@ -8,8 +8,8 @@ function AllSitter({
 }) {
   //  console.log('this is s', sitter);
   return (
-    <div className="allsitter" data-aos="fade-in" data-aos-delay="600">
-      <Link className="linkstyle" to={`/sitterlisting/${id}`}>
+    <Link className="linkstyle" to={`/sitterlisting/${id}`}>
+      <div className="allsitter" data-aos="fade-in" data-aos-delay="600">
         <img src={image} alt="sitterImage" className="sitterListingImg" />
         <div className="sitteriteminfo">
           <div className="location">
@@ -25,8 +25,8 @@ function AllSitter({
             </p>
           </div>
         </div>
-      </Link>
-    </div>
+      </div>
+    </Link>
     // <div className="allsitter">
     //   <Card className="my-3 p-3 rounded">
     //     <Link to={`/sitterlisting/${id}`}>

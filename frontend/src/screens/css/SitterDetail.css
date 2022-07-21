@@ -88,7 +88,7 @@ height: 300px;
 }
 
 .sitter-image {
-  width: 40vw;
+  width: 30vw;
   height: 25vw;
   margin-right: 50px;
   border-radius: 50px;
@@ -150,7 +150,7 @@ height: 300px;
   }
 
   .sitter-image {
-    width: 100%;
+    width: 50vw;
     height: 40vw;
     margin: 0;
     border-radius: 30px;

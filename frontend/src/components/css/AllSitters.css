@@ -11,6 +11,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Chewy&family=Lilita+One&family=MedievalSharp&family=Montserrat&display=swap");
 
 .allsitter {
+  height: 100%;
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
@@ -39,6 +40,8 @@
   margin-top: 20px;
   max-width: 300px;
   border-radius: 10px;
+  height: 16rem;
+  max-height: 16rem;
 }
 
 .sitterListingImg:hover {
