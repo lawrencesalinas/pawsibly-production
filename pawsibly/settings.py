@@ -21,6 +21,7 @@ import dj_database_url
 
 
 # .env config:
+from pathlib import Path
 from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv())
 
@@ -47,35 +48,35 @@ load_dotenv(find_dotenv())
 #   CORS_ORIGIN_WHITELIST = [
 #     os.getenv('CLIENT_ORIGIN')
 #   ]
-DEBUG = False
+DEBUG = True
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 # Default database as defined above depending on development
 # or production environment
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'pawsibly', 
-#         'USER': 'lawrencesalinas',
-#         'PASSWORD': os.getenv('DBPASS'),
-#         'HOST': 'pawsibly-identifier.c0v6jh3jzpwi.us-east-1.rds.amazonaws.com',
-#         'PORT': '5434'
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd5gji11gsbpmob', 
-        'HOST': 'ec2-52-204-157-26.compute-1.amazonaws.com',
-        'PORT':5432,
-        'USER':'vngzjbpdorblvy',
-        'PASSWORD': os.getenv('DBPASS'),
-        
+        'NAME': 'pawsibly', 
+        'USER': 'lawrencesalinas',
+        'PASSWORD': 'ATommyBenny1002$S',
+        'HOST': 'pawsibly-identifier.c3o06us00092.us-east-2.rds.amazonaws.com',
+        'PORT': '5432'
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'pawsiblyDB', 
+#         'USER':'den',
+#         'HOST': 'localhost',
+#         'PORT':5432,
+#         'PASSWORD': os.getenv('DBPASS'),
+#     }
+# }
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -203,10 +204,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 # optional package: http://whitenoise.evans.io/en/stable/django.html
 
-STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder'
-]
+# STATICFILES_FINDERS = [
+#     'django.contrib.staticfiles.finders.FileSystemFinder',
+#     'django.contrib.staticfiles.finders.AppDirectoriesFinder'
+# ]
+
 STATIC_URL = '/static/'
 
 # render images   
@@ -218,7 +220,7 @@ STATICFILES_DIRS = (
 )
 #  anytime a user uploads it looks at this folder
 # user uploaded content
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images') 
+MEDIA_ROOT = BASE_DIR / 'static/images'
 
 # this is where django looks for static files in django when in  production
 STATIC_ROOT =  os.path.join(BASE_DIR, 'staticfiles' )
@@ -230,16 +232,16 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 AWS_QUERYSTRING_AUTH = False
 
-
+AWS_QUERYSTRING_AUTH = False
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
-
-AWS_ACCESS_KEY_ID = os.getenv('AWSID')
-
-AWS_SECRET_ACCESS_KEY = os.getenv('AWSKEY')
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 
 AWS_STORAGE_BUCKET_NAME = 'pawsibly-bucket'
+AWS_S3_SIGNATURE_VERSION = 's3v4'
+AWS_S3_CUSTOM_DOMAIN = f'pawsibly-bucket.s3.amazonaws.com'
+AWS_SECRET_ACCESS_KEY = 'oFEQ6+g8WtDTa67xHbtsB7m+jLC0QENDwerVueYk'
+AWS_ACCESS_KEY_ID = 'AKIA56I3WPRSPDLNNY2Q'
 
 
 # get current working directory false if we are in heroku

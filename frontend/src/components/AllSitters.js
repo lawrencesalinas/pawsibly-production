@@ -1,15 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Rating from "./Rating";
-import "./css/AllSitters.css";
+import React from "react"
+import { Link } from "react-router-dom"
+import Rating from "./Rating"
+import "./css/AllSitters.css"
 
-function AllSitter({
-  sitter: { id, image, city, rating, zipcode, numReviews, price },
-}) {
-  //  console.log('this is s', sitter);
+function AllSitter({ sitter: { id, image, city, rating, zipcode, numReviews, price } }) {
+
   return (
     <Link className="linkstyle" to={`/sitterlisting/${id}`}>
-      <div className="allsitter" data-aos="fade-in" data-aos-delay="600">
+      <div className="allsitter">
         <img src={image} alt="sitterImage" className="sitterListingImg" />
         <div className="sitteriteminfo">
           <div className="location">
@@ -58,7 +56,7 @@ function AllSitter({
     //     </Card.Body>
     //   </Card>
     // </div>
-  );
+  )
 }
 
-export default AllSitter;
+export default AllSitter

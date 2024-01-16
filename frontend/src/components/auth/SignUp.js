@@ -1,25 +1,25 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { signUp, signIn } from "../../context/user/UserAction";
-import messages from "../shared/AutoDismissAlert/messages";
-import { Form, Button } from "react-bootstrap";
+import React, { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { signUp, signIn } from "../../context/user/UserAction"
+import messages from "../shared/AutoDismissAlert/messages"
+import { Form, Button } from "react-bootstrap"
 
 const divStyle = {
   height: "80vh",
-};
+}
 const SignUp = (props) => {
-  const [first_name, setFirst_name] = useState("");
-  const [last_name, setLast_name] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [first_name, setFirst_name] = useState("")
+  const [last_name, setLast_name] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [passwordConfirmation, setPasswordConfirmation] = useState("")
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const onSignUp = (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
-    const { msgAlert, setUser } = props;
+    const { msgAlert, setUser } = props
 
     const credentials = {
       first_name,
@@ -27,7 +27,7 @@ const SignUp = (props) => {
       email,
       password,
       passwordConfirmation,
-    };
+    }
 
     signUp(credentials)
       .then(() => signIn(credentials))
@@ -41,19 +41,19 @@ const SignUp = (props) => {
       )
       .then(() => navigate("/"))
       .catch((error) => {
-        setEmail("");
-        setPassword("");
-        setPasswordConfirmation("");
+        setEmail("")
+        setPassword("")
+        setPasswordConfirmation("")
         msgAlert({
           heading: "Sign Up Failed with error: " + error.message,
           message: messages.signUpFailure,
           variant: "danger",
-        });
-      });
-  };
+        })
+      })
+  }
 
   return (
-    <div className="row" style={divStyle} data-aos="zoom-in">
+    <div className="row" style={divStyle}>
       <div className="col-sm-10 col-md-8 mx-auto mt-5">
         <h3>Sign Up</h3>
         <Form onSubmit={onSignUp}>
@@ -121,7 +121,7 @@ const SignUp = (props) => {
         </Form>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SignUp;
+export default SignUp

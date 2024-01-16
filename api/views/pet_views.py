@@ -30,9 +30,11 @@ class Pets(generics.ListCreateAPIView):
         pet = PetSerializer(pet_data, data=request.data)
         # pet = PetSerializer(data=request.data)
         if pet.is_valid():
+            print('all')
             # Save the created mango & send a response
             pet.save()
             return Response(pet.data, status=status.HTTP_201_CREATED)
+   
         # If the data is not valid, return a response with the errors
         return Response(pet.errors, status=status.HTTP_400_BAD_REQUEST)
 

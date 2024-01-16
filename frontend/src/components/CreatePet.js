@@ -1,22 +1,22 @@
-import { useState } from "react";
-import {  Button, Modal } from "react-bootstrap";
-import apiUrl from "../apiConfig";
+import { useState } from "react"
+import { Button, Modal } from "react-bootstrap"
+import apiUrl from "../apiConfig"
 import './css/CreatePet.css'
 
-export default function PetForm({user, setTrigger}) {
+export default function PetForm({ user, setTrigger }) {
   // console.log('I AM USER',props);
-  const [name, setName] = useState("");
-  const [image, setImage] = useState();
-  const [show, setShow] = useState(false);
+  const [name, setName] = useState("")
+  const [image, setImage] = useState()
+  const [show, setShow] = useState(false)
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
 
   const createPet = (e) => {
-    const uploadData = new FormData();
-    uploadData.append("image", image);
-    uploadData.append("name", name);
-    uploadData.append("pet_owner", user.id);
+    const uploadData = new FormData()
+    uploadData.append("image", image)
+    uploadData.append("name", name)
+    uploadData.append("pet_owner", user.id)
 
     fetch(`${apiUrl}/pets`, {
       method: "POST",
@@ -26,20 +26,21 @@ export default function PetForm({user, setTrigger}) {
       body: uploadData,
     })
       .then((res) => {
+        console.log(res, 'response')
         // console.log("new pet added", res);
-        setTrigger((x) => !x);
+        setTrigger((x) => !x)
       })
       // useNavigate(-1)
       .catch((error) => {
-        console.log(error);
-      });
-    setShow(false);
-  };
+        console.log(error)
+      })
+    setShow(false)
+  }
 
   return (
     <div>
       <Button variant='warning' onClick={handleShow}>
-      Add Pet+
+        Add Pet+
       </Button>
 
       <Modal
@@ -71,5 +72,5 @@ export default function PetForm({user, setTrigger}) {
         <Button onClick={() => createPet()}>Add Pet</Button>
       </Modal>
     </div>
-  );
+  )
 }

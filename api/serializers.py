@@ -53,8 +53,6 @@ class UserImageSerializer(serializers.ModelSerializer):
         fields = ('id', 'image')
         
 
-
-
 class UserReadSerializer(serializers.ModelSerializer):
     pets_owned = PetSerializer(many=True)
     post_owned = SitterSerializer(many=True)

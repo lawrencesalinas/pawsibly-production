@@ -1,44 +1,44 @@
-import React, { useState, useEffect, useContext } from "react";
-import AllSitters from "../components/AllSitters";
-import { Parallax } from "react-materialize";
-import { Row, Col } from "react-bootstrap";
-import "./css/HomeScreen.css";
-import { useNavigate } from "react-router-dom";
-import SitterContext from "../context/sitter/SitterContext";
-import { getSitters } from "../context/sitter/SitterAction";
-import Spinner from "../components/shared/Spinner";
+import React, { useState, useEffect, useContext } from "react"
+import AllSitters from "../components/AllSitters"
+import { Parallax } from "react-materialize"
+import { Row, Col } from "react-bootstrap"
+import "./css/HomeScreen.css"
+import { useNavigate } from "react-router-dom"
+import SitterContext from "../context/sitter/SitterContext"
+import { getSitters } from "../context/sitter/SitterAction"
+import Spinner from "../components/shared/Spinner"
 
 const HomeScreen = () => {
-  const { sitters, loading, dispatch } = useContext(SitterContext);
-  const [search, setSearch] = useState("");
+  const { sitters, loading, dispatch } = useContext(SitterContext)
+  const [search, setSearch] = useState("")
 
   useEffect(() => {
-    dispatch({ type: "SET_LOADING" });
+    dispatch({ type: "SET_LOADING" })
     const getAllSitters = async () => {
-      const sittersData = await getSitters();
-      dispatch({ type: "GET_SITTERS", payload: sittersData });
-    };
-    getAllSitters();
-  }, [dispatch]);
+      const sittersData = await getSitters()
+      dispatch({ type: "GET_SITTERS", payload: sittersData })
+    }
+    getAllSitters()
+  }, [dispatch])
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   // const [searchResults, setSearchResults] = useState([]);
-  const sliceSitters = sitters.slice(-3);
+  const sliceSitters = sitters.slice(-3)
 
   const onSubmit = (e) => {
-    e.preventDefault();
-    navigate(`/searchpage/${search}`);
-  };
+    e.preventDefault()
+    navigate(`/searchpage/${search}`)
+  }
 
   if (loading) {
-    return <Spinner />;
+    return <Spinner />
   }
 
   return (
     <div className="Homescreen">
       <div className="section white">
-        <div className="searchbar" data-aos="fade-up" data-aos-delay="600">
+        <div className="searchbar">
           <h4 className="header">Find local pet sitters near you</h4>
           <form onSubmit={onSubmit}>
             <input
@@ -68,13 +68,13 @@ const HomeScreen = () => {
                     {/* pass sitter array to allsiters component */}
                     <AllSitters sitter={sitter} />
                   </Col>
-                );
+                )
               })}
             </Row>
           </div>
         </div>
       </div>
-      <div className="cat" data-aos="zoom-in-right" data-aos-delay="600">
+      <div className="cat">
         <Parallax
           image={
             <img alt="cat" src="/static/images/cat.png" className="animal" />
@@ -223,7 +223,7 @@ const HomeScreen = () => {
         </div>
       </section>
     </div>
-  );
-};
+  )
+}
 
-export default HomeScreen;
+export default HomeScreen

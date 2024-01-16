@@ -33,8 +33,10 @@ class ProfileImage(generics.ListCreateAPIView):
 
         user = request.user
         serializer =UserImageSerializer(user, data=request.data)
+
         # pet = PetSerializer(data=request.data)
         if serializer.is_valid():
+            print('here')
             # Save the created mango & send a response
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
