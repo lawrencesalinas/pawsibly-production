@@ -1,56 +1,48 @@
-import { Button } from "react-bootstrap";
-import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { createSitter } from "../context/sitter/SitterAction";
-import SitterContext from "../context/sitter/SitterContext";
-import Spinner from "./shared/Spinner";
+import { Button } from "react-bootstrap"
+import { useContext, useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { createSitter } from "../context/sitter/SitterAction"
+import SitterContext from "../context/sitter/SitterContext"
+import Spinner from "./shared/Spinner"
 
 export default function HostAPetForm({ user, setTrigger }) {
-  const { dispatch, loading } = useContext(SitterContext);
+  const { dispatch, loading } = useContext(SitterContext)
 
-  const [title, setTitle] = useState("");
-  const [firstName, setfirstName] = useState(user.first_name);
-  const [zipCode, setZipCode] = useState("");
-  const [price, setPrice] = useState(0);
-  const [description, setDescription] = useState("");
-  const [city, setCity] = useState("");
-  const [image, setImage] = useState();
-  const post_owner = user.id;
+  const [title, setTitle] = useState("")
+  const [firstName, setfirstName] = useState(user.first_name)
+  const [zipCode, setZipCode] = useState("")
+  const [price, setPrice] = useState(0)
+  const [description, setDescription] = useState("")
+  const [city, setCity] = useState("")
+  const [image, setImage] = useState()
+  const post_owner = user.id
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const createPost = async (e) => {
-    const uploadData = new FormData();
-    uploadData.append("image", image);
-    uploadData.append("title", title);
-    uploadData.append("first_name", firstName);
-    uploadData.append("zipcode", zipCode);
-    uploadData.append("price", price);
-    uploadData.append("city", city);
-    uploadData.append("description", description);
-    uploadData.append("post_owner", post_owner);
+    const uploadData = new FormData()
+    uploadData.append("image", image)
+    uploadData.append("title", title)
+    uploadData.append("first_name", firstName)
+    uploadData.append("zipcode", zipCode)
+    uploadData.append("price", price)
+    uploadData.append("city", city)
+    uploadData.append("description", description)
+    uploadData.append("post_owner", post_owner)
 
-    const userData = await createSitter(user, uploadData);
-    dispatch({ type: "CREATE_SITTER", payload: userData });
-    navigate("/");
+    try {
+      const userData = await createSitter(user, uploadData)
 
-    // fetch(`${apiUrl}/sitters`, {
-    //   method: "POST",
-    //   headers: {
-    //     Authorization: `Token ${user.token}`,
-    //   },
-    //   body: uploadData,
-    // })
-    //   .then((res) => {
-    //     setTrigger((x) => !x);
-    //     navigate("/");
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
-  };
+      if (userData) {
+        dispatch({ type: "CREATE_SITTER", payload: userData })
+        navigate("/")
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
   if (loading) {
-    return <Spinner />;
+    return <Spinner />
   }
 
   return (
@@ -129,5 +121,5 @@ export default function HostAPetForm({ user, setTrigger }) {
         Post
       </Button>
     </div>
-  );
+  )
 }

@@ -22,6 +22,7 @@
 }
 
 .sitters {
+  margin: 0 auto;
   padding-bottom: 20px;
 }
 
@@ -62,6 +63,7 @@
   outline: none;
   border: none;
 }
+
 .google {
   background-color: #db4437;
   color: white;
@@ -107,6 +109,7 @@
   .sitters {
     width: 95%;
   }
+
   .team-container {
     display: flex;
     width: 50px;

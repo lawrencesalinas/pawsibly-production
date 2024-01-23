@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { signUp, signIn } from "../../context/user/UserAction"
 import messages from "../shared/AutoDismissAlert/messages"
 import { Form, Button } from "react-bootstrap"
+import "./css/signup.css"
 
 const divStyle = {
   height: "80vh",
@@ -53,72 +54,79 @@ const SignUp = (props) => {
   }
 
   return (
-    <div className="row" style={divStyle}>
-      <div className="col-sm-10 col-md-8 mx-auto mt-5">
-        <h3>Sign Up</h3>
-        <Form onSubmit={onSignUp}>
-          <Form.Group controlId="first_name">
-            <Form.Label>First Name</Form.Label>
-            <Form.Control
-              required
-              type="text"
-              name="first_name"
-              value={first_name}
-              placeholder="Enter first name"
-              onChange={(e) => setFirst_name(e.target.value)}
-            />
-          </Form.Group>
+    <div className="sign-up-wrapper">
+      <div className="left">
+        <div className="col-sm-10 col-md-8 mx-auto mt-5">
+          <h3>Sign Up</h3>
+          <Form onSubmit={onSignUp}>
+            <Form.Group controlId="first_name">
+              <Form.Label>First Name</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                name="first_name"
+                value={first_name}
+                placeholder="Enter first name"
+                onChange={(e) => setFirst_name(e.target.value)}
+              />
+            </Form.Group>
 
-          <Form.Group controlId="last_name">
-            <Form.Label>Last Name</Form.Label>
-            <Form.Control
-              type="text"
-              name="last_name"
-              value={last_name}
-              placeholder="Enter last name"
-              onChange={(e) => setLast_name(e.target.value)}
-            />
-          </Form.Group>
+            <Form.Group controlId="last_name">
+              <Form.Label>Last Name</Form.Label>
+              <Form.Control
+                type="text"
+                name="last_name"
+                value={last_name}
+                placeholder="Enter last name"
+                onChange={(e) => setLast_name(e.target.value)}
+              />
+            </Form.Group>
 
-          <Form.Group controlId="email">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control
-              required
-              type="email"
-              name="email"
-              value={email}
-              placeholder="Enter email"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </Form.Group>
+            <Form.Group controlId="email">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control
+                required
+                type="email"
+                name="email"
+                value={email}
+                placeholder="Enter email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </Form.Group>
 
-          <Form.Group controlId="password">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              required
-              name="password"
-              value={password}
-              type="password"
-              placeholder="Password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </Form.Group>
+            <Form.Group controlId="password">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                required
+                name="password"
+                value={password}
+                type="password"
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Form.Group>
 
-          <Form.Group controlId="passwordConfirmation">
-            <Form.Label>Password Confirmation</Form.Label>
-            <Form.Control
-              required
-              name="passwordConfirmation"
-              value={passwordConfirmation}
-              type="password"
-              placeholder="Confirm Password"
-              onChange={(e) => setPasswordConfirmation(e.target.value)}
-            />
-          </Form.Group>
-          <Button variant="warning" type="submit">
-            Submit
-          </Button>
-        </Form>
+            <Form.Group controlId="passwordConfirmation">
+              <Form.Label>Password Confirmation</Form.Label>
+              <Form.Control
+                required
+                name="passwordConfirmation"
+                value={passwordConfirmation}
+                type="password"
+                placeholder="Confirm Password"
+                onChange={(e) => setPasswordConfirmation(e.target.value)}
+              />
+            </Form.Group>
+            <Button variant="warning" type="submit">
+              Submit
+            </Button>
+          </Form>
+        </div>
+      </div>
+      <div className="right">
+        <div className="right-wrapper">
+          <img src="/static/images/sign-up-img-min.jpg" alt="" />
+        </div>
       </div>
     </div>
   )
