@@ -1,55 +1,54 @@
-import React, { useState } from "react";
-import { Route, Routes } from "react-router-dom";
-import { Container } from "react-bootstrap";
-import { v4 as uuid } from "uuid";
-import { SitterProvider } from "./context/sitter/SitterContext";
-import { UserProvider } from "./context/user/UserContext";
-import AutoDismissAlert from "./components/shared/AutoDismissAlert/AutoDismissAlert";
-import Header from "./components/shared/Header";
-import RequireAuth from "./components/shared/RequireAuth";
-import HomeScreen from "./screens/HomeScreen";
-import ProfileScreen from "./screens/ProfileScreen";
-import SignIn from "./components/auth/SignIn";
-import SignOut from "./components/auth/SignOut";
-import ChangePassword from "./components/auth/ChangePassword";
-import PetDetailScreen from "./screens/PetDetailScreen";
-import SitterDetail from "./screens/SitterDetail";
-import PetScreen from "./screens/PetScreen";
-import Footer from "./components/shared/Footer";
-import MyBookingScreen from "./screens/MyBookingScreen";
-import UserReviewScreen from "./screens/UserReviewScreen";
-import HostAPetScreen from "./screens/HostAPetScreen";
-import ContactScreen from "./screens/ContactScreen";
-import SearchPage from "./screens/SearchPage";
-import EditListingScreen from "./screens/EditListingScreen";
-import SignUp from "./components/auth/SignUp";
+import React, { useState } from "react"
+import { Route, Routes } from "react-router-dom"
+import { Container } from "react-bootstrap"
+import { v4 as uuid } from "uuid"
+import { SitterProvider } from "./context/sitter/SitterContext"
+import { UserProvider } from "./context/user/UserContext"
+import AutoDismissAlert from "./components/shared/AutoDismissAlert/AutoDismissAlert"
+import Header from "./components/shared/Header"
+import RequireAuth from "./components/shared/RequireAuth"
+import HomeScreen from "./screens/HomeScreen"
+import ProfileScreen from "./screens/ProfileScreen"
+import SignIn from "./components/auth/SignIn"
+import SignOut from "./components/auth/SignOut"
+import ChangePassword from "./components/auth/ChangePassword"
+import PetDetailScreen from "./screens/PetDetailScreen"
+import SitterDetail from "./screens/SitterDetail"
+import PetScreen from "./screens/PetScreen"
+import Footer from "./components/shared/Footer"
+import MyBookingScreen from "./screens/MyBookingScreen"
+import UserReviewScreen from "./screens/UserReviewScreen"
+import HostAPetScreen from "./screens/HostAPetScreen"
+import ContactScreen from "./screens/ContactScreen"
+import SearchPage from "./screens/SearchPage"
+import EditListingScreen from "./screens/EditListingScreen"
+import SignUp from "./components/auth/SignUp"
 
 const App = () => {
-  const [user, setUser] = useState(null);
-  const [msgAlerts, setMsgAlerts] = useState([]);
+  const [user, setUser] = useState(null)
+  const [msgAlerts, setMsgAlerts] = useState([])
 
   const clearUser = () => {
-    setUser(null);
-  };
+    setUser(null)
+  }
   const deleteAlert = (id) => {
     setMsgAlerts((prevState) => {
-      return prevState.filter((msg) => msg.id !== id);
-    });
-  };
+      return prevState.filter((msg) => msg.id !== id)
+    })
+  }
 
   const msgAlert = ({ heading, message, variant }) => {
-    const id = uuid();
+    const id = uuid()
     setMsgAlerts(() => {
-      return [{ heading, message, variant, id }];
-    });
-  };
+      return [{ heading, message, variant, id }]
+    })
+  }
 
   return (
     <>
       <UserProvider>
         <SitterProvider>
           <Header user={user} />
-
           <Container>
             <Routes>
               <Route
@@ -171,7 +170,7 @@ const App = () => {
         </SitterProvider>
       </UserProvider>
     </>
-  );
-};
+  )
+}
 
-export default App;
+export default App

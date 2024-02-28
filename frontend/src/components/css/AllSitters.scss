@@ -1,0 +1,118 @@
+ @import url("https://fonts.googleapis.com/css2?family=Chewy&family=Lilita+One&family=MedievalSharp&family=Montserrat&display=swap");
+
+ .linkstyle {
+   text-decoration: none;
+   color: black;
+   outline: none;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-bottom: 40px;
+
+   .card-sitter {
+     border-radius: 10x;
+     height: auto;
+
+     .card-sitter-header {
+       height: 200px;
+       font-size: 16px;
+
+       img {
+         object-fit: cover;
+         border-radius: 10px;
+         height: 100%;
+         width: 100%;
+       }
+     }
+
+     .card-content {
+       background-color: #fff;
+       padding: 10px;
+
+       .card-title {
+         font-size: 16px;
+         height: 20px;
+         margin: 0;
+       }
+
+       .card-excerpt {
+         color: #777;
+       }
+
+       .author {
+         display: flex;
+
+         .profile-img {
+           border-radius: 50%;
+           overflow: hidden;
+           height: 40px;
+           width: 40px;
+
+           img {
+             max-width: 100%;
+           }
+
+         }
+       }
+
+
+     }
+
+
+   }
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+ .author-info {
+   display: flex;
+   /* justify-content: space-around; */
+   /* align-items: center; */
+   margin-left: 10px;
+ }
+
+ .ratinginfo {
+   /* display: flex;
+  flex-direction: column; */
+   margin-left: 30px;
+ }
+
+ .ratinginfo p {
+   margin: 0;
+ }
+
+ .animated-bg {
+   background-image: linear-gradient(to right, #f6f7f8 0%, #edeef1 10%, #f6f7f8 20%, #f6f7f8 100%);
+   background-size: 200% 100%;
+   animation: bgPos 1s linear infinite;
+ }
+
+ .animated-bg-text {
+   border-radius: 50px;
+   display: inline-block;
+   margin: 0;
+   height: 20px;
+   width: 100%;
+ }
+
+
+
+ @keyframes bgPos {
+   0% {
+     background-position: 50% 0;
+   }
+
+   100% {
+     background-position: -150% 0;
+   }
+ }

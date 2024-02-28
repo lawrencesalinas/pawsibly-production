@@ -1,34 +1,34 @@
-import React, { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
-import Rating from "../components/Rating";
-import ReviewList from "../components/ReviewList";
-import CreateBooking from "../components/CreateBooking";
-import "./css/SitterDetail.css";
-import CreateReview from "../components/CreateReview";
-import SitterContext from "../context/sitter/SitterContext";
-import { getSitterAndReviews } from "../context/sitter/SitterAction";
-import Spinner from "../components/shared/Spinner";
+import React, { useState, useEffect, useContext } from "react"
+import { useParams } from "react-router-dom"
+import { Link } from "react-router-dom"
+import { Button } from "react-bootstrap"
+import Rating from "../components/Rating"
+import ReviewList from "../components/ReviewList"
+import CreateBooking from "../components/CreateBooking"
+import "./css/SitterDetail.scss"
+import CreateReview from "../components/CreateReview"
+import SitterContext from "../context/sitter/SitterContext"
+import { getSitterAndReviews } from "../context/sitter/SitterAction"
+import Spinner from "../components/shared/Spinner"
 
 export default function SitterDetail({ user }) {
-  const [trigger, setTrigger] = useState(false);
-  let { id } = useParams();
+  const [trigger, setTrigger] = useState(false)
+  let { id } = useParams()
 
   const { sitter, dispatch, loading, sitterReviews } =
-    useContext(SitterContext);
+    useContext(SitterContext)
 
   useEffect(() => {
-    dispatch({ type: "SET_LOADING" });
+    dispatch({ type: "SET_LOADING" })
     const getSitterData = async () => {
-      const sitter = await getSitterAndReviews(id);
-      dispatch({ type: "GET_SITTER", payload: sitter });
-    };
-    getSitterData();
-  }, [dispatch, id, trigger]);
+      const sitter = await getSitterAndReviews(id)
+      dispatch({ type: "GET_SITTER", payload: sitter })
+    }
+    getSitterData()
+  }, [dispatch, id, trigger])
 
   if (loading) {
-    return <Spinner />;
+    return <Spinner />
   }
 
   return (
@@ -81,7 +81,6 @@ export default function SitterDetail({ user }) {
       <hr></hr>
 
       {/* About Section */}
-
       <div className="about-info">
         <div className="description">
           <h2>About</h2>
@@ -101,18 +100,18 @@ export default function SitterDetail({ user }) {
                     {/* pass sitters array to sitter component */}
                     <ReviewList review={review} />
                   </li>
-                );
+                )
               })}
             </div>
           </div>
         </div>
       )}
 
-      <div className="reviewbox" data-aos="flip-right" data-aos-delay="200">
+      <div className="reviewbox" data-aos="fade-up" data-aos-delay="200">
         <h3>Review this sitter</h3>
         <h5>share your thoughts with other pet owners</h5>
         <CreateReview setTrigger={setTrigger} user={user} />
       </div>
     </div>
-  );
+  )
 }

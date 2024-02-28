@@ -1,0 +1,293 @@
+.Homescreen {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .section-hero {
+        // overflow-y: hidden;
+        position: relative;
+        top: 10px;
+        width: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+        padding-bottom: 45px;
+
+
+        img {
+            width: 100%;
+        }
+
+        .hero-info {
+            margin-top: 10px;
+
+            h2 {
+                font-weight: bolder;
+                font-size: 2rem;
+            }
+
+            p {
+                margin-bottom: 20px;
+            }
+
+            .what-we-do-info {
+                display: flex;
+                width: 100%;
+                justify-content: center;
+
+                .info-1 {
+                    width: 33%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    h3 {
+                        text-align: center;
+                        margin-top: 10px;
+                        font-size: 0.9rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .section-discover {
+        overflow-y: hidden;
+        display: flex;
+        flex-direction: column;
+
+        .searchbar {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            h4 {
+                font-size: 1.2rem;
+            }
+
+            form {
+                display: flex;
+                width: 100%;
+                align-items: center;
+                justify-content: center;
+
+                input {
+                    width: 70%;
+                    padding: 8px;
+                    border-radius: 20px;
+                    border: gray 1px solid;
+                }
+
+                input::placeholder {
+                    font-size: 14px;
+                    text-align: center;
+                    color: #999;
+                }
+
+                input:focus {
+                    outline: none;
+                }
+
+                button {
+                    display: flex;
+                    margin-left: 10px;
+                    background-color: #ED6E73;
+                    border-radius: 100%;
+                    width: 45px;
+                    height: 45px;
+                    position: relative;
+                    border: none;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+        }
+
+        .explore {
+            margin: 0 auto;
+            margin-top: 10px;
+        }
+
+        .sitters {
+            position: relative;
+            top: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+
+    .section-team {
+        .team-container {
+            .team-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                img {
+                    max-width: 120px;
+                    max-height: 120px;
+                    width: 120px;
+                    border-radius: 100px;
+                    margin-bottom: 15px;
+                }
+
+                .devinfo {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+
+                    .devname {
+                        font-weight: bolder;
+                    }
+
+                    .socialmedia {
+                        display: flex;
+                        gap: 10px;
+                        justify-content: center;
+                        align-items: center;
+                        margin-bottom: 14px;
+
+
+                        .github {
+                            background-color: #333;
+                            color: white;
+                            width: 45px;
+                            height: 45px;
+                            font-size: 20px;
+                            border-radius: 50%;
+                            outline: none;
+                            border: none;
+                        }
+
+                        .google {
+                            background-color: #db4437;
+                            color: white;
+                            width: 45px;
+                            height: 45px;
+                            font-size: 20px;
+                            border-radius: 50px;
+                            outline: none;
+                            border: none;
+                        }
+
+                        .linkedin {
+                            background-color: #0072b1;
+                            color: white;
+                            width: 45px;
+                            height: 45px;
+                            font-size: 20px;
+                            border-radius: 50px;
+                            outline: none;
+                            border: none;
+                        }
+                    }
+                }
+
+                .google:focus {
+                    outline: none;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .Homescreen {
+        width: 100%;
+        margin-top: 30px;
+
+        .section-hero {
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 40px;
+
+            img {
+                position: relative;
+                width: 50%;
+            }
+
+            .hero-info {
+                position: relative;
+                left: 50px;
+
+                h2 {
+                    font-size: 2rem;
+                }
+
+                .what-we-do-info {
+                    display: flex;
+                    width: 100%;
+                    justify-content: center;
+
+                    .info-1 {
+                        width: 33%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+
+                        i {
+                            font-size: 38px;
+                        }
+
+                        h3 {
+                            text-align: center;
+                            margin-top: 10px;
+                            font-size: 1.4rem;
+                        }
+                    }
+                }
+            }
+        }
+
+        .section-discover {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .searchbar {
+                width: 40%;
+
+                h4 {
+                    font-size: 1.4rem;
+                }
+            }
+
+            .explore {
+                margin: 0 auto;
+                margin-top: 10px;
+            }
+
+            .sitters {
+                flex-direction: row;
+                gap: 26px;
+
+            }
+        }
+
+        .hero-banner-2 {
+            width: 70vw;
+            height: 50vh;
+        }
+
+        .section-team {
+            width: 100%;
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+
+            .team-container {
+                display: flex;
+                overflow-y: hidden;
+                overflow: hidden;
+            }
+        }
+    }
+}

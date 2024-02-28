@@ -22,13 +22,29 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', TemplateView.as_view(
-        template_name='index.html'), {'resource': ''}),
     path('',TemplateView.as_view(template_name='index.html')),
+ 
     path('', include('api.urls')),
-    path('<path:resource>', TemplateView.as_view(template_name='index.html'))
+    # path('profile', TemplateView.as_view(template_name='index.html')),
+    # path('profileImage', TemplateView.as_view(template_name='index.html')),
+    # path('sitters/<int:pk>', TemplateView.as_view(template_name='index.html')),
+    # path('sitters', TemplateView.as_view(template_name='index.html')),
+    # path('bookings', TemplateView.as_view(template_name='index.html')),
+    # path('bookings/<int:pk>/', TemplateView.as_view(template_name='index.html')),
+    # path('pets', TemplateView.as_view(template_name='index.html')),
+    # path('pets/<int:pk>', TemplateView.as_view(template_name='index.html')),
+    # path('reviews', TemplateView.as_view(template_name='index.html')),
+    # path('reviews/<int:pk>', TemplateView.as_view(template_name='index.html')),
+    # path('messages', TemplateView.as_view(template_name='index.html')),
+    # path('messages/<int:pk>', TemplateView.as_view(template_name='index.html')),
+    # path('threads', TemplateView.as_view(template_name='index.html')),
+    # path('sign-up', TemplateView.as_view(template_name='index.html')),
+    # path('sign-in', TemplateView.as_view(template_name='index.html')),
+    # path('sign-out', TemplateView.as_view(template_name='index.html')),
+    # path('change-pw/', TemplateView.as_view(template_name='index.html')),
 
+  
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-# urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+

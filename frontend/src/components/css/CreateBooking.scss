@@ -1,19 +1,25 @@
 .createbooking {
   display: flex;
   justify-content: center;
-  width: 18vw;
+  flex-direction: column;
   margin: 0 auto;
   align-items: center;
+  overflow-x: visible;
+
+  .createbooking_button {
+    border: none;
+    border-radius: 4px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    width: 200px;
+
+  }
 }
 
 .button {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.createbooking_button {
-  margin: 0 auto;
-  width: 18vw;
 }
 
 .sitterimage {

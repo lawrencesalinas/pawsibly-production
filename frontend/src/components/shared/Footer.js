@@ -1,8 +1,10 @@
 import React from 'react'
-import './css/Footer.css'
+import './css/Footer.scss'
 
 function Footer() {
-	return <div className='footer'>
+	return (
+		// <div></div>
+
 		<footer className="page-footer">
 			<div className="container">
 				<div className="row">
@@ -14,21 +16,22 @@ function Footer() {
 					<div className="col l4 offset-l2 s12">
 						<h5 className="white-text">Contributors</h5>
 						<ul>
-							<li><a className="grey-text text-lighten-3" style={{ 'textDecoration': 'none' }} href="https://github.com/galyverasi">Galyver Asi</a></li>
-							<li><a className="grey-text text-lighten-3" style={{ 'textDecoration': 'none' }} href="https://github.com/kellylarrea">Kelly Larrea</a></li>
-							<li><a className="grey-text text-lighten-3" style={{ 'textDecoration': 'none' }} href="https://github.com/lawrencesalinas">Lawrence Salinas</a></li>
+							<li><a className="grey-text text-lighten-3" href="https://github.com/galyverasi">Galyver Asi</a></li>
+							<li><a className="grey-text text-lighten-3" href="https://github.com/kellylarrea">Kelly Larrea</a></li>
+							<li><a className="grey-text text-lighten-3" href="https://github.com/lawrencesalinas">Lawrence Salinas</a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 			<div className="footer-copyright">
 				<div className="container">
-					© 2022 Pawsibly
-					<a className="grey-text text-lighten-4 right" style={{ 'textDecoration': 'none' }} href="https://github.com/kellylarrea/pawsibly-react">Learn more on GitHub</a>
+					© 2024 Pawsibly
+					<a className="grey-text text-lighten-4 right" style={{ 'textDecoration': 'none', 'margimLeft': '32px' }} href="https://github.com/kellylarrea/pawsibly-react">Learn more on GitHub</a>
 				</div>
 			</div>
 		</footer>
-	</div>
+	)
+
 }
 
 export default Footer

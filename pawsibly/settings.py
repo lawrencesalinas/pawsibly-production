@@ -125,10 +125,11 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'build' )
+             os.path.join(BASE_DIR, 'frontend/build')  # React index.html
         ],
         'APP_DIRS': True,
         'OPTIONS': {
+            'debug': True,
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
@@ -183,7 +184,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Allow all host headers
 ALLOWED_HOSTS = ['*','pawsibly.herokuapp.com/','localhost','127.0.0.1']
-
+CSRF_TRUSTED_ORIGINS = ['https://localhost']
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 

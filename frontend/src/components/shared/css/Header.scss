@@ -1,0 +1,331 @@
+@import url('https://fonts.googleapis.com/css2?family=Chicle&display=swap');
+
+.flex {
+  display: flex;
+  gap: var(--gap, 1rem)
+}
+
+.primary-header {
+  position: sticky;
+  top: 0;
+  z-index: 100000;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fbf07b;
+  color: #fff;
+
+  a {
+    text-decoration: none;
+    font-size: 16px;
+    margin-left: 30px;
+
+    .title {
+      display: flex;
+      align-items: center;
+      font-size: 1.3em;
+      margin-left: 1%;
+      color: #ED6E73;
+
+      #paws {
+        font-size: 1.2em;
+        color: #ED6E73;
+      }
+
+      .pawsibly {
+        position: relative;
+        top: 4px;
+        color: #ED6E73;
+        font-size: 26px;
+        font-family: "Chicle", serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+    }
+  }
+
+
+  .mobile-nav-toggle {
+    position: absolute;
+    z-index: 99999;
+    background: url("../../../assets/images/menu.png");
+    width: 1.5rem;
+    border: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    aspect-ratio: 1;
+    top: 0.3rem;
+    right: 0.7rem;
+  }
+
+  .menu.show {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease;
+    pointer-events: auto;
+  }
+
+  .menu {
+    display: block;
+    opacity: 0;
+    pointer-events: none;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s; // Delay visibility to match opacity
+
+    .primary-navigation {
+      position: absolute;
+      right: 0px;
+      top: 0;
+      width: 12rem;
+      flex-direction: column;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      background-color: hsl(0 0% 0% / 0.3);
+      height: 100vh;
+      padding: 70px 20px;
+
+      li {
+
+        a {
+          text-decoration: none;
+          color: #fff;
+
+          span {
+            font-weight: 700;
+            margin-inline-end: .5;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media (min-width: 35em) {
+  .primary-header {
+    padding: 10px;
+
+    .mobile-nav-toggle {
+      display: none;
+    }
+
+    .menu {
+      pointer-events: auto;
+      opacity: 1;
+
+      .primary-navigation {
+        position: relative;
+        flex-direction: row;
+        align-items: center;
+        list-style: none;
+        padding: 0 10px;
+        margin: 0;
+        background: none;
+        width: auto;
+        height: auto;
+
+        li {
+          a {
+            color: #ED6E73;
+            cursor: pointer;
+
+            span {
+              font-family: "Chicle", serif;
+              font-weight: 400;
+              font-style: normal;
+              font-size: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@supports (backdrop-filter: blur(1rem)) {
+  .primary-navigation {
+    background: hsl(0 0% 100% / 0.1);
+    backdrop-filter: blur(1rem)
+  }
+}
+
+
+
+
+// .primary-header {
+//   align-items: center;
+//   justify-content: space-between;
+//   background-color: #fbf07b;
+//   color: #fff;
+
+
+
+//   .mobile-nav-toggle {
+//     position: absolute;
+//     z-index: 99999;
+//     background: url("../../../assets/images/menu.png");
+//     width: 1.5rem;
+//     border: 0;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     aspect-ratio: 1;
+//     top: 0.3rem;
+//     right: 0.7rem;
+//   }
+
+//   .title {
+//     display: flex;
+//     align-items: center;
+//     font-size: 1.3em;
+//     margin-left: 5%;
+
+//     #paws {
+//       font-size: 1.2em;
+//       color: #ED6E73;
+//       // margin-right: 5%;
+//     }
+
+//     .pawsibly {
+//       position: relative;
+//       top: 4px;
+//       color: #ED6E73;
+//       font-size: 1.1em;
+//       font-family: 'Lilita One';
+//     }
+
+//     .mobile-nav-toggle {
+//       display: none;
+//     }
+//   }
+
+//   .menu {
+//     display: block;
+//     opacity: 1;
+//     visibility: visible;
+//     transition: opacity 0.3s ease, visibility 0s linear 0.3s; // Delay visibility to match opacity
+//   }
+
+//   // State for showing the menu
+//   .menu.show {
+//     opacity: 1;
+//     visibility: visible;
+//     transition: opacity 0.3s ease;
+//   }
+
+//   .primary-navigation {
+//     list-style: none;
+//     padding: 0;
+//     margin: 0;
+
+//     background-color: hsl(0 0% 0% / 0.5);
+
+//     a {
+//       text-decoration: none;
+//       color: #ED6E73;
+
+//       span {
+//         font-weight: 700;
+//         margin-inline-end: .5;
+//       }
+//     }
+//   }
+
+//   @supports (backdrop-filter: blur(1rem)) {
+//     .primary-navigation {
+//       background: hsl(0 0% 100% / 0.1);
+//       backdrop-filter: blur(1rem)
+//     }
+//   }
+
+//   @media (-width: 35em) {
+// .primary-header {
+//   align-items: center;
+//   justify-content: space-between;
+//   background-color: #fbf07b;
+//   color: #fff;
+
+
+//       .menu {
+//         display: block;
+//         opacity: 1;
+//         visibility: hidden;
+//         transition: opacity 0.3s ease, visibility 0s linear 0.3s; // Delay visibility to match opacity
+//       }
+
+//       // State for showing the menu
+//       .menu.show {
+//         opacity: 1;
+//         visibility: visible;
+//         transition: opacity 0.3s ease;
+//       }
+
+//       a {
+//         color: #fff;
+//       }
+//     }
+
+
+//   }
+// }
+
+
+
+// #primary-navigation {
+//   // background-color: red;
+//   // font-size: 100px;
+// }
+
+// /* .nav-wrapper {
+//   background-color: #FFC107;
+//   width: 100%;
+//   overflow-x: hidden;
+// }
+
+// nav a {
+//   font-family: "Chicle", serif;
+//   font-weight: 400;
+//   font-style: normal;
+//   text-decoration: none;
+//   color: white;
+// }
+
+// nav a:hover {
+
+//   color: white;
+// }
+
+// .links {
+//   margin-left: auto;
+// }
+
+// .title {
+//   display: flex;
+//   font-size: 1.3em;
+//   margin-left: 5%;
+
+// }
+
+// .pawsibly {
+//   color: #ED6E73;
+//   margin-top: 2%;
+//   font-size: 1.1em;
+//   font-family: 'Lilita One', cursive;
+// }
+
+// .pawsibly:hover {
+//   color: white;
+// }
+
+// .title:hover {
+//   color: #ED6E73;
+// }
+
+// #paws {
+//   font-size: 1.2em;
+//   color: #ED6E73;
+//   margin-right: 5%;
+// }
+
+// #paws:hover {
+//   color: white;
+// } */

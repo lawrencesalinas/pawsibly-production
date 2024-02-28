@@ -1,5 +1,5 @@
-import axios from "axios";
-import apiUrl from "../../apiConfig";
+import axios from "axios"
+import apiUrl from "../../apiConfig"
 
 export const getUserDetails = async (user) => {
   try {
@@ -7,12 +7,12 @@ export const getUserDetails = async (user) => {
       headers: {
         Authorization: `Token ${user.token}`,
       },
-    });
-    return response.data.user;
+    })
+    return response.data.user
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
 export const getUserReview = async (user) => {
   try {
@@ -20,12 +20,12 @@ export const getUserReview = async (user) => {
       headers: {
         Authorization: `Token ${user.token}`,
       },
-    });
-    return response.data.reviews;
+    })
+    return response.data.reviews
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
 export const signUp = (credentials) => {
   return axios({
@@ -40,8 +40,8 @@ export const signUp = (credentials) => {
         last_name: credentials.last_name,
       },
     },
-  });
-};
+  })
+}
 
 export const signIn = (credentials) => {
   return axios({
@@ -53,8 +53,8 @@ export const signIn = (credentials) => {
         password: credentials.password,
       },
     },
-  });
-};
+  })
+}
 
 export const signOut = (user) => {
   return axios({
@@ -63,8 +63,8 @@ export const signOut = (user) => {
     headers: {
       Authorization: `Token token=${user.token}`,
     },
-  });
-};
+  })
+}
 
 export const changePassword = (passwords, user) => {
   return axios({
@@ -79,8 +79,8 @@ export const changePassword = (passwords, user) => {
         new: passwords.newPassword,
       },
     },
-  });
-};
+  })
+}
 
 // fetch data with authorization
 export const fetchWithAuth = (endpoint, setState, item, user) => {
@@ -90,26 +90,26 @@ export const fetchWithAuth = (endpoint, setState, item, user) => {
         headers: {
           Authorization: `Token ${user.token}`,
         },
-      });
+      })
       //   console.log("apicall", data);
-      setState(data[item]);
+      setState(data[item])
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
   }
-  fetchData();
-};
+  fetchData()
+}
 
 // fetch data with no authorization
 export const fetchNoAuth = (endpoint, setState, item) => {
   async function fetchData() {
     try {
-      const { data } = await axios.get(`${apiUrl}/${endpoint}`);
+      const { data } = await axios.get(`${apiUrl}/${endpoint}`)
       //   console.log(data);
-      setState(data[item]);
+      setState(data[item])
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
   }
-  fetchData();
-};
+  fetchData()
+}

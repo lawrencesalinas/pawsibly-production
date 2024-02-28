@@ -1,36 +1,36 @@
-import React from "react";
-import { useState } from "react";
-import { Modal, Button } from "react-bootstrap";
-import { useParams, useNavigate } from "react-router-dom";
-import "./css/CreateReview.css";
-import Rating from "./Rating";
-import apiUrl from "../apiConfig";
+import React from "react"
+import { useState } from "react"
+import { Modal, Button } from "react-bootstrap"
+import { useParams, useNavigate } from "react-router-dom"
+import "./css/CreateReview.css"
+import Rating from "./Rating"
+import apiUrl from "../apiConfig"
 
 function CreateReview({ user, setTrigger }) {
-  const [review, setReview] = useState("");
-  const [rating, setRating] = useState(0);
-  const [show, setShow] = useState(false);
-  const navigate = useNavigate();
-  let { id } = useParams();
+  const [review, setReview] = useState("")
+  const [rating, setRating] = useState(0)
+  const [show, setShow] = useState(false)
+  const navigate = useNavigate()
+  let { id } = useParams()
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => setShow(false)
 
   const handleShow = () => {
     if (user == null) {
-      navigate("/sign-in");
+      navigate("/sign-in")
     } else {
-      return setShow(true);
+      return setShow(true)
     }
-  };
+  }
   const handleChange = (e) => {
     if (e.target.value > 5) {
-      return "too much";
+      return "too much"
     } else {
-      return setRating(e.target.value);
+      return setRating(e.target.value)
     }
-  };
+  }
 
-  const handleRating = (e) => {};
+  const handleRating = (e) => { }
 
   const createReview = () => {
     const sitterReview = {
@@ -38,7 +38,7 @@ function CreateReview({ user, setTrigger }) {
       sitter: id,
       review: review,
       rating: rating,
-    };
+    }
 
     // console.log(sitterReview);
     fetch(`${apiUrl}/reviews`, {
@@ -50,20 +50,19 @@ function CreateReview({ user, setTrigger }) {
       body: JSON.stringify(sitterReview),
     })
       .then((createdReview) => {
-        setTrigger((x) => !x);
+        setTrigger((x) => !x)
         // console.log("new review added", createdReview);
-        handleClose(true);
+        handleClose(true)
       })
       .catch((error) => {
-        console.log(error);
-      });
-  };
+        console.log(error)
+      })
+  }
 
   return (
     <>
       <button
-        variant="warning"
-        className="btn-floating btn-large waves-effect waves-light yellow"
+        className="submit-btn"
         onClick={handleShow}
       >
         <i className="material-icons">comment</i>
@@ -105,7 +104,7 @@ function CreateReview({ user, setTrigger }) {
         <Button onClick={() => createReview()}>Submit</Button>
       </Modal>
     </>
-  );
+  )
 }
 
-export default CreateReview;
+export default CreateReview

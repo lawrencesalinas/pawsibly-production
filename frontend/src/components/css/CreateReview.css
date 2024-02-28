@@ -1,16 +1,21 @@
-.modal-content {
-    background-color: transparent !important;
-    border: 0px !important;
-  }
-
-  .modal-backdrop.in {
-    opacity: 0.9;
+.submit-btn {
+  border: none;
+  background-color: yellow;
+  padding: 4px;
+  border-radius: 4px;
 }
 
-.area{
-  width:50vw;
+.modal-content {
+  background-color: transparent !important;
+  border: 0px !important;
+}
+
+.modal-backdrop.in {
+  opacity: 0.9;
+}
+
+.area {
+  width: 50vw;
   height: 30vh;
   margin-bottom: 2%;
-  }
-  
-  
+}
