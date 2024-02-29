@@ -54,7 +54,9 @@ function Header({ user }) {
               </Link>
             </li>
             <li>
-              <Link to="/sign-out">Sign Up</Link>
+              <Link to="/sign-up">
+                <span>Sign Up</span>
+              </Link>
             </li>
           </ul>
         )}

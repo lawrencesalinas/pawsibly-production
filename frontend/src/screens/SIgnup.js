@@ -1,14 +1,13 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { register, reset } from "../features/auth/authSlice";
-import { Form, Button } from "react-bootstrap";
-import { toast } from "react-toastify";
-import Spinner from "../components/shared/Spinner";
-import { signIn } from "../context/user/UserAction";
+import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
+import { register, reset } from "../features/auth/authSlice"
+import { Form, Button } from "react-bootstrap"
+import { toast } from "react-toastify"
+import Spinner from "../components/shared/Spinner"
 const divStyle = {
   height: "80vh",
-};
+}
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -17,42 +16,42 @@ function Signup() {
     email: "",
     password: "",
     passwordConfirmation: "",
-  });
+  })
 
   const { first_name, last_name, email, password, passwordConfirmation } =
-    formData;
+    formData
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
-  );
-  console.log(isSuccess);
+  )
+  console.log(isSuccess)
   useEffect(() => {
     if (isError) {
-      toast.error(message);
+      toast.error(message)
     }
 
     // Redirect when logged in
     if (isSuccess || user) {
-      navigate("/");
+      navigate("/")
     }
 
-    dispatch(reset());
-  }, [isError, isSuccess, user, message, navigate, dispatch]);
+    dispatch(reset())
+  }, [isError, isSuccess, user, message, navigate, dispatch])
 
   const onchange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
-    }));
-  };
+    }))
+  }
 
   const onSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (password !== passwordConfirmation) {
-      toast.error("passwords do not match");
+      toast.error("passwords do not match")
     } else {
       const userData = {
         first_name,
@@ -60,13 +59,13 @@ function Signup() {
         email,
         password,
         passwordConfirmation,
-      };
-      dispatch(register(userData));
+      }
+      dispatch(register(userData))
     }
-  };
+  }
 
   if (isLoading) {
-    return <Spinner />;
+    return <Spinner />
   }
 
   return (
@@ -132,13 +131,13 @@ function Signup() {
               onChange={onchange}
             />
           </Form.Group>
-          <Button variant="warning" type="submit">
+          <Button variant="warning" style={{ marginTop: '30px' }} type="submit">
             Submit
           </Button>
         </Form>
       </div>
     </div>
-  );
+  )
 }
 
-export default Signup;
+export default Signup
